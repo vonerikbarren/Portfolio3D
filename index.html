@@ -893,6 +893,9 @@
 			let mesh_mainHudB
 			let mainHudC
 			let mesh_mainHudC
+			let sphereNotifierMatrix
+			let mesh_sphereNotifierMatrix
+
 
 			let mainInterfaceBorderA
 			let miniInterfaceBorderB
@@ -1166,6 +1169,23 @@
 			let mesh_toolkit_background
 
 
+			// Testimonials
+			let testimonialMatrix
+			let testimonialPanel01
+			let mesh_testimonialPanel01
+			let testimonialPanel02
+			let mesh_testimonialPanel02
+			let testimonialPanel03
+			let mesh_testimonialPanel03
+			let testimonialPanel04
+			let mesh_testimonialPanel04
+			let testimonialPanel05
+			let mesh_testimonialPanel05
+
+
+			
+
+
 
 			// ---\### [CSS Objects] End\ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
@@ -1283,9 +1303,30 @@
 	 			const testImg09 = textureLoader.load('./assets/img/backgrounds/random/TimeTravel.png')
 				const testImg10 = textureLoader.load('./assets/img/backgrounds/random/GreenTech01.jpg')
 
+				// Info Graphs
 				const infograph01 = textureLoader.load('./assets/img/backgrounds/infoGraphs/Emissions_Infograph00.png')
 				const infograph02 = textureLoader.load('./assets/img/backgrounds/infoGraphs/MovingBusinessTowardsNetZero_Infograph00.jpeg')
 				const infograph03 = textureLoader.load('./assets/img/backgrounds/infoGraphs/Inventors_Infograph00.png')
+
+				// Testimonials
+				const testimonialImg01 = textureLoader.load('./assets/img/testimonials/testimonial01.png')
+				const testimonialImg02 = textureLoader.load('./assets/img/testimonials/testimonial02.png')
+				const testimonialImg03 = textureLoader.load('./assets/img/testimonials/testimonial03.png')
+				const testimonialImg04 = textureLoader.load('./assets/img/testimonials/testimonial04.png')
+				const testimonialImg05 = textureLoader.load('./assets/img/testimonials/testimonial05.png')
+
+				// Motivational Quotes
+				const motivationalImg01 = textureLoader.load('./assets/img/quotes/motivational/motivational01.jpeg')
+				const motivationalImg02 = textureLoader.load('./assets/img/quotes/motivational/motivational02.png')
+				const motivationalImg03 = textureLoader.load('./assets/img/quotes/motivational/motivational03.jpeg')
+				const motivationalImg04 = textureLoader.load('./assets/img/quotes/motivational/motivational04.png')
+				const motivationalImg05 = textureLoader.load('./assets/img/quotes/motivational/motivational05.jpg')
+				const motivationalImg06 = textureLoader.load('./assets/img/quotes/motivational/motivational06.jpg')
+				const motivationalImg07 = textureLoader.load('./assets/img/quotes/motivational/motivational07.jpg')
+				const motivationalImg08 = textureLoader.load('./assets/img/quotes/motivational/motivational08.jpg')
+				const motivationalImg09 = textureLoader.load('./assets/img/quotes/motivational/motivational09.jpg')
+				const motivationalImg10 = textureLoader.load('./assets/img/quotes/motivational/motivational10.png')
+				const motivationalImg11 = textureLoader.load('./assets/img/quotes/motivational/motivational11.jpg')
 
 
 				// InfiniteImages
@@ -1327,6 +1368,10 @@
 				const mainUIDisplay2_L0 = textureLoader.load('./assets/img/ui_Components/huds/mainHud_black.png')
 
 				const mainUIDisplay3_L0 = textureLoader.load('./assets/img/ui_Components/huds/mainHud_neonGreen.png')
+
+				const mainUIDisplay4_L0 = textureLoader.load('./assets/img/ui_Components/miniHuds/TechBorderA02.png')
+
+				const mainUIDisplay5_L0 = textureLoader.load('./assets/img/ui_Components/miniHuds/TechBorderB02.png')
 
 				const TechField_L0 = textureLoader.load('./assets/img/circles/TechField05.png')
 				const TechField_L1 = textureLoader.load('./assets/img/circles/TechField06.png')
@@ -1973,15 +2018,20 @@
 				// Geometries
 				// -----------------
 				// ########################
+
+				sphereNotifierMatrix = new THREE.Group()
+				sphereNotifierMatrix.position.set(0, 100, -2700)
+
 				const geo_timeSphere_L2 = new THREE.SphereGeometry(3000, 32, 32)
 				const mat_timeSphere_L2 = new THREE.MeshBasicMaterial({ map: testImg05, side: THREE.DoubleSide });
 				mesh_timeSphere_L2 = new THREE.Mesh(geo_timeSphere_L2, mat_timeSphere_L2)
 				mat_timeSphere_L2.transparent = true;
 				mat_timeSphere_L2.alphaMap = testImg05
 				mat_timeSphere_L2.wireframe = false;
-				mesh_timeSphere_L2.position.set(0, 100, 5000)
-				scene.add(mesh_timeSphere_L2);
-				camera.attach(mesh_timeSphere_L2)
+				mesh_timeSphere_L2.position.set(0, 0, 0)
+				sphereNotifierMatrix.add(mesh_timeSphere_L2);
+				scene.add(sphereNotifierMatrix)
+				camera.attach(sphereNotifierMatrix)
 
 
 			
@@ -2558,17 +2608,17 @@
 
 				/// main HudA
 				mainHudA = new THREE.Group()
-				mainHudA.position.set(0,0,-390)
+				mainHudA.position.set(0,0,-790)
 
 
-				const geo_mainHudA = new THREE.PlaneGeometry(1000, 600)
-				const mat_mainHudA = new THREE.MeshBasicMaterial({ map: mainUIDisplay_L0, side: THREE.DoubleSide });
+				const geo_mainHudA = new THREE.PlaneGeometry(1700, 1300)
+				const mat_mainHudA = new THREE.MeshBasicMaterial({ map: mainUIDisplay4_L0, side: THREE.DoubleSide });
 				mesh_mainHudA = new THREE.Mesh(geo_mainHudA, mat_mainHudA);
 				mat_mainHudA.transparent = true;
-				mat_mainHudA.alphaMap = mainUIDisplay_L0;
+				mat_mainHudA.alphaMap = mainUIDisplay4_L0;
 				mesh_mainHudA.position.set(0, 0, 0);
 				// mesh_mainHudA.position.set(-15000, 0, 0);
-				mesh_mainHudA.scale.set(1, 1, 1);
+				mesh_mainHudA.scale.set(1.2, 1.2, 1.2);
 				mesh_mainHudA.rotation.set(0, 0, 0)
 				// mesh_mainHudA.rotateX( - Math.PI / 2 );
 
@@ -2599,7 +2649,7 @@
 				mainHudB.position.set(0,0,-1200)
 
 
-				const geo_mainHudB = new THREE.PlaneGeometry(2500, 1300)
+				const geo_mainHudB = new THREE.PlaneGeometry(2200, 1100)
 				const mat_mainHudB = new THREE.MeshBasicMaterial({ map: mainUIDisplay2_L0, side: THREE.DoubleSide });
 				mesh_mainHudB = new THREE.Mesh(geo_mainHudB, mat_mainHudB);
 				mat_mainHudB.transparent = true;
@@ -3499,7 +3549,7 @@
 				// Search.LeftHand.ContainerMatrixMain
 				// ###############################################
 				containerMatrixMaster00 = new THREE.Group()
-				containerMatrixMaster00.position.set(0, 0, -1060)
+				containerMatrixMaster00.position.set(0, 0, -51060)
 
 				containerMainBodyMatrixA00 = new THREE.Group()
 				containerMainBodyMatrixA00.position.set(0, 0, 0)
@@ -5294,15 +5344,16 @@
 				// # DataTower_RectPanels
 				//#########################################
 				DataTower_RectPanels_Count8 = new THREE.Group()
-				DataTower_RectPanels_Count8.position.set(45000, 7000, -40000)
+				DataTower_RectPanels_Count8.position.set(-3500, 0, 2700)
 				DataTower_RectPanels_Count8.scale.set(0.1, 0.1, 0.1)
+				
 
 				// Front Card
 				const geo_DataTower_RectPanelsA1_L0 = new THREE.PlaneGeometry(4500, 9000)
-				const mat_DataTower_RectPanelsA1_L0 = new THREE.MeshStandardMaterial({ map: DTD01, side: THREE.DoubleSide });
+				const mat_DataTower_RectPanelsA1_L0 = new THREE.MeshStandardMaterial({ map: motivationalImg01, side: THREE.DoubleSide });
 				mesh_DataTower_RectPanelsA1_L0 = new THREE.Mesh(geo_DataTower_RectPanelsA1_L0, mat_DataTower_RectPanelsA1_L0);
 				mat_DataTower_RectPanelsA1_L0.transparent = false;
-				mat_DataTower_RectPanelsA1_L0.alphaMap = DTD01;
+				mat_DataTower_RectPanelsA1_L0.alphaMap = motivationalImg01;
 				mesh_DataTower_RectPanelsA1_L0.position.set(0, 10, -15000); 
 				// mesh_DataTower_RectPanelsA1_L0.rotateX( - Math.PI / 2 );
 				mesh_DataTower_RectPanelsA1_L0.scale.set(2, 2, 2)
@@ -5311,10 +5362,10 @@
 
 				// Back Card
 				const geo_DataTower_RectPanelsA2_L0 = new THREE.PlaneGeometry(4500, 9000)
-				const mat_DataTower_RectPanelsA2_L0 = new THREE.MeshStandardMaterial({ map: DTD01, side: THREE.DoubleSide });
+				const mat_DataTower_RectPanelsA2_L0 = new THREE.MeshStandardMaterial({ map: motivationalImg02, side: THREE.DoubleSide });
 				mesh_DataTower_RectPanelsA2_L0 = new THREE.Mesh(geo_DataTower_RectPanelsA2_L0, mat_DataTower_RectPanelsA2_L0);
 				mat_DataTower_RectPanelsA2_L0.transparent = false;
-				mat_DataTower_RectPanelsA2_L0.alphaMap = DTD01;
+				mat_DataTower_RectPanelsA2_L0.alphaMap = motivationalImg02;
 				mesh_DataTower_RectPanelsA2_L0.position.set(0, 10, 15000); 
 				// mesh_DataTower_RectPanelsA2_L0.rotateX( - Math.PI / 2 );
 				mesh_DataTower_RectPanelsA2_L0.scale.set(2, 2, 2)
@@ -5323,11 +5374,11 @@
 
 				// Left Card
 				const geo_DataTower_RectPanelsA3_L0 = new THREE.PlaneGeometry(4500, 9000)
-				const mat_DataTower_RectPanelsA3_L0 = new THREE.MeshStandardMaterial({ map: DTD01, side: THREE.DoubleSide });
+				const mat_DataTower_RectPanelsA3_L0 = new THREE.MeshStandardMaterial({ map: motivationalImg03, side: THREE.DoubleSide });
 				mesh_DataTower_RectPanelsA3_L0 = new THREE.Mesh(geo_DataTower_RectPanelsA3_L0, mat_DataTower_RectPanelsA3_L0);
 				mat_DataTower_RectPanelsA3_L0.transparent = false;
-				mat_DataTower_RectPanelsA3_L0.alphaMap = DTD01;
-				mesh_DataTower_RectPanelsA3_L0.position.set(-15000, 10, 0); 
+				mat_DataTower_RectPanelsA3_L0.alphaMap = motivationalImg03;
+				mesh_DataTower_RectPanelsA3_L0.position.set(-15000, 30, 0); 
 				// mesh_DataTower_RectPanelsA3_L0.rotateX( - Math.PI / 2 );
 				mesh_DataTower_RectPanelsA3_L0.scale.set(2, 2, 2)
 				mesh_DataTower_RectPanelsA3_L0.lookAt(0, 10, 0)
@@ -5335,10 +5386,10 @@
 
 				// Right Card
 				const geo_DataTower_RectPanelsA4_L0 = new THREE.PlaneGeometry(4500, 9000)
-				const mat_DataTower_RectPanelsA4_L0 = new THREE.MeshStandardMaterial({ map: DTD01, side: THREE.DoubleSide });
+				const mat_DataTower_RectPanelsA4_L0 = new THREE.MeshStandardMaterial({ map: motivationalImg04, side: THREE.DoubleSide });
 				mesh_DataTower_RectPanelsA4_L0 = new THREE.Mesh(geo_DataTower_RectPanelsA4_L0, mat_DataTower_RectPanelsA4_L0);
 				mat_DataTower_RectPanelsA4_L0.transparent = false;
-				mat_DataTower_RectPanelsA4_L0.alphaMap = DTD01;
+				mat_DataTower_RectPanelsA4_L0.alphaMap = motivationalImg04;
 				mesh_DataTower_RectPanelsA4_L0.position.set(15000, 10, 0); 
 				// mesh_DataTower_RectPanelsA4_L0.rotateX( - Math.PI / 2 );
 				mesh_DataTower_RectPanelsA4_L0.scale.set(2, 2, 2)
@@ -5347,10 +5398,10 @@
 
 				// Front Right Card
 				const geo_DataTower_RectPanelsA5_L0 = new THREE.PlaneGeometry(4500, 9000)
-				const mat_DataTower_RectPanelsA5_L0 = new THREE.MeshStandardMaterial({ map: DTD01, side: THREE.DoubleSide });
+				const mat_DataTower_RectPanelsA5_L0 = new THREE.MeshStandardMaterial({ map: motivationalImg05, side: THREE.DoubleSide });
 				mesh_DataTower_RectPanelsA5_L0 = new THREE.Mesh(geo_DataTower_RectPanelsA5_L0, mat_DataTower_RectPanelsA5_L0);
 				mat_DataTower_RectPanelsA5_L0.transparent = false;
-				mat_DataTower_RectPanelsA5_L0.alphaMap = DTD01;
+				mat_DataTower_RectPanelsA5_L0.alphaMap = motivationalImg05;
 				mesh_DataTower_RectPanelsA5_L0.position.set(10000, 10, -10000); 
 				// mesh_DataTower_RectPanelsA5_L0.rotateX( - Math.PI / 2 );
 				mesh_DataTower_RectPanelsA5_L0.scale.set(2, 2, 2)
@@ -5359,10 +5410,10 @@
 
 				// Back Right Card
 				const geo_DataTower_RectPanelsA6_L0 = new THREE.PlaneGeometry(4500, 9000)
-				const mat_DataTower_RectPanelsA6_L0 = new THREE.MeshStandardMaterial({ map: DTD01, side: THREE.DoubleSide });
+				const mat_DataTower_RectPanelsA6_L0 = new THREE.MeshStandardMaterial({ map: motivationalImg06, side: THREE.DoubleSide });
 				mesh_DataTower_RectPanelsA6_L0 = new THREE.Mesh(geo_DataTower_RectPanelsA6_L0, mat_DataTower_RectPanelsA6_L0);
 				mat_DataTower_RectPanelsA6_L0.transparent = false;
-				mat_DataTower_RectPanelsA6_L0.alphaMap = DTD01;
+				mat_DataTower_RectPanelsA6_L0.alphaMap = motivationalImg06;
 				mesh_DataTower_RectPanelsA6_L0.position.set(10000, 10, 10000); 
 				// mesh_DataTower_RectPanelsA6_L0.rotateX( - Math.PI / 2 );
 				mesh_DataTower_RectPanelsA6_L0.scale.set(2, 2, 2)
@@ -5371,10 +5422,10 @@
 
 				// Back Left Card
 				const geo_DataTower_RectPanelsA7_L0 = new THREE.PlaneGeometry(4500, 9000)
-				const mat_DataTower_RectPanelsA7_L0 = new THREE.MeshStandardMaterial({ map: DTD01, side: THREE.DoubleSide });
+				const mat_DataTower_RectPanelsA7_L0 = new THREE.MeshStandardMaterial({ map: motivationalImg07, side: THREE.DoubleSide });
 				mesh_DataTower_RectPanelsA7_L0 = new THREE.Mesh(geo_DataTower_RectPanelsA7_L0, mat_DataTower_RectPanelsA7_L0);
 				mat_DataTower_RectPanelsA7_L0.transparent = false;
-				mat_DataTower_RectPanelsA7_L0.alphaMap = DTD01;
+				mat_DataTower_RectPanelsA7_L0.alphaMap = motivationalImg07;
 				mesh_DataTower_RectPanelsA7_L0.position.set(-10000, 10, 10000); 
 				// mesh_DataTower_RectPanelsA7_L0.rotateX( - Math.PI / 2 );
 				mesh_DataTower_RectPanelsA7_L0.scale.set(2, 2, 2)
@@ -5382,10 +5433,10 @@
 				DataTower_RectPanels_Count8.add(mesh_DataTower_RectPanelsA7_L0)
 
 				const geo_DataTower_RectPanelsA8_L0 = new THREE.PlaneGeometry(4500, 9000)
-				const mat_DataTower_RectPanelsA8_L0 = new THREE.MeshStandardMaterial({ map: DTD01, side: THREE.DoubleSide });
+				const mat_DataTower_RectPanelsA8_L0 = new THREE.MeshStandardMaterial({ map: motivationalImg08, side: THREE.DoubleSide });
 				mesh_DataTower_RectPanelsA8_L0 = new THREE.Mesh(geo_DataTower_RectPanelsA8_L0, mat_DataTower_RectPanelsA8_L0);
 				mat_DataTower_RectPanelsA8_L0.transparent = false;
-				mat_DataTower_RectPanelsA8_L0.alphaMap = DTD01;
+				mat_DataTower_RectPanelsA8_L0.alphaMap = motivationalImg08;
 				mesh_DataTower_RectPanelsA8_L0.position.set(-10000, 10, -10000); 
 				// mesh_DataTower_RectPanelsA8_L0.rotateX( - Math.PI / 2 );
 				mesh_DataTower_RectPanelsA8_L0.scale.set(2, 2, 2)
@@ -5393,7 +5444,118 @@
 				DataTower_RectPanels_Count8.add(mesh_DataTower_RectPanelsA8_L0)
 
 
-				scene.add(DataTower_RectPanels_Count8)
+				// camera.attach(DataTower_RectPanels_Count8)
+				sphereNotifierMatrix.add(DataTower_RectPanels_Count8)
+
+
+
+				//#########################################
+				// # Testimonials
+				//#########################################
+				testimonialMatrix = new THREE.Group()
+				testimonialMatrix.position.set( 0, 100, 0 )
+				testimonialMatrix.position.set( 0.5, 0.5, 0.5 )
+
+				// Front Card
+				const geo_testimonialPanel01 = new THREE.CircleGeometry(1500, 2000)
+				const mat_testimonialPanel01 = new THREE.MeshStandardMaterial({ map: testimonialImg01, side: THREE.DoubleSide });
+				mesh_testimonialPanel01 = new THREE.Mesh(geo_testimonialPanel01, mat_testimonialPanel01);
+				mat_testimonialPanel01.transparent = false;
+				mat_testimonialPanel01.alphaMap = testimonialImg01;
+				mesh_testimonialPanel01.position.set(0, 10, -15000); 
+				// mesh_testimonialPanel01.rotateX( - Math.PI / 2 );
+				mesh_testimonialPanel01.scale.set(2, 2, 2)
+				mesh_testimonialPanel01.lookAt(0, 10, 0)
+				testimonialMatrix.add(mesh_testimonialPanel01)
+
+				// Back Card
+				const geo_testimonialPanel02 = new THREE.CircleGeometry(1500, 2000)
+				const mat_testimonialPanel02 = new THREE.MeshStandardMaterial({ map: testimonialImg02, side: THREE.DoubleSide });
+				mesh_testimonialPanel02 = new THREE.Mesh(geo_testimonialPanel02, mat_testimonialPanel02);
+				mat_testimonialPanel02.transparent = false;
+				mat_testimonialPanel02.alphaMap = testimonialImg02;
+				mesh_testimonialPanel02.position.set(0, 10, 15000); 
+				// mesh_testimonialPanel02.rotateX( - Math.PI / 2 );
+				mesh_testimonialPanel02.scale.set(2, 2, 2)
+				mesh_testimonialPanel02.lookAt(0, 10, 0)
+				testimonialMatrix.add(mesh_testimonialPanel02)
+
+				// Left Card
+				const geo_testimonialPanel03 = new THREE.CircleGeometry(1500, 2000)
+				const mat_testimonialPanel03 = new THREE.MeshStandardMaterial({ map: testimonialImg03, side: THREE.DoubleSide });
+				mesh_testimonialPanel03 = new THREE.Mesh(geo_testimonialPanel03, mat_testimonialPanel03);
+				mat_testimonialPanel03.transparent = false;
+				mat_testimonialPanel03.alphaMap = testimonialImg03;
+				mesh_testimonialPanel03.position.set(-15000, 30, 0); 
+				// mesh_testimonialPanel03.rotateX( - Math.PI / 2 );
+				mesh_testimonialPanel03.scale.set(2, 2, 2)
+				mesh_testimonialPanel03.lookAt(0, 10, 0)
+				testimonialMatrix.add(mesh_testimonialPanel03)
+
+				// Right Card
+				const geo_testimonialPanel04 = new THREE.CircleGeometry(1500, 2000)
+				const mat_testimonialPanel04 = new THREE.MeshStandardMaterial({ map: testimonialImg04, side: THREE.DoubleSide });
+				mesh_testimonialPanel04 = new THREE.Mesh(geo_testimonialPanel04, mat_testimonialPanel04);
+				mat_testimonialPanel04.transparent = false;
+				mat_testimonialPanel04.alphaMap = testimonialImg04;
+				mesh_testimonialPanel04.position.set(15000, 10, 0); 
+				// mesh_testimonialPanel04.rotateX( - Math.PI / 2 );
+				mesh_testimonialPanel04.scale.set(2, 2, 2)
+				mesh_testimonialPanel04.lookAt(0, 10, 0)
+				testimonialMatrix.add(mesh_testimonialPanel04)
+
+				// Front Right Card
+				const geo_testimonialPanel05 = new THREE.CircleGeometry(1500, 2000)
+				const mat_testimonialPanel05 = new THREE.MeshStandardMaterial({ map: testimonialImg05, side: THREE.DoubleSide });
+				mesh_testimonialPanel05 = new THREE.Mesh(geo_testimonialPanel05, mat_testimonialPanel05);
+				mat_testimonialPanel05.transparent = false;
+				mat_testimonialPanel05.alphaMap = testimonialImg05;
+				mesh_testimonialPanel05.position.set(10000, 10, -10000); 
+				// mesh_testimonialPanel05.rotateX( - Math.PI / 2 );
+				mesh_testimonialPanel05.scale.set(2, 2, 2)
+				mesh_testimonialPanel05.lookAt(0, 10, 0)
+				testimonialMatrix.add(mesh_testimonialPanel05)
+
+				// // Back Right Card
+				// const geo_DataTower_RectPanelsA6_L0 = new THREE.CircleGeometry(1500, 2000)
+				// const mat_DataTower_RectPanelsA6_L0 = new THREE.MeshStandardMaterial({ map: motivationalImg06, side: THREE.DoubleSide });
+				// mesh_DataTower_RectPanelsA6_L0 = new THREE.Mesh(geo_DataTower_RectPanelsA6_L0, mat_DataTower_RectPanelsA6_L0);
+				// mat_DataTower_RectPanelsA6_L0.transparent = false;
+				// mat_DataTower_RectPanelsA6_L0.alphaMap = motivationalImg06;
+				// mesh_DataTower_RectPanelsA6_L0.position.set(10000, 10, 10000); 
+				// // mesh_DataTower_RectPanelsA6_L0.rotateX( - Math.PI / 2 );
+				// mesh_DataTower_RectPanelsA6_L0.scale.set(2, 2, 2)
+				// mesh_DataTower_RectPanelsA6_L0.lookAt(0, 10, 0)
+				// testimonialMatrix.add(mesh_DataTower_RectPanelsA6_L0)
+
+				// // Back Left Card
+				// const geo_DataTower_RectPanelsA7_L0 = new THREE.CircleGeometry(1500, 2000)
+				// const mat_DataTower_RectPanelsA7_L0 = new THREE.MeshStandardMaterial({ map: motivationalImg07, side: THREE.DoubleSide });
+				// mesh_DataTower_RectPanelsA7_L0 = new THREE.Mesh(geo_DataTower_RectPanelsA7_L0, mat_DataTower_RectPanelsA7_L0);
+				// mat_DataTower_RectPanelsA7_L0.transparent = false;
+				// mat_DataTower_RectPanelsA7_L0.alphaMap = motivationalImg07;
+				// mesh_DataTower_RectPanelsA7_L0.position.set(-10000, 10, 10000); 
+				// // mesh_DataTower_RectPanelsA7_L0.rotateX( - Math.PI / 2 );
+				// mesh_DataTower_RectPanelsA7_L0.scale.set(2, 2, 2)
+				// mesh_DataTower_RectPanelsA7_L0.lookAt(0, 10, 0)
+				// testimonialMatrix.add(mesh_DataTower_RectPanelsA7_L0)
+
+				// const geo_DataTower_RectPanelsA8_L0 = new THREE.CircleGeometry(1500, 2000)
+				// const mat_DataTower_RectPanelsA8_L0 = new THREE.MeshStandardMaterial({ map: motivationalImg08, side: THREE.DoubleSide });
+				// mesh_DataTower_RectPanelsA8_L0 = new THREE.Mesh(geo_DataTower_RectPanelsA8_L0, mat_DataTower_RectPanelsA8_L0);
+				// mat_DataTower_RectPanelsA8_L0.transparent = false;
+				// mat_DataTower_RectPanelsA8_L0.alphaMap = motivationalImg08;
+				// mesh_DataTower_RectPanelsA8_L0.position.set(-10000, 10, -10000); 
+				// // mesh_DataTower_RectPanelsA8_L0.rotateX( - Math.PI / 2 );
+				// mesh_DataTower_RectPanelsA8_L0.scale.set(2, 2, 2)
+				// mesh_DataTower_RectPanelsA8_L0.lookAt(0, 10, 0)
+				// testimonialMatrix.add(mesh_DataTower_RectPanelsA8_L0)
+
+
+				// camera.attach(testimonialMatrix)
+				sphereNotifierMatrix.add(testimonialMatrix)
+
+
 
 
 				//#########################################
@@ -6240,25 +6402,30 @@
 					* |- # Title: Back Card
 					* |-- Details
  					*/
+
+				const folderNotifier = gui.addFolder('Notifier')
+				folderNotifier.add(sphereNotifierMatrix.position, 'z').min(-2700).max(3000).step(300).name('|- Notifier');
+				folderNotifier.add(DataTower_RectPanels_Count8.position, 'x').min(-3500).max(3500).step(3500).name('|- Motivational Quotes');
+				folderNotifier.add(testimonialMatrix.position, 'y').min(-20000).max(20000).step(3500).name('|- Testimonials');
 				
 				const folderMainHud = gui.addFolder('Main Hub Position Testing')
-				folderMainHud.add(videoScreen.position, 'y').min(-20000).max(20000).step(20000).name('Opening Video');
-				folderMainHud.add(mainContainerEntranceVideoContainerA1_L0.position, 'x').min(-20000).max(20000).step(20000).name('Surface Layer');
-				folderMainHud.add(mesh_timeSphere_L2.position, 'z').min(-2700).max(3000).step(300).name('Notifier');
-				folderMainHud.add(mainHubBase.position, 'x').min(-3150).max(0).step(100).name('main Hud Base');
-				folderMainHud.add(mainHudA.position, 'x').min(-1150).max(0).step(100).name('mainHud A');
-				folderMainHud.add(mainHudB.position, 'x').min(-3150).max(0).step(100).name('mainHud B');
+				folderMainHud.add(videoScreen.position, 'y').min(-20000).max(20000).step(20000).name('|- Opening Video');
+				folderMainHud.add(mainContainerEntranceVideoContainerA1_L0.position, 'x').min(-20000).max(20000).step(20000).name('|- Surface Layer');
+				
+				folderMainHud.add(mainHubBase.position, 'x').min(-3150).max(0).step(100).name('|- main Hud Base');
+				folderMainHud.add(mainHudA.position, 'x').min(-3150).max(0).step(100).name('|- mainHud A');
+				folderMainHud.add(mainHudB.position, 'x').min(-3150).max(0).step(100).name('|- mainHud B');
 
 				const folderDataTableA = gui.addFolder('Tools')
-				folderDataTableA.add(TSC_LeftColumnA00.position, 'x').min(-5150).max(3000).step(100).name('Web Tools - [ ⇄ Scroll ]');
-				folderDataTableA.add(TSC_LeftColumnA00.position, 'y').min(-5150).max(3000).step(100).name('Web Tools - [ ⇅ Scroll ]');
-				folderDataTableA.add(groupTest02.position, 'x').min(-3150).max(3150).step(100).name('Google Sheeet A - [ ⇄ Scroll ]');
-				folderDataTableA.add(groupTest02.position, 'y').min(-3150).max(3150).step(100).name('Google Sheeet A - [ ⤡ Scroll ]');
-				folderDataTableA.add(groupTest02.position, 'z').min(-3150).max(0).step(100).name('Google Sheeet A - [ ⇅ Scroll ]');
-				folderDataTableA.add(groupTest02b.position, 'x').min(-3150).max(3150).step(100).name('TableTest A Side');
-				folderDataTableA.add(groupTest02b.position, 'z').min(-3150).max(0).step(100).name('TableTest A Forward');
-				folderDataTableA.add(groupTest03.position, 'x').min(-3150).max(3150).step(100).name('TableTest A Side');
-				folderDataTableA.add(groupTest03.position, 'z').min(-3150).max(0).step(100).name('TableTest A Forward');
+				folderDataTableA.add(TSC_LeftColumnA00.position, 'x').min(-5150).max(3000).step(100).name('|- Web Tools - [ ⇄ Scroll ]');
+				folderDataTableA.add(TSC_LeftColumnA00.position, 'y').min(-5150).max(3000).step(100).name('|- Web Tools - [ ⇅ Scroll ]');
+				folderDataTableA.add(groupTest02.position, 'x').min(-3150).max(3150).step(100).name('|- Google Sheeet A - [ ⇄ Scroll ]');
+				folderDataTableA.add(groupTest02.position, 'y').min(-3150).max(3150).step(100).name('|- Google Sheeet A - [ ⤡ Scroll ]');
+				folderDataTableA.add(groupTest02.position, 'z').min(-3150).max(0).step(100).name('|- Google Sheeet A - [ ⇅ Scroll ]');
+				folderDataTableA.add(groupTest02b.position, 'x').min(-3150).max(3150).step(100).name('|- TableTest A Side');
+				folderDataTableA.add(groupTest02b.position, 'z').min(-3150).max(0).step(100).name('|- TableTest A Forward');
+				folderDataTableA.add(groupTest03.position, 'x').min(-3150).max(3150).step(100).name('|- TableTest A Side');
+				folderDataTableA.add(groupTest03.position, 'z').min(-3150).max(0).step(100).name('|- TableTest A Forward');
 				
 
 
@@ -6366,17 +6533,17 @@
 				// Test Folder 3
 				const folderMainHud03 = gui.addFolder('Component3 Testing')
 
-				folderMainHud03.add(mesh_leftTechField_A1_L1.position, 'x').min(-525).max(325).step(1).name('Cc-Back-x');
-				folderMainHud03.add(mesh_leftTechField_A1_L1.position, 'y').min(-300).max(300).step(1).name('Cc-Back-y');
-				folderMainHud03.add(mesh_leftTechField_A1_L1.position, 'z').min(-2000).max(2000).step(1).name('Cc-Back-z');
+				folderMainHud03.add(mesh_mainHudA.position, 'x').min(-525).max(325).step(1).name('Cc-Back-x');
+				folderMainHud03.add(mesh_mainHudA.position, 'y').min(-300).max(300).step(1).name('Cc-Back-y');
+				folderMainHud03.add(mesh_mainHudA.position, 'z').min(-2000).max(2000).step(1).name('Cc-Back-z');
 
-				folderMainHud03.add(mesh_leftTechField_A1_L1.rotation, 'x').min(-360).max(360).step(1).name('Rotation-x');
-				folderMainHud03.add(mesh_leftTechField_A1_L1.rotation, 'y').min(-360).max(360).step(1).name('Rotation-y');
-				folderMainHud03.add(mesh_leftTechField_A1_L1.rotation, 'z').min(-360).max(360).step(1).name('Rotation-z');
+				folderMainHud03.add(mesh_mainHudA.rotation, 'x').min(-360).max(360).step(1).name('Rotation-x');
+				folderMainHud03.add(mesh_mainHudA.rotation, 'y').min(-360).max(360).step(1).name('Rotation-y');
+				folderMainHud03.add(mesh_mainHudA.rotation, 'z').min(-360).max(360).step(1).name('Rotation-z');
 
-				folderMainHud03.add(mesh_leftTechField_A1_L1.scale, 'x').min(-100).max(100).step(1).name('Scale-x');
-				folderMainHud03.add(mesh_leftTechField_A1_L1.scale, 'y').min(-100).max(100).step(1).name('Scale-y');
-				folderMainHud03.add(mesh_leftTechField_A1_L1.scale, 'z').min(-100).max(100).step(1).name('Scale-z');
+				folderMainHud03.add(mesh_mainHudA.scale, 'x').min(-100).max(100).step(1).name('Scale-x');
+				folderMainHud03.add(mesh_mainHudA.scale, 'y').min(-100).max(100).step(1).name('Scale-y');
+				folderMainHud03.add(mesh_mainHudA.scale, 'z').min(-100).max(100).step(1).name('Scale-z');
 
 
 				// Test Folder 4
@@ -6623,6 +6790,10 @@
 				TimeTunnelB.rotation.x = time * 0.0001
 				mesh_TimeTunnelB01_L0.rotation.z = time * 0.01
 				mesh_TimeTunnelB02_L0.rotation.z = time * 0.01
+
+
+				// Testimonials
+				testimonialMatrix.rotation.y = time * 0.0001
 
 
 				// DTD Rotation
