@@ -217,7 +217,7 @@
 		.menu_Video {
 			position: absolute;
 			bottom: 500px;
-         left: 10px;
+         left: 50px;
 			width: 25%;
 			text-align: left;
          padding: 20px;
@@ -231,6 +231,49 @@
 		/* .tableElement {
 
 		} */
+
+
+		/* Style inputs with type="text", select elements and textareas */
+		input[type=text], select, textarea {
+			position: relative;
+  			/* width: 1%; */
+  			padding: 12px; /* Some padding */ 
+  			border: 1px solid rgba(0, 255, 179, 0.95);
+  			border-radius: 4px; /* Rounded borders */
+  			box-sizing: border-box; /* Make sure that padding and width stays in place */
+  			margin-top: 6px; /* Add a top margin */
+  			margin-bottom: 16px; /* Bottom margin */
+  			resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+		}
+
+		/* Style the submit button with a specific background color etc */
+		input[type=submit] {
+  			background-color: #04AA6D;
+  			color: white;
+  			padding: 12px 20px;
+  			border: none;
+  			border-radius: 4px;
+  			cursor: pointer;
+		}
+
+		/* When moving the mouse over the submit button, add a darker green color */
+		input[type=submit]:hover {
+  			background-color: #45a049;
+		}
+
+		/* Add a background color and some padding around the form */
+		.container_form {
+  			border-radius: 5px;
+  			padding: 20px;
+			background: rgba(0, 255, 208, 0.2);
+		}
+
+
+
+	
+
+ 
+  
 
 		</style>
 	</head>
@@ -259,7 +302,7 @@
         <button id="sphere">SPHERE</button>
         <button id="helix">HELIX</button>
         <button id="grid">GRID</button>
-        <button id="table2" onclick="byeVideo()">GoodByeVideo</button><br/>
+        <button id="table2" onclick="byeVideo()">Video Manager</button><br/>
 				
 
       </div>
@@ -270,6 +313,33 @@
         <input type="text" name="search" placeholder="Search..">
       </form>
 
+
+		<div class="container_form">
+			<form action="action_page.php">
+		 
+			  <label for="fname">First Name</label>
+			  <input type="text" id="fname" name="firstname" placeholder="Your name..">
+		 
+			  <label for="lname">Last Name</label>
+			  <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+		 
+			  <label for="country">Country</label>
+			  <select id="country" name="country">
+				 <option value="australia">Australia</option>
+				 <option value="canada">Canada</option>
+				 <option value="usa">USA</option>
+			  </select>
+		 
+			  <label for="subject">Subject</label>
+			  <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+		 
+			  <input type="submit" value="Submit">
+		 
+			</form>
+		 </div>
+
+
+		 
       <!-- Instructions -->
 			<div id="instructions">
 				<p style="font-size:36px">
@@ -285,6 +355,8 @@
 
       </div>
 		</div>
+
+		
 
 		<script>
 			function byeVideo() {
@@ -918,8 +990,10 @@
 			let mesh_rightUIGear_A7_L0
 			let mesh_leftTechField_A1_L0
 			let mesh_leftTechField_A1_L1
+			let mesh_leftTechField_A1_L2
 			let mesh_rightTechField_A1_L0
 			let mesh_rightTechField_A1_L1
+			let mesh_rightTechField_A1_L2
 
 			let mesh_timelens_A1_L0
 			let mesh_timelens_A1_L1
@@ -1200,6 +1274,9 @@
 		 	const targets = { table: [], sphere: [], helix: [], grid: [], table2: [] };
 			const myTargets = { table: [], sphere: [], helix: [], grid: [] }
 
+
+			
+
 			// Additional Variables Declarations
 			let raycaster;
 			let moveForward = false;
@@ -1303,6 +1380,10 @@
 	 			const testImg09 = textureLoader.load('./assets/img/backgrounds/random/TimeTravel.png')
 				const testImg10 = textureLoader.load('./assets/img/backgrounds/random/GreenTech01.jpg')
 
+				// Grids
+				const Grid19Black = textureLoader.load('./assets/img/backgrounds/Grids/Grid19_Black.jpg')
+				const Grid19White = textureLoader.load('./assets/img/backgrounds/Grids/Grid19_White.jpg')
+
 				// Info Graphs
 				const infograph01 = textureLoader.load('./assets/img/backgrounds/infoGraphs/Emissions_Infograph00.png')
 				const infograph02 = textureLoader.load('./assets/img/backgrounds/infoGraphs/MovingBusinessTowardsNetZero_Infograph00.jpeg')
@@ -1377,6 +1458,8 @@
 				const TechField_L1 = textureLoader.load('./assets/img/circles/TechField06.png')
 				const TechField_L3 = textureLoader.load('./assets/img/circles/TechField08.png')
 				const TechField_L4 = textureLoader.load('./assets/img/circles/TechField07.png')
+				const TechField_L5 = textureLoader.load('./assets/img/circles/TechField05_Black.png')
+				const TechField_L6 = textureLoader.load('./assets/img/circles/TechField06_Black.png')
 
 				const LightField_L0 = textureLoader.load('./assets/img/circles/LightField01.png')
 
@@ -1507,6 +1590,237 @@
 				// root.add(backgroundTest)
 
 
+				function makeTable_5x5(
+					x, y, z, ry,
+					TableTitle, 
+					th01, th02, th03, th04, th05,
+					tdA1, tdA2, tdA3, tdA4, tdA5,
+					tdB1, tdB2, tdB3, tdB4, tdB5,
+					tdC1, tdC2, tdC3, tdC4, tdC5,
+					tdD1, tdD2, tdD3, tdD4, tdD5,
+					tdE1, tdE2, tdE3, tdE4, tdE5,
+					) {
+					const tableDiv = document.createElement('div')
+					tableDiv.className = 'tableDiv'
+
+					const tableTitle = document.createElement('h1')
+					tableTitle.className = 'tableTitle'
+					tableTitle.textContent = TableTitle
+					tableDiv.appendChild(tableTitle)
+
+					const tableComponent = document.createElement('table')
+					tableDiv.className = 'tableComponent'
+					tableDiv.appendChild(tableComponent)
+
+
+					// Table Headers 
+
+					// Table Row! 
+					const tableHeaderRow = document.createElement('tr')
+					tableHeaderRow.className = 'tableHeaderRow'
+					tableComponent.appendChild(tableHeaderRow)
+
+					const tableHeader01 = document.createElement('th')
+					tableHeader01.className = 'tableHeader01'
+					tableHeader01.textContent = th01
+					tableHeaderRow.appendChild(tableHeader01)
+
+					const tableHeader02 = document.createElement('th')
+					tableHeader02.className = 'tableHeader02'
+					tableHeader02.textContent = th02
+					tableHeaderRow.appendChild(tableHeader02)
+
+					const tableHeader03 = document.createElement('th')
+					tableHeader03.className = 'tableHeader03'
+					tableHeader03.textContent = th03
+					tableHeaderRow.appendChild(tableHeader03)
+
+					const tableHeader04 = document.createElement('th')
+					tableHeader04.className = 'tableHeader04'
+					tableHeader04.textContent = th04
+					tableHeaderRow.appendChild(tableHeader04)
+					
+					const tableHeader05 = document.createElement('th')
+					tableHeader05.className = 'tableHeader05'
+					tableHeader05.textContent = th05
+					tableHeaderRow.appendChild(tableHeader05)
+
+
+					// TableRow A
+
+					const tableRowA = document.createElement('tr')
+					tableRowA.className = 'tableRowA'
+					tableComponent.appendChild(tableRowA)
+
+					const tableDataA01 = document.createElement('td')
+					tableDataA01.className = 'tableDataA01'
+					tableDataA01.textContent = tdA1
+					tableRowA.appendChild(tableDataA01)
+
+					const tableDataA02 = document.createElement('td')
+					tableDataA02.className = 'tableDataA02'
+					tableDataA02.textContent = tdA2
+					tableRowA.appendChild(tableDataA02)
+
+					const tableDataA03 = document.createElement('td')
+					tableDataA03.className = 'tableDataA03'
+					tableDataA03.textContent = tdA3
+					tableRowA.appendChild(tableDataA03)
+
+					const tableDataA04 = document.createElement('td')
+					tableDataA04.className = 'tableDataA04'
+					tableDataA04.textContent = tdA4
+					tableRowA.appendChild(tableDataA04)
+
+					const tableDataA05 = document.createElement('td')
+					tableDataA05.className = 'tableDataA05'
+					tableDataA05.textContent = tdA5
+					tableRowA.appendChild(tableDataA05)
+
+
+
+					// TableRow B
+
+					const tableRowB = document.createElement('tr')
+					tableRowB.className = 'tableRowB'
+					tableComponent.appendChild(tableRowB)
+
+					const tableDataB01 = document.createElement('td')
+					tableDataB01.className = 'tableDataB01'
+					tableDataB01.textContent = tdA1
+					tableRowB.appendChild(tableDataB01)
+
+					const tableDataB02 = document.createElement('td')
+					tableDataB02.className = 'tableDataB02'
+					tableDataB02.textContent = tdA2
+					tableRowB.appendChild(tableDataB02)
+
+					const tableDataB03 = document.createElement('td')
+					tableDataB03.className = 'tableDataB03'
+					tableDataB03.textContent = tdA3
+					tableRowB.appendChild(tableDataB03)
+
+					const tableDataB04 = document.createElement('td')
+					tableDataB04.className = 'tableDataB04'
+					tableDataB04.textContent = tdA4
+					tableRowB.appendChild(tableDataB04)
+
+					const tableDataB05 = document.createElement('td')
+					tableDataB05.className = 'tableDataB05'
+					tableDataB05.textContent = tdA5
+					tableRowB.appendChild(tableDataB05)
+
+
+					// TableRow C
+
+					const tableRowC = document.createElement('tr')
+					tableRowC.className = 'tableRowC'
+					tableComponent.appendChild(tableRowC)
+
+					const tableDataC01 = document.createElement('td')
+					tableDataC01.className = 'tableDataC01'
+					tableDataC01.textContent = tdA1
+					tableRowC.appendChild(tableDataC01)
+
+					const tableDataC02 = document.createElement('td')
+					tableDataC02.className = 'tableDataC02'
+					tableDataC02.textContent = tdA2
+					tableRowC.appendChild(tableDataC02)
+
+					const tableDataC03 = document.createElement('td')
+					tableDataC03.className = 'tableDataC03'
+					tableDataC03.textContent = tdA3
+					tableRowC.appendChild(tableDataC03)
+
+					const tableDataC04 = document.createElement('td')
+					tableDataC04.className = 'tableDataC04'
+					tableDataC04.textContent = tdA4
+					tableRowC.appendChild(tableDataC04)
+
+					const tableDataC05 = document.createElement('td')
+					tableDataC05.className = 'tableDataC05'
+					tableDataC05.textContent = tdA5
+					tableRowC.appendChild(tableDataC05)
+
+
+					// TableRow D
+
+					const tableRowD = document.createElement('tr')
+					tableRowD.className = 'tableRowD'
+					tableComponent.appendChild(tableRowD)
+
+					const tableDataD01 = document.createElement('td')
+					tableDataD01.className = 'tableDataD01'
+					tableDataD01.textContent = tdA1
+					tableRowD.appendChild(tableDataD01)
+
+					const tableDataD02 = document.createElement('td')
+					tableDataD02.className = 'tableDataD02'
+					tableDataD02.textContent = tdA2
+					tableRowD.appendChild(tableDataD02)
+
+					const tableDataD03 = document.createElement('td')
+					tableDataD03.className = 'tableDataD03'
+					tableDataD03.textContent = tdA3
+					tableRowD.appendChild(tableDataD03)
+
+					const tableDataD04 = document.createElement('td')
+					tableDataD04.className = 'tableDataD04'
+					tableDataD04.textContent = tdA4
+					tableRowD.appendChild(tableDataD04)
+
+					const tableDataD05 = document.createElement('td')
+					tableDataD05.className = 'tableDataD05'
+					tableDataD05.textContent = tdA5
+					tableRowD.appendChild(tableDataD05)
+
+
+
+					// TableRow E
+
+					const tableRowE = document.createElement('tr')
+					tableRowE.className = 'tableRowE'
+					tableComponent.appendChild(tableRowE)
+
+					const tableDataE01 = document.createElement('td')
+					tableDataE01.className = 'tableDataE01'
+					tableDataE01.textContent = tdA1
+					tableRowE.appendChild(tableDataE01)
+
+					const tableDataE02 = document.createElement('td')
+					tableDataE02.className = 'tableDataE02'
+					tableDataE02.textContent = tdA2
+					tableRowE.appendChild(tableDataE02)
+
+					const tableDataE03 = document.createElement('td')
+					tableDataE03.className = 'tableDataE03'
+					tableDataE03.textContent = tdA3
+					tableRowE.appendChild(tableDataE03)
+
+					const tableDataE04 = document.createElement('td')
+					tableDataE04.className = 'tableDataE04'
+					tableDataE04.textContent = tdA4
+					tableRowE.appendChild(tableDataE04)
+
+					const tableDataE05 = document.createElement('td')
+					tableDataE05.className = 'tableDataE05'
+					tableDataE05.textContent = tdA5
+					tableRowE.appendChild(tableDataE05)
+
+
+
+
+
+					// tableObject
+					const table5x5_Object = new CSS3DObject(tableDiv)
+					table5x5_Object.position.set(x, y, z)
+					table5x5_Object.rotation.y = ry
+
+					return table5x5_Object
+
+				}
+
+
 
 
 
@@ -1611,8 +1925,8 @@
 				) {
 
 					const ElementFrame = document.createElement('div')
-					ElementFrame.style.width = width + 30 +'px';
-    				ElementFrame.style.height = height + 30 +'px';
+					ElementFrame.style.width = width + 'px';
+    				ElementFrame.style.height = height + 'px';
     				ElementFrame.style.opacity = 0.999;
     				ElementFrame.style.boxSizing = 'border-box'
 					ElementFrame.style.backgroundColor = 'rgb(255, 255, 255, 0.7)'
@@ -1627,10 +1941,11 @@
 					ElementItem.style.border = '5px solid rgba(0, 255, 179, 0.95)'
 					ElementItem.style.borderRadius = '100px';
 					ElementItem.style.fontSize = textSize + 'px';
-					ElementItem.style.padding = '100px'
+					// ElementItem.style.padding = '100px'
 					ElementItem.style.background = BackgroundColor
 					ElementItem.style.lineHeight = 'normal'
 					ElementItem.style.textAlign = textAlign
+					ElementItem.style.verticalAlign = 'bottom'
 					ElementItem.innerHTML = message;
 					ElementItem.style.color = "black"
 					ElementItem.setAttribute(attribute, '')
@@ -1741,7 +2056,7 @@
 
 				  const number = document.createElement('div');
 				  number.className = 'number';
-				  number.textContent = (i / 5) + 1;
+				  number.textContent = (i / 5) + 2;
 				  element.appendChild(number);
 
 				  const symbol = document.createElement('div');
@@ -1793,8 +2108,13 @@
           object.lookAt(0, 0, 0);
 
           targets.sphere.push(object);
+			 
 
         }
+
+			//   camera.add(targets.sphere)
+
+
 
 		
 
@@ -1984,6 +2304,7 @@
 			 });
 
 			 transform(targets.table, 2000);
+			//  transform(camera, 2000)
 
 
 
@@ -2023,10 +2344,10 @@
 				sphereNotifierMatrix.position.set(0, 100, -2700)
 
 				const geo_timeSphere_L2 = new THREE.SphereGeometry(3000, 32, 32)
-				const mat_timeSphere_L2 = new THREE.MeshBasicMaterial({ map: testImg05, side: THREE.DoubleSide });
+				const mat_timeSphere_L2 = new THREE.MeshBasicMaterial({ map: Grid19Black, side: THREE.DoubleSide });
 				mesh_timeSphere_L2 = new THREE.Mesh(geo_timeSphere_L2, mat_timeSphere_L2)
 				mat_timeSphere_L2.transparent = true;
-				mat_timeSphere_L2.alphaMap = testImg05
+				mat_timeSphere_L2.alphaMap = Grid19Black
 				mat_timeSphere_L2.wireframe = false;
 				mesh_timeSphere_L2.position.set(0, 0, 0)
 				sphereNotifierMatrix.add(mesh_timeSphere_L2);
@@ -2037,29 +2358,29 @@
 			
 
 				// Width, Height, Depth
-				const geo_gridbox2_Tester = new THREE.BoxGeometry(5000, 1000, 5000, 64, 64, 64)
-				const mat_gridbox2_Tester = new THREE.MeshBasicMaterial({ map: testImg02, side: THREE.DoubleSide });
-				mesh_gridbox2_Tester = new THREE.Mesh(geo_gridbox2_Tester, mat_gridbox2_Tester);
-				mat_gridbox2_Tester.transparent = false;
-				mat_gridbox2_Tester.alphaMap = testImg04;
-				mesh_gridbox2_Tester.position.set(30000, 30000, 0);
-				scene.add(mesh_gridbox2_Tester);
-				objects.push(mesh_gridbox2_Tester)
+				// const geo_gridbox2_Tester = new THREE.BoxGeometry(5000, 1000, 5000, 64, 64, 64)
+				// const mat_gridbox2_Tester = new THREE.MeshBasicMaterial({ map: testImg02, side: THREE.DoubleSide });
+				// mesh_gridbox2_Tester = new THREE.Mesh(geo_gridbox2_Tester, mat_gridbox2_Tester);
+				// mat_gridbox2_Tester.transparent = false;
+				// mat_gridbox2_Tester.alphaMap = testImg04;
+				// mesh_gridbox2_Tester.position.set(30000, 30000, 0);
+				// scene.add(mesh_gridbox2_Tester);
+				// objects.push(mesh_gridbox2_Tester)
 
 				// Test for Grid Cube Size
 				// Center Tile Height?= x= -3405.99 y=2561.556 z=-3121.821
-				const geo_gridbox3_Tester = new THREE.BoxGeometry(500, 500, 500, 64, 64, 64)
-				const mat_gridbox3_Tester = new THREE.MeshBasicMaterial({ map: testImg02, side: THREE.DoubleSide });
-				mesh_gridbox3_Tester = new THREE.Mesh(geo_gridbox3_Tester, mat_gridbox3_Tester);
-				mat_gridbox3_Tester.transparent = false;
-				mat_gridbox3_Tester.alphaMap = testImg04;
-				mesh_gridbox3_Tester.position.set(-21628, 85323, -40228);
-				// mesh_gridbox3_Tester.position.set(-15000, 0, 0);
-				mesh_gridbox3_Tester.scale.set(26, 26, 26);
-				mesh_gridbox3_Tester.rotation.set(0, 0, 0)
-				// mesh_gridbox3_Tester.rotateX( - Math.PI / 2 );
-				scene.add(mesh_gridbox3_Tester);
-				objects.push(mesh_gridbox3_Tester)
+				// const geo_gridbox3_Tester = new THREE.BoxGeometry(500, 500, 500, 64, 64, 64)
+				// const mat_gridbox3_Tester = new THREE.MeshBasicMaterial({ map: testImg02, side: THREE.DoubleSide });
+				// mesh_gridbox3_Tester = new THREE.Mesh(geo_gridbox3_Tester, mat_gridbox3_Tester);
+				// mat_gridbox3_Tester.transparent = false;
+				// mat_gridbox3_Tester.alphaMap = testImg04;
+				// mesh_gridbox3_Tester.position.set(-21628, 85323, -40228);
+				// // mesh_gridbox3_Tester.position.set(-15000, 0, 0);
+				// mesh_gridbox3_Tester.scale.set(26, 26, 26);
+				// mesh_gridbox3_Tester.rotation.set(0, 0, 0)
+				// // mesh_gridbox3_Tester.rotateX( - Math.PI / 2 );
+				// scene.add(mesh_gridbox3_Tester);
+				// objects.push(mesh_gridbox3_Tester)
 
 				
 				
@@ -2341,7 +2662,7 @@
 
 				const groupTest02 = new THREE.Group()
 				groupTest02.position.set(0, -1000, 0)
-				groupTest02.add( new iFrameElement('https://docs.google.com/spreadsheets/d/1Xn_73_f2vB3GBVRsLjAafLlT2akClfjwLrBuyuPciVE/edit?usp=sharing', 0, 0, -500, 0))
+				groupTest02.add( new iFrameElement('https://docs.google.com/spreadsheets/d/1ZHhwssY6Tv6hDofSjeD5RqQsi9VFFjyr81Y_7WraXrM/edit?usp=sharing', 0, 0, -500, 0))
 				TSC_LeftColumnA00.add(groupTest02)
 				
 
@@ -2412,8 +2733,106 @@
 
 
 				camera.add(PortfolioWebsitesController)
+
+
+
+				// Portfolio - Crypto Web Apps
+				const PortfolioCryptoWebAppsController = new THREE.Group()
+				PortfolioCryptoWebAppsController.position.set(5000, 0, -1000)
+				PortfolioCryptoWebAppsController.rotation.set(0, -0.2, 0)
+
+				const VoxlMartProject = new THREE.Group()
+				VoxlMartProject.position.set(0, 0, 0)
+				VoxlMartProject.rotation.set(0, 0, 0)
+				VoxlMartProject.add( new iFrameElement('https://vonerikbarren.github.io/D3-Dashboard-Voxlmart/', 0, 0, 0, 0))
+				PortfolioCryptoWebAppsController.add(VoxlMartProject)
+
+
+				const CryptoAnalysisA = new THREE.Group()
+				CryptoAnalysisA.position.set(0, -1200, 0)
+				CryptoAnalysisA.rotation.set(0, 0, 0)
+				CryptoAnalysisA.add( new iFrameElement('https://vonerikbarren.github.io/D3-Crypto-Analysis-A/', 0, 0, 0, 0))
+				PortfolioCryptoWebAppsController.add(CryptoAnalysisA)
+
+
+				const CryptoAnalysisB = new THREE.Group()
+				CryptoAnalysisB.position.set(0, -2400, 0)
+				CryptoAnalysisB.rotation.set(0, 0, 0)
+				CryptoAnalysisB.add( new iFrameElement('https://vonerikbarren.github.io/D3-Crypto-Analysis-B/', 0, 0, 0, 0))
+				PortfolioCryptoWebAppsController.add(CryptoAnalysisB)
+
+				const CryptoAnalysisC = new THREE.Group()
+				CryptoAnalysisC.position.set(0, -3600, 0)
+				CryptoAnalysisC.rotation.set(0, 0, 0)
+				CryptoAnalysisC.add( new iFrameElement('https://vonerikbarren.github.io/D3-Crypto-Analysis-C/', 0, 0, 0, 0))
+				PortfolioCryptoWebAppsController.add(CryptoAnalysisC)
+
+				const CryptoAnalysisD = new THREE.Group()
+				CryptoAnalysisD.position.set(0, -4800, 0)
+				CryptoAnalysisD.rotation.set(0, 0, 0)
+				CryptoAnalysisD.add( new iFrameElement('https://vonerikbarren.github.io/D3-Crypto-Analysis-D/', 0, 0, 0, 0))
+				PortfolioCryptoWebAppsController.add(CryptoAnalysisD)
+				
+				camera.add(PortfolioCryptoWebAppsController)
+
+
+
+				const tableTest001 = new THREE.Group()
+				tableTest001.position.set(0, 0, -1000)
+
+				tableTest001.add( new makeTable_5x5(
+					0, 0, 0, 0,
+					'Title',
+					"Header01", "Header02", "Header03", "Header04", "Header05",
+					'Data01', 'Data02', 'Data03', 'Data04', 'Data05',
+					'Data01', 'Data02', 'Data03', 'Data04', 'Data05',
+					'Data01', 'Data02', 'Data03', 'Data04', 'Data05',
+					'Data01', 'Data02', 'Data03', 'Data04', 'Data05',
+					'Data01', 'Data02', 'Data03', 'Data04', 'Data05',
+				))
+
+				tableTest001.add( new writeBasicText (
+					'div',
+					'test05',
+					'contenteditable', 350, 150,
+					-200, 0, 100,
+					14, 'center',
+					'Testing123',
+					'white',
+					'black',
+
+				))
+
 				
 
+
+				tableTest001.add( new makeTable_5x5(
+					0, 0, -500, 0,
+					'Title',
+					"Header01", "Header02", "Header03", "Header04", "Header05",
+					'Data01', 'Data02', 'Data03', 'Data04', 'Data05',
+					'Data01', 'Data02', 'Data03', 'Data04', 'Data05',
+					'Data01', 'Data02', 'Data03', 'Data04', 'Data05',
+					'Data01', 'Data02', 'Data03', 'Data04', 'Data05',
+					'Data01', 'Data02', 'Data03', 'Data04', 'Data05',
+				))
+
+
+
+				tableTest001.add( new makeTable_5x5(
+					0, 0, -1000, 0,
+					'Title',
+					"Header01", "Header02", "Header03", "Header04", "Header05",
+					'Data01', 'Data02', 'Data03', 'Data04', 'Data05',
+					'Data01', 'Data02', 'Data03', 'Data04', 'Data05',
+					'Data01', 'Data02', 'Data03', 'Data04', 'Data05',
+					'Data01', 'Data02', 'Data03', 'Data04', 'Data05',
+					'Data01', 'Data02', 'Data03', 'Data04', 'Data05',
+				))
+
+
+				scene.add(tableTest001)
+				
 
 				// backgroundTest = makeElementObject('div', 400, 400)
     			// backgroundTest.css3dObject.element.textContent = "I am an HTML <div> element mixed into the WebGL scene. This text is editable!"
@@ -2752,13 +3171,13 @@
 				console.log(leftHandParticles)
 
 
-				/// Left Tech Field L0
+				/// Left Tech Field Main Circle
 
 				const geo_leftTechField_A1_L0 = new THREE.CircleGeometry(50, 50)
-				const mat_leftTechField_A1_L0 = new THREE.MeshBasicMaterial({ map: TechField_L0, side: THREE.DoubleSide });
+				const mat_leftTechField_A1_L0 = new THREE.MeshBasicMaterial({ map: TechField_L5, side: THREE.DoubleSide });
 				mesh_leftTechField_A1_L0 = new THREE.Mesh(geo_leftTechField_A1_L0, mat_leftTechField_A1_L0);
 				mat_leftTechField_A1_L0.transparent = true;
-				mat_leftTechField_A1_L0.alphaMap = TechField_L0;
+				mat_leftTechField_A1_L0.alphaMap = TechField_L5;
 				mesh_leftTechField_A1_L0.position.set(0, 0, -20);
 				// mesh_leftTechField_A1_L0.position.set(-15000, 0, 0);
 				mesh_leftTechField_A1_L0.scale.set(1, 1, 1);
@@ -2767,6 +3186,23 @@
 
 				
 				leftUI_Hand.add(mesh_leftTechField_A1_L0)
+
+
+				/// Left Tech Outer Circle
+
+				const geo_leftTechField_A1_L2 = new THREE.CircleGeometry(50, 50)
+				const mat_leftTechField_A1_L2 = new THREE.MeshBasicMaterial({ map: TechField_L6, side: THREE.DoubleSide });
+				mesh_leftTechField_A1_L2 = new THREE.Mesh(geo_leftTechField_A1_L2, mat_leftTechField_A1_L2);
+				mat_leftTechField_A1_L2.transparent = true;
+				mat_leftTechField_A1_L2.alphaMap = TechField_L6;
+				mesh_leftTechField_A1_L2.position.set(0, 0, -20);
+				// mesh_leftTechField_A1_L2.position.set(-15000, 0, 0);
+				mesh_leftTechField_A1_L2.scale.set(1.1, 1.1, 1.1);
+				mesh_leftTechField_A1_L2.rotation.set(0, 0, 0)
+				// mesh_leftTechField_A1_L2.rotateX( - Math.PI / 2 );
+
+				
+				leftUI_Hand.add(mesh_leftTechField_A1_L2)
 
 
 				// Left Tech Field Inner Circle
@@ -2806,10 +3242,10 @@
 				/// Right Tech Field L1
 
 				const geo_rightTechField_A1_L1 = new THREE.CircleGeometry(50, 50)
-				const mat_rightTechField_A1_L1 = new THREE.MeshBasicMaterial({ map: TechField_L1, side: THREE.DoubleSide });
+				const mat_rightTechField_A1_L1 = new THREE.MeshBasicMaterial({ map: TechField_L5, side: THREE.DoubleSide });
 				mesh_rightTechField_A1_L1 = new THREE.Mesh(geo_rightTechField_A1_L1, mat_rightTechField_A1_L1);
 				mat_rightTechField_A1_L1.transparent = true;
-				mat_rightTechField_A1_L1.alphaMap = TechField_L1;
+				mat_rightTechField_A1_L1.alphaMap = TechField_L5;
 				mesh_rightTechField_A1_L1.position.set(325, 0, -20);
 				// mesh_rightTechField_A1_L1.position.set(-15000, 0, 0);
 				mesh_rightTechField_A1_L1.scale.set(1, 1, 1);
@@ -2821,13 +3257,31 @@
 
 
 
+				/// Right Tech Field Outer Circle
+
+				const geo_rightTechField_A1_L2 = new THREE.CircleGeometry(50, 50)
+				const mat_rightTechField_A1_L2 = new THREE.MeshBasicMaterial({ map: TechField_L6, side: THREE.DoubleSide });
+				mesh_rightTechField_A1_L2 = new THREE.Mesh(geo_rightTechField_A1_L2, mat_rightTechField_A1_L2);
+				mat_rightTechField_A1_L2.transparent = true;
+				mat_rightTechField_A1_L2.alphaMap = TechField_L6;
+				mesh_rightTechField_A1_L2.position.set(0, 0, -20);
+				// mesh_rightTechField_A1_L2.position.set(-15000, 0, 0);
+				mesh_rightTechField_A1_L2.scale.set(1.1, 1.1, 1.1);
+				mesh_rightTechField_A1_L2.rotation.set(0, 0, 0)
+				// mesh_rightTechField_A1_L2.rotateX( - Math.PI / 2 );
+
+				
+				rightUI_Hand.add(mesh_rightTechField_A1_L2)
+
+
+
 				/// Right Tech Field L0
 
 				const geo_rightTechField_A1_L0 = new THREE.CircleGeometry(50, 50)
-				const mat_rightTechField_A1_L0 = new THREE.MeshBasicMaterial({ map: TechField_L0, side: THREE.DoubleSide });
+				const mat_rightTechField_A1_L0 = new THREE.MeshBasicMaterial({ map: TechField_L5, side: THREE.DoubleSide });
 				mesh_rightTechField_A1_L0 = new THREE.Mesh(geo_rightTechField_A1_L0, mat_rightTechField_A1_L0);
 				mat_rightTechField_A1_L0.transparent = true;
-				mat_rightTechField_A1_L0.alphaMap = TechField_L0;
+				mat_rightTechField_A1_L0.alphaMap = TechField_L5;
 				mesh_rightTechField_A1_L0.position.set(0, 0, -20);
 				// mesh_rightTechField_A1_L0.position.set(-15000, 0, 0);
 				mesh_rightTechField_A1_L0.scale.set(1, 1, 1);
@@ -3396,10 +3850,10 @@
 
 				// LeftHandSphereB02
 				const geo_leftHandSphereB02 = new THREE.SphereGeometry(handSphereMatrixParams.radius, handSphereMatrixParams.widthSegments, handSphereMatrixParams.heightSegments)
-				const mat_leftHandSphereB02 = new THREE.MeshBasicMaterial({ map: testImg05, side: THREE.DoubleSide });
+				const mat_leftHandSphereB02 = new THREE.MeshBasicMaterial({ map: Grid19Black, side: THREE.DoubleSide });
 				mesh_leftHandSphereB02 = new THREE.Mesh(geo_leftHandSphereB02, mat_leftHandSphereB02)
 				mat_leftHandSphereB02.transparent = true;
-				mat_leftHandSphereB02.alphaMap = testImg05
+				mat_leftHandSphereB02.alphaMap = Grid19Black
 				mat_leftHandSphereB02.wireframe = false;
 				mesh_leftHandSphereB02.position.set(-100, 0, 0)
 
@@ -3751,13 +4205,17 @@
 				// Final Push to Scene
 				scene.add(containerMatrixMaster00)
 
+
+
+
+
 				// ###############################################
 				// Search.LeftHand.ContainerMatrixMain
 
 
 
 
-				// Left Hand Sphere 01 - unknown 
+				// // Left Hand Sphere 01 - unknown 
 				// leftHandSphere01 = new THREE.Group()
 				// leftHandSphere01.position.set(5, -60, -5)
 
@@ -3998,7 +4456,7 @@
 				// ###########################################################################################
 
 				panelColumn01 = new THREE.Group()
-				panelColumn01.position.set(-10000, 65000, 12270)
+				panelColumn01.position.set(-10000, 300000, 12270)
 
 				// |- Panel A1 - MissionStatement
 				MissionStatement_Root = new THREE.Group()
@@ -4188,7 +4646,7 @@
 				// Column02 Start
 				// ----------------
 				panelColumn02 = new THREE.Group()
-				panelColumn02.position.set(-10000, 65000, 1300)
+				panelColumn02.position.set(-10000, 300000, 1300)
 
 				// |- Panel A1 - MissionStatement
 				panels_3d_project00_unknown_root = new THREE.Group()
@@ -4444,7 +4902,7 @@
 
 				// ----- Column 03 - Start
 				panelColumn03 = new THREE.Group()
-				panelColumn03.position.set(-10000, 65000, -20700)
+				panelColumn03.position.set(-10000, 300000, -20700)
 
 				// |- Panel A1 - MissionStatement
 				panel_financial_projects_root = new THREE.Group()
@@ -4608,7 +5066,7 @@
 
 				// ----- Column 04 - Start
 				panelColumn04 = new THREE.Group()
-				panelColumn04.position.set(-10000, 65000, -31700)
+				panelColumn04.position.set(-10000, 300000, -31700)
 
 				// |- Panel A1 - MissionStatement
 				panel_LesMeilluresVino_root = new THREE.Group()
@@ -4770,7 +5228,7 @@
 				// ###########################################################################################
 
 				panelColumn06 = new THREE.Group()
-				panelColumn06.position.set(10000, 35500, 12270)
+				panelColumn06.position.set(10000, 300000, 12270)
 
 				// |- Panel A1 - MissionStatement
 				panel_GoalsAspirations01_root = new THREE.Group()
@@ -6447,6 +6905,29 @@
 				folderCommunicationCube.add(containerMatrixMaster00.position, 'z').min(-75000).max(75000).step(100).name('Cc-Back-z');
 
 				console.log(containerMatrixMaster00.position)
+
+
+				const folderSphereController = gui.addFolder('Domain Controller')
+				
+				folderSphereController.add(handSphereMatrixParams, 'radius', 10, 109975).onChange(regenerateLeftSphereMatrixGeometriesB02).name('Expand Main Grid Sphere')
+
+				folderSphereController.add(mesh_leftHandSphereB02.position, 'x').min(-75000).max(75000).step(100).name('Main Grid [ Forward Movement ]');
+
+				folderSphereController.add(mesh_leftHandSphereB02.position, 'y').min(-10000).max(100000).step(1000).name('Main Grid [ Vertical Movement ]');
+
+				folderSphereController.add(mesh_leftHandSphereB02.position, 'z').min(-75000).max(75000).step(100).name('Main Grid [ Forward Movement ]');
+
+				folderSphereController.add(handSphereMatrixParams, 'radius', 10, 109975).onChange(regenerateLeftSphereMatrixGeometries).name('Expand Secondary Grid')
+
+				folderSphereController.add(handSphereMatrixParams, 'radius', 10, 109975).onChange(regenerateLeftSphereMatrixGeometriesA01).name('Expand Time Sphere')
+
+				folderSphereController.add(handSphereMatrixParams, 'radius', 10, 109975).onChange(regenerateLeftSphereMatrixGeometriesA02).name('Expand Green Tech')
+
+				folderSphereController.add(handSphereMatrixParams, 'radius', 10, 109975).onChange(regenerateLeftSphereMatrixGeometriesB03).name('Expand Left GoldBlack Sphere')
+
+				folderSphereController.add(handSphereMatrixParams, 'radius', 10, 109975).onChange(regenerateLeftSphereMatrixGeometriesC01).name('Expand Infinity Sphere #1')
+
+				folderSphereController.add(handSphereMatrixParams, 'radius', 10, 109975).onChange(regenerateLeftSphereMatrixGeometriesC02).name('Expand Infinity Sphere #2')
 				
 			
 
@@ -6460,19 +6941,8 @@
 				folderLeftHandMenu.add(leftHandSphereMatrix.position, 'z').min(-400).max(400).step(25).name('SphereMatrix Forward Movement');
 				// folderLeftHandMenu.add(handSphereMatrixParams, 'radius', 10, 175).onChange(regenerateLeftSphereMatrixGeometries).name('Expand Left Sphere')
 
-				folderLeftHandMenu.add(handSphereMatrixParams, 'radius', 10, 109975).onChange(regenerateLeftSphereMatrixGeometries).name('Expand Left Sphere')
 
-				folderLeftHandMenu.add(handSphereMatrixParams, 'radius', 10, 109975).onChange(regenerateLeftSphereMatrixGeometriesA01).name('Expand Time Sphere')
-
-				folderLeftHandMenu.add(handSphereMatrixParams, 'radius', 10, 109975).onChange(regenerateLeftSphereMatrixGeometriesA02).name('Expand Green Tech')
-
-				folderLeftHandMenu.add(handSphereMatrixParams, 'radius', 10, 109975).onChange(regenerateLeftSphereMatrixGeometriesB02).name('Expand Left Purple Grid Sphere')
-
-				folderLeftHandMenu.add(handSphereMatrixParams, 'radius', 10, 109975).onChange(regenerateLeftSphereMatrixGeometriesB03).name('Expand Left GoldBlack Sphere')
-
-				folderLeftHandMenu.add(handSphereMatrixParams, 'radius', 10, 109975).onChange(regenerateLeftSphereMatrixGeometriesC01).name('Expand Infinity Sphere #1')
-
-				folderLeftHandMenu.add(handSphereMatrixParams, 'radius', 10, 109975).onChange(regenerateLeftSphereMatrixGeometriesC02).name('Expand Infinity Sphere #2')
+				
 
 				
 
@@ -6485,16 +6955,19 @@
 				folderPortfolioControls.add(PortfolioWebsitesController.position, 'x').min(-10000).max(10000).step(10).name('Portfolio: Websites Made [ Horizontal Scroll ]');
 				folderPortfolioControls.add(PortfolioWebsitesController.position, 'y').min(-10000).max(10000).step(10).name('Portfolio: Websites Made [ Vertical Scroll ]');
 				folderPortfolioControls.add(PortfolioWebsitesController.position, 'z').min(-10000).max(10000).step(10).name('Portfolio: Websites Made [ Longitudinal Scroll ]');
+				folderPortfolioControls.add(PortfolioCryptoWebAppsController.position, 'x').min(-10000).max(10000).step(10).name('Portfolio: Websites Made [ Horizontal Scroll ]');
+				folderPortfolioControls.add(PortfolioCryptoWebAppsController.position, 'y').min(-10000).max(10000).step(10).name('Portfolio: Websites Made [ Vertical Scroll ]');
+				folderPortfolioControls.add(PortfolioCryptoWebAppsController.position, 'z').min(-10000).max(10000).step(10).name('Portfolio: Websites Made [ Longitudinal Scroll ]');
 				
-				const folderMainColumnControl = gui.addFolder('Left Side Controls')
-				folderMainColumnControl.add(panelColumn01.position, 'y').min(-18000).max(150000).step(100).name('Column 1');
-				folderMainColumnControl.add(panelColumn02.position, 'y').min(-18000).max(150000).step(100).name('Column 2');
-				folderMainColumnControl.add(panelColumn03.position, 'y').min(-18000).max(150000).step(100).name('Column 2');
-				folderMainColumnControl.add(panelColumn04.position, 'y').min(-18000).max(150000).step(100).name('Column 2');
+				const folderMainColumnControl = gui.addFolder('Structural Components')
+				folderMainColumnControl.add(panelColumn01.position, 'y').min(-300000).max(300000).step(100).name('Vertical Column 1');
+				folderMainColumnControl.add(panelColumn02.position, 'y').min(-300000).max(300000).step(100).name('Vertical Column 2');
+				folderMainColumnControl.add(panelColumn03.position, 'y').min(-300000).max(300000).step(100).name('Vertical Column 3');
+				folderMainColumnControl.add(panelColumn04.position, 'y').min(-300000).max(300000).step(100).name('Vertical Column 4');
 
 
 				const folderRightSideControls = gui.addFolder('Right Side Controls')
-				folderRightSideControls.add(panelColumn06.position, 'y').min(-5000).max(50000).step(100).name('Cc-Back-y');
+				folderRightSideControls.add(panelColumn06.position, 'y').min(-300000).max(300000).step(100).name('Horizontal Column')
 
 
 				const folderMainHud2 = gui.addFolder('Component1 Testing')
