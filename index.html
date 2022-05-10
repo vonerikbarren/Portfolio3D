@@ -46,6 +46,11 @@
 			vertical-align: middle;
 		}
 
+		a:hover {
+			background-color: rgba(255, 255, 255, 0.9);
+			color: black;
+		}
+
 	@keyframes float {
 		0% {
 			box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
@@ -1007,6 +1012,7 @@
 			let mesh_rightUI_Hand
 
 			let leftHandParticles
+			let rightHandParticles
 
 			let leftHand_RectTools
 			let mesh_leftHand_RectTools
@@ -2458,13 +2464,13 @@
 				
 
 
-				const geo_Tube01 = new THREE.CylinderGeometry(5000, 5000, 500, 128, 1, true)
-				const mat_Tube01 = new THREE.MeshBasicMaterial({ map: testImg02, side: THREE.DoubleSide });
+				const geo_Tube01 = new THREE.CylinderGeometry(5000, 5000, 50000, 128, 1, true)
+				const mat_Tube01 = new THREE.MeshBasicMaterial({ map: Grid19Black, side: THREE.DoubleSide });
 				mesh_Tube01 = new THREE.Mesh(geo_Tube01, mat_Tube01);
 				mat_Tube01.transparent = false;
-				mat_Tube01.alphaMap = testImg04;
-				mesh_Tube01.position.set(-1000000, 4026, 0);
-				mesh_Tube01.rotateX( - Math.PI / 2 );
+				mat_Tube01.alphaMap = Grid19Black;
+				mesh_Tube01.position.set(0, 4026, 0);
+				// mesh_Tube01.rotateX( - Math.PI / 2 );
 				mesh_Tube01.scale.y = 90
 				scene.add(mesh_Tube01);
 				objects.push(mesh_Tube01)
@@ -2488,14 +2494,14 @@
 				// ###########################################################################################
 
 				tubes_Communication_root = new THREE.Group()
-				tubes_Communication_root.position.set(0, 20200, -10000)
+				tubes_Communication_root.position.set(0, 20200, 0)
 
 				// Left to Right Tube
-				const geo_CommunicationTubeLR = new THREE.BoxGeometry(25000, 500, 500, 64, 64, 64)
-				const mat_CommunicationTubeLR = new THREE.MeshBasicMaterial({ map: testImg05, side: THREE.DoubleSide });
+				const geo_CommunicationTubeLR = new THREE.BoxGeometry(75000, 500, 500, 64, 64, 64)
+				const mat_CommunicationTubeLR = new THREE.MeshBasicMaterial({ map: Grid19Black, side: THREE.DoubleSide });
 				mesh_CommunicationTubeLR = new THREE.Mesh(geo_CommunicationTubeLR, mat_CommunicationTubeLR);
 				mat_CommunicationTubeLR.transparent = true;
-				mat_CommunicationTubeLR.alphaMap = testImg05;
+				mat_CommunicationTubeLR.alphaMap = Grid19Black;
 				mesh_CommunicationTubeLR.position.set(0, 0, 0);
 				// mesh_CommunicationTubeLR.position.set(-15000, 0, 0);
 				mesh_CommunicationTubeLR.scale.set(5, 5, 5);
@@ -2504,11 +2510,11 @@
 				tubes_Communication_root.add(mesh_CommunicationTubeLR);
 
 			 	// Front to Back Tube
-				const geo_CommunicationTubeFB = new THREE.BoxGeometry(25000, 500, 500, 64, 64, 64)
-				const mat_CommunicationTubeFB = new THREE.MeshBasicMaterial({ map: testImg05, side: THREE.DoubleSide });
+				const geo_CommunicationTubeFB = new THREE.BoxGeometry(75000, 500, 500, 64, 64, 64)
+				const mat_CommunicationTubeFB = new THREE.MeshBasicMaterial({ map: Grid19Black, side: THREE.DoubleSide });
 				mesh_CommunicationTubeFB = new THREE.Mesh(geo_CommunicationTubeFB, mat_CommunicationTubeFB);
 				mat_CommunicationTubeFB.transparent = true;
-				mat_CommunicationTubeFB.alphaMap = testImg05;
+				mat_CommunicationTubeFB.alphaMap = Grid19Black;
 				mesh_CommunicationTubeFB.position.set(0, 0, 0);
 				// mesh_CommunicationTubeFB.position.set(-15000, 0, 0);
 				mesh_CommunicationTubeFB.scale.set(5, 5, 5);
@@ -2526,14 +2532,14 @@
 				// Particle Geometry - Defined @ beginnning of init()
 				// ******************************************************
 				const particlesGeometry = new THREE.BufferGeometry();
-				const count = 5000
+				const count = 10000
 				const positions = new Float32Array(count * 3);
 				const colors = new Float32Array(count * 3);
             
 
 				// Large Number here = The box dimensions all at the same time. 
 				for (let i = 0; i < count * 3; i++) {
-					positions[i] = (Math.random() - 0.5) * 100000
+					positions[i] = (Math.random() - 0.5) * 500000
 					colors[i] = Math.random()
 				}
 
@@ -2542,10 +2548,12 @@
 
 				// Particle Material init()
 				const particlesMaterial = new THREE.PointsMaterial()
-				particlesMaterial.size = 100
+				particlesMaterial.size = 500
 				particlesMaterial.sizeAttenuation = true;
-				// particlesMaterial.color = new THREE.Color('#8ff') // neonblue
-				particlesMaterial.color = new THREE.Color('#FFD700') // Gold
+				// particlesMaterial.color = new THREE.Color('#1ADBCB') // neonBlueGreen
+				particlesMaterial.color = new THREE.Color('#00ffb3') // neonBlueGreen
+				// particlesMaterial.color = new THREE.Color('#FFD700') // Gold
+				// particlesMaterial.color = new THREE.Color('#323232') // Black
 				particlesMaterial.transparent = true
 				particlesMaterial.alphaMap = particleTexture01
 				particlesMaterial.depthWrite = false
@@ -2556,6 +2564,13 @@
 				// particles.position.set(0, 24092, 0)
 				particles.position.set(0, 10000, 0)
 				scene.add(particles);
+
+
+				
+
+
+
+				
 
 				// ******************************************************
 				// Particle Geometry - End
@@ -2649,7 +2664,7 @@
 				videoSphere02 = new THREE.Mesh(geo_videoSphere02, video02_Mat);
 				videoSphere02.transparent = true;
 				videoSphere02.alphaMap = video02Tex
-				videoSphere02.position.set(0, 1000, -5000);
+				videoSphere02.position.set(0, 1000, 0);
 				videoSphere02.scale.set(19000000, 19000000, 19000000)
 				scene.add(videoSphere02);
 				
@@ -3797,26 +3812,31 @@
 				// ###############################################
 
 
-				// Left Hand Particles
-				const leftHandParticlesGeometry = new THREE.BufferGeometry()
-				const leftHandParticlesCount = 5000
-				const leftHandParticlesPositions = new Float32Array(leftHandParticlesCount * 3)
-				const leftHandParticlesColors = new Float32Array(leftHandParticlesCount * 3)
 
-				for (let i = 0; i < leftHandParticlesCount * 3; i++) {
-					leftHandParticlesPositions[i] = (Math.random() - 0.5) * 100000
-					leftHandParticlesColors[i] = Math.random()
+				// LeftHand Particle Geometry
+				const leftHandParticlesGeometry = new THREE.BufferGeometry();
+				const leftHandParticleCount = 1000
+				const leftHandParticlePositions = new Float32Array(leftHandParticleCount * 3);
+				const leftHandParticleColors = new Float32Array(leftHandParticleCount * 3);
+            
+
+				// Large Number here = The box dimensions all at the same time. 
+				for (let i = 0; i < leftHandParticleCount * 3; i++) {
+					leftHandParticlePositions[i] = (Math.random() - 0.5) * .7
+					leftHandParticleColors[i] = Math.random()
 				}
 
-				leftHandParticlesGeometry.setAttribute('leftHandParticlesPositions', new THREE.BufferAttribute(leftHandParticlesPositions, 3))
-				leftHandParticlesGeometry.setAttribute('leftHandParticlesColors', new THREE.BufferAttribute(leftHandParticlesColors, 3))
+				leftHandParticlesGeometry.setAttribute('position', new THREE.BufferAttribute(leftHandParticlePositions, 3))
+				leftHandParticlesGeometry.setAttribute('color', new THREE.BufferAttribute(leftHandParticleColors,3))
 
-				// LeftHand Particles Material init
+				// Particle Material init()
 				const leftHandParticlesMaterial = new THREE.PointsMaterial()
-				leftHandParticlesMaterial.size = 500
+				leftHandParticlesMaterial.size = 0.3
 				leftHandParticlesMaterial.sizeAttenuation = true;
-				// leftHandParticlesMaterial.color = new THREE.Color('#8ff') // neonblue
-				leftHandParticlesMaterial.color = new THREE.Color('#FF0000') // Red
+				// leftHandParticlesMaterial.color = new THREE.Color('#1ADBCB') // neonBlueGreen
+				// leftHandParticlesMaterial.color = new THREE.Color('#00ffb3') // neonBlueGreen
+				leftHandParticlesMaterial.color = new THREE.Color('#FFD700') // Gold
+				// leftHandParticlesMaterial.color = new THREE.Color('#323232') // Black
 				leftHandParticlesMaterial.transparent = true
 				leftHandParticlesMaterial.alphaMap = particleTexture01
 				leftHandParticlesMaterial.depthWrite = false
@@ -3825,9 +3845,53 @@
 
 				leftHandParticles = new THREE.Points(leftHandParticlesGeometry, leftHandParticlesMaterial)
 				// particles.position.set(0, 24092, 0)
-				leftHandParticles.position.set(0, 10000, 0)
-				scene.add(leftHandParticles);
-				console.log(leftHandParticles)
+				leftHandParticles.position.set(0, -5, 0)
+				leftHandParticles.scale.set(50, 50, 100)
+
+				leftUI_Hand.add(leftHandParticles);
+
+
+
+				// rightHand Particle Geometry
+				const rightHandParticlesGeometry = new THREE.BufferGeometry();
+				const rightHandParticleCount = 1000
+				const rightHandParticlePositions = new Float32Array(rightHandParticleCount * 3);
+				const rightHandParticleColors = new Float32Array(rightHandParticleCount * 3);
+            
+
+				// Large Number here = The box dimensions all at the same time. 
+				for (let i = 0; i < rightHandParticleCount * 3; i++) {
+					rightHandParticlePositions[i] = (Math.random() - 0.5) * .7
+					rightHandParticleColors[i] = Math.random()
+				}
+
+				rightHandParticlesGeometry.setAttribute('position', new THREE.BufferAttribute(rightHandParticlePositions, 3))
+				rightHandParticlesGeometry.setAttribute('color', new THREE.BufferAttribute(rightHandParticleColors,3))
+
+				// Particle Material init()
+				const rightHandParticlesMaterial = new THREE.PointsMaterial()
+				rightHandParticlesMaterial.size = 0.3
+				rightHandParticlesMaterial.sizeAttenuation = true;
+				// rightHandParticlesMaterial.color = new THREE.Color('#1ADBCB') // neonBlueGreen
+				// rightHandParticlesMaterial.color = new THREE.Color('#00ffb3') // neonBlueGreen
+				rightHandParticlesMaterial.color = new THREE.Color('#FFD700') // Gold
+				// rightHandParticlesMaterial.color = new THREE.Color('#323232') // Black
+				rightHandParticlesMaterial.transparent = true
+				rightHandParticlesMaterial.alphaMap = particleTexture01
+				rightHandParticlesMaterial.depthWrite = false
+				rightHandParticlesMaterial.blending = THREE.AdditiveBlending
+				rightHandParticlesMaterial.vertextColors = true
+
+				rightHandParticles = new THREE.Points(rightHandParticlesGeometry, rightHandParticlesMaterial)
+				// particles.position.set(0, 24092, 0)
+				rightHandParticles.position.set(0, -5, 0)
+				rightHandParticles.scale.set(50, 50, 100)
+				
+				rightUI_Hand.add(rightHandParticles);
+
+
+				
+				
 
 
 				/// Left Tech Field Main Circle
@@ -7528,6 +7592,13 @@
 				const folderMainHud = gui.addFolder('Main Hub Position Testing')
 				folderMainHud.add(videoScreen.position, 'y').min(-20000).max(20000).step(20000).name('|- Opening Video');
 				folderMainHud.add(mainContainerEntranceVideoContainerA1_L0.position, 'x').min(-20000).max(20000).step(20000).name('|- Surface Layer');
+
+				// Search.GUI.TestSettings.Main
+				const folderMainSettings = gui.addFolder('User Settings')
+
+				folderMainSettings.add(camera.position, 'x').min(-60000).max(60000).step(10000).name('Side Movement')
+				folderMainSettings.add(camera.position, 'y').min(0).max(120000).step(100).name('Elevator')
+				folderMainSettings.add(camera.position, 'z').min(-60000).max(60000).step(10000).name('Forward / BackWards')
 				
 				folderMainHud.add(mainHubBase.position, 'x').min(-3150).max(0).step(100).name('|- main Hud Base');
 				folderMainHud.add(mainHudA.position, 'x').min(-3150).max(0).step(100).name('|- mainHud A');
@@ -7557,12 +7628,7 @@
 				
 
 
-				// Search.GUI.TestSettings.Main
-				const folderMainSettings = gui.addFolder('User Settings')
-
-				folderMainSettings.add(camera.position, 'x').min(-60000).max(60000).step(10000).name('Side Movement')
-				folderMainSettings.add(camera.position, 'y').min(0).max(120000).step(100).name('Elevator')
-				folderMainSettings.add(camera.position, 'z').min(-60000).max(60000).step(10000).name('Forward / BackWards')
+				
 
 
 				const folderCommunicationCube = gui.addFolder('Communication Cube Settings')
@@ -7642,17 +7708,17 @@
 
 				const folderMainHud2 = gui.addFolder('Component1 Testing')
 
-				folderMainHud2.add(mesh_toolkit_background02.position, 'x').min(-6000).max(6000).step(100).name('Cc-Back-x');
-				folderMainHud2.add(mesh_toolkit_background02.position, 'y').min(-1000).max(1000).step(100).name('Cc-Back-y');
-				folderMainHud2.add(mesh_toolkit_background02.position, 'z').min(-50000).max(35000).step(100).name('Cc-Back-z');
+				folderMainHud2.add(leftHandParticles.position, 'x').min(-6000).max(6000).step(100).name('Cc-Back-x');
+				folderMainHud2.add(leftHandParticles.position, 'y').min(-1000).max(1000).step(100).name('Cc-Back-y');
+				folderMainHud2.add(leftHandParticles.position, 'z').min(-50000).max(35000).step(100).name('Cc-Back-z');
 
-				folderMainHud2.add(mesh_toolkit_background02.rotation, 'x').min(-360).max(360).step(1).name('Rotation-x');
-				folderMainHud2.add(mesh_toolkit_background02.rotation, 'y').min(-360).max(360).step(1).name('Rotation-y');
-				folderMainHud2.add(mesh_toolkit_background02.rotation, 'z').min(-360).max(360).step(1).name('Rotation-z');
+				folderMainHud2.add(leftHandParticles.rotation, 'x').min(-360).max(360).step(1).name('Rotation-x');
+				folderMainHud2.add(leftHandParticles.rotation, 'y').min(-360).max(360).step(1).name('Rotation-y');
+				folderMainHud2.add(leftHandParticles.rotation, 'z').min(-360).max(360).step(1).name('Rotation-z');
 
-				folderMainHud2.add(mesh_toolkit_background02.scale, 'x').min(-100).max(100).step(1).name('Scale-x');
-				folderMainHud2.add(mesh_toolkit_background02.scale, 'y').min(-100).max(100).step(1).name('Scale-y');
-				folderMainHud2.add(mesh_toolkit_background02.scale, 'z').min(-100).max(100).step(1).name('Scale-z');
+				folderMainHud2.add(leftHandParticles.scale, 'x').min(-100).max(100).step(1).name('Scale-x');
+				folderMainHud2.add(leftHandParticles.scale, 'y').min(-100).max(100).step(1).name('Scale-y');
+				folderMainHud2.add(leftHandParticles.scale, 'z').min(-100).max(100).step(1).name('Scale-z');
 
 				// folderMainHud2.add(
 				// 	mainContainerVideoContainer_Params.radiusTop, '')
@@ -7869,7 +7935,7 @@
 				// camera.position.z += time * -0.01
 
 				mesh_timeSphere_L2.rotation.y = time * 0.0005;
-				mesh_Tube01.rotation.y = time * 0.0001
+				mesh_Tube01.rotation.y = time * 0.0005
 				mesh_Torus01.rotation.z = time * 0.0001
 
 				// Command Center Animations
@@ -7952,6 +8018,17 @@
 				mesh_RealityOfUknowns_A1_L1.rotation.y = time * 0.0005
 				// RealityParticles
 				realityParticles.rotation.y = time * -0.0001
+
+				// Left Hand Particle Animations
+				leftHandParticles.rotation.z = time * -0.001
+				// leftHandParticles.rotation.x = time * -0.002
+				// leftHandParticles.rotation.y = time * -0.001
+
+
+				// Right Hand Particle Animations
+				rightHandParticles.rotation.z = time * 0.001
+				// rightHandParticles.rotation.x = time * 0.002
+				// rightHandParticles.rotation.y = time * -0.001
 
 
 				// ------------------
