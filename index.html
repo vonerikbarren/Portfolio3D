@@ -999,6 +999,7 @@
 			let mesh_leftTechField_A1_L0
 			let mesh_leftTechField_A1_L1
 			let mesh_leftTechField_A1_L2
+			let mesh_leftTechField_A1_L3
 			let mesh_rightTechField_A1_L0
 			let mesh_rightTechField_A1_L1
 			let mesh_rightTechField_A1_L2
@@ -1496,6 +1497,14 @@
 				const LightField_L0 = textureLoader.load('./assets/img/circles/LightField01.png')
 
 				const miniUIA01 = textureLoader.load('./assets/img/circles/TechField12.png')
+
+				const CircleMeasure01 = textureLoader.load('./assets/img/circle_tech/measurers/CircleMeasurer06.png')
+
+				const CircleMeasure02 = textureLoader.load('./assets/img/circle_tech/measurers/CircleMeasure02.gif')
+
+				const CircleMeasure03 = textureLoader.load('./assets/img/circle_tech/measurers/CompassMeasure01.png')
+
+				
 
 				// UI Surface Layer
 				const CalendarA = textureLoader.load('./assets/img/ui_Components/detailComponents/Calendar_March.png')
@@ -3959,6 +3968,24 @@
 
 				
 				leftUI_Hand.add(mesh_leftTechField_A1_L1)
+
+
+				/// Left Tech Field L3
+
+				const geo_leftTechField_A1_L3 = new THREE.CircleGeometry(50, 50)
+				const mat_leftTechField_A1_L3 = new THREE.MeshBasicMaterial({ map: CircleMeasure01, side: THREE.DoubleSide });
+				mesh_leftTechField_A1_L3 = new THREE.Mesh(geo_leftTechField_A1_L3, mat_leftTechField_A1_L3);
+				mat_leftTechField_A1_L3.transparent = true;
+				mat_leftTechField_A1_L3.alphaMap = CircleMeasure01;
+				mesh_leftTechField_A1_L3.position.set(0, 0, -21);
+				// mesh_leftTechField_A1_L3.position.set(-15000, 0, 0);
+				mesh_leftTechField_A1_L3.scale.set(1, 1, 1);
+				mesh_leftTechField_A1_L3.rotation.set(0, 0, 0)
+				// mesh_leftTechField_A1_L3.rotateX( - Math.PI / 2 );
+
+				
+				leftUI_Hand.add(mesh_leftTechField_A1_L3)
+
 
 
 
@@ -8048,6 +8075,7 @@
 				// UI Animations
 				mesh_leftTechField_A1_L0.rotation.z = time * 0.0001
 				mesh_leftTechField_A1_L1.rotation.z = time * -0.001
+				mesh_leftTechField_A1_L3.rotation.z = time * -0.0001
 				mesh_rightTechField_A1_L0.rotation.z = time * -0.0001
 				mesh_timelens_A1_L1.rotation.z = time * 0.001
 				mesh_timelens_A1_L0.rotation.z = time * -0.001
