@@ -93,3 +93,98 @@ mesh_name_id.position.set(0, 2000, 0)
 scene.add(mesh_name_id)
 
 # CylynderGeometry with img
+
+
+
+
+
+[-------------------------------------------]
+# Dodecahedron - Group Declaration
+
+const DodecahedronParams = {
+  radius: 10,
+  detail: 0,
+}
+
+function regenerateDodecahedron() {
+  let radius = DodecahedronParams.radius
+  let scaleRadius = radius * 0.1
+  let new Geometry = new THREE.DodecahedronGeometry(
+
+    // new Params to be updated
+    DodecahedronParams.radius
+    DodecahedronParams.detail
+
+  )
+
+  mesh_dodecahedron.scale.x = scaleRadius
+  mesh_dodecahedron.scale.y = scaleRadius
+  mesh_dodecahedron.scale.z = scaleRadius
+
+
+}
+
+// THREE.Group Component
+
+// # Group Declaration and Initalization
+const GroupName = new THREE.Group()
+GroupName.position.set(0, 0, 0)
+GroupName.scale.set(1, 1, 1)
+
+
+// # Dodecahedron Init
+
+const geo_dodecahedron = new THREE.DodecahedronGeometry(
+  DodecahedronParams.radius, 
+  DodecahedronParams.detail,
+)
+
+const mat_dodecahedron = new THREE.MeshBasicMaterial(
+  {
+    map: image01,
+    side: THREE.DoubleSide
+  }
+)
+
+mesh_dodecahedron = new THREE.Mesh(
+  geo_dodecahedron, 
+  mat_dodecahedron,
+)
+
+mat_dodecahedron.transparent = false;
+mat_dodecahedron.alphaMap = testImg10
+mat_dodecahedron.wireframe = false;
+mesh_dodecahedron.position.set(0, 0, 100)
+
+GroupName.add(mesh_dodecahedron)
+
+
+[-------------------------------------------]
+
+
+
+// Single Mesh Component
+
+const geo_dodecahedron = new THREE.DodecahedronGeometry(
+  DodecahedronParams.radius, 
+  DodecahedronParams.detail,
+)
+
+const mat_dodecahedron = new THREE.MeshBasicMaterial(
+  {
+    map: image01,
+    side: THREE.DoubleSide
+  }
+)
+
+mesh_dodecahedron = new THREE.Mesh(
+  geo_dodecahedron, 
+  mat_dodecahedron,
+)
+
+mat_dodecahedron.transparent = false;
+mat_dodecahedron.alphaMap = testImg10
+mat_dodecahedron.wireframe = false;
+mesh_dodecahedron.position.set(0, 0, 100)
+
+scene.add(mesh_dodecahedron)
