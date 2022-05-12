@@ -222,6 +222,45 @@
 
 		}
 
+		.myVideo03 {
+			
+			display: none;
+			position: default;
+  			border: 3px solid rgba(0, 255, 208, 0.75);
+			/* bottom: -5550px; */
+			margin-right: 500px;
+			margin-top: 50px;
+			background: rgba(0, 255, 208, 0.2);
+			
+
+		}
+
+		.myVideo04 {
+			
+			display: none;
+			position: default;
+  			border: 3px solid rgba(0, 255, 208, 0.75);
+			/* bottom: -5550px; */
+			margin-right: 500px;
+			margin-top: 50px;
+			background: rgba(0, 255, 208, 0.2);
+			
+
+		}
+
+		.myVideo05 {
+			
+			display: none;
+			position: default;
+  			border: 3px solid rgba(0, 255, 208, 0.75);
+			/* bottom: -5550px; */
+			margin-right: 500px;
+			margin-top: 50px;
+			background: rgba(0, 255, 208, 0.2);
+			
+
+		}
+
 		.menu_Video {
 			position: absolute;
 			bottom: 500px;
@@ -290,10 +329,23 @@
 			<div id="VideoContainer" class="videoContainer">
 				<h2>Video Drawer</h2>
 
+				<!-- IntroductionVideo -->
+				<video id="video" class="myVideo01" playsinline muted controls webkit-playsinline  autoplay loop width="320" height="240" src="./assets/video/FastHands03.mp4" style="border: 5px 5px black;"></video>
 
-				<video id="video" class="myVideo01" playsinline muted controls webkit-playsinline  autoplay loop width="320" height="240" src="./assets/video/Test02.m4v" type="video/mp4" style="border: 5px 5px black;"></video>
-
+				<!-- VideoDomain01: whiteHexes -->
 				<video id="video02" class="myVideo02" playsinline controls webkit-playsinline  autoplay loop width="320" height="240" src="./assets/video/whiteHexBg02.mp4"border: 5px 5px black;"></video>
+
+				<!-- VideoDomain02: Unknown -->
+				<video id="video03" class="myVideo03" playsinline controls webkit-playsinline  autoplay loop width="320" height="240" src="./assets/video/ColorfulData02.mp4"border: 5px 5px black;"></video>
+
+
+				<!-- VideoDomain03: Unknown -->
+				<video id="video04" class="myVideo04" playsinline controls webkit-playsinline  autoplay loop width="320" height="240" src="./assets/video/TreesAndSunrays.mp4"border: 5px 5px black;"></video>
+
+
+				<!-- VideoDomain03: Unknown -->
+				<video id="video05" class="myVideo05" playsinline controls webkit-playsinline  autoplay loop width="320" height="240" src="./assets/video/TechTunnel01.mp4"border: 5px 5px black;"></video>
+
 			</div>
 
       	<div	div id="container"></div>
@@ -311,6 +363,9 @@
         <button id="helix">HELIX</button>
         <button id="grid">GRID</button>
         <button id="table2" onclick="byeVideo()">Video Manager</button><br/>
+
+		  <div id="timeChecker"></div>
+		  <div id="positionChecker"></div>
 				
 
       </div>
@@ -370,10 +425,16 @@
 			function byeVideo() {
 				let videoElement01 = document.getElementById("video")
 				let videoElement02 = document.getElementById("video02")
+				let videoElement03 = document.getElementById("video03")
+				let videoElement04 = document.getElementById("video04")
+				let videoElement05 = document.getElementById("video05")
 
 
 				videoElement01.classList.toggle("myVideo01")
 				videoElement02.classList.toggle("myVideo02")
+				videoElement03.classList.toggle("myVideo03")
+				videoElement04.classList.toggle("myVideo04")
+				videoElement05.classList.toggle("myVideo05")
 			}
 		</script>
 
@@ -1255,8 +1316,11 @@
 
 
 
-			// videoSphere02
+			// Search.VideoSphere
 			let videoSphere02
+			let videoSphere03
+			let videoSphere04
+			let videoSphere05
 
 			// LeftHandDrawer
 			let leftHandDrawer
@@ -1290,6 +1354,16 @@
 			let mesh_testimonialPanel05
 
 
+			// All Realities Test
+			let mesh_capsuleExampleA01
+			let mesh_CircleRealityA01
+			let mesh_ConeRealityA01
+			let mesh_CylinderRealityA01
+			let mesh_DodecahedronRealityA01
+			let mesh_IcosahedronRealityA01
+			let mesh_OctahedronRealityA01
+			let mesh_TorusRealityA01
+			let mesh_TorusKnotRealityA01
 			
 
 
@@ -2584,6 +2658,9 @@
 				// ******************************************************
 				// Particle Geometry - End
 
+				const videoDomainMatrix = new THREE.Group()
+				videoDomainMatrix.position.set(0, -2000, 500)
+
 
 				// Search.Video
 				const video = document.getElementById('video')
@@ -2597,7 +2674,7 @@
 				const videoScreenParams = {
 					radiusTop: 5000,
 					radiusBottom: 5000,
-					height: 100,
+					height: 300,
 					radialSegments: 64,
 					heightSegments: 1,
 					openEnded: true,
@@ -2621,7 +2698,7 @@
 				const videoScreen = new THREE.Mesh(geo_videoScreen, videoMaterial);
 				videoScreen.transparent = true;
 				videoScreen.alphaMap = videoTexture;
-				videoScreen.position.set(0, 12000, -5000);
+				videoScreen.position.set(0, 18000, -100);
 				videoScreen.rotation.set(0, 0, 0);
 				videoScreen.rotateY( - Math.PI / 2 );
 				videoScreen.scale.y = 90
@@ -2629,7 +2706,7 @@
 				// videoScreen.position.set(9000, 0, -10000);
 				// videoScreen.rotateY(- Math.PI / 2)
 				// videoScreen.scale.set(0.5, 0.5, 0.5)
-				scene.add(videoScreen);
+				videoDomainMatrix.add(videoScreen);
 				camera.attach(videoScreen)
 
 				// VideoSphere - Start
@@ -2661,9 +2738,9 @@
 						VideoSphereParams.thetaStart,
 						VideoSphereParams.thetaLength,
 					)
-					mesh_leftHandSphere01.scale.x = scaleRadius
-					mesh_leftHandSphere01.scale.y = scaleRadius
-					mesh_leftHandSphere01.scale.z = scaleRadius
+					videoSphere02.scale.x = scaleRadius
+					videoSphere02.scale.y = scaleRadius
+					videoSphere02.scale.z = scaleRadius
 					// mesh_leftHandSphere01.geometry.dispose()
 					// mesh_leftHandSphere01.geometry = newGeometry
 				}
@@ -2673,15 +2750,167 @@
 				videoSphere02 = new THREE.Mesh(geo_videoSphere02, video02_Mat);
 				videoSphere02.transparent = true;
 				videoSphere02.alphaMap = video02Tex
-				videoSphere02.position.set(0, 1000, 0);
+				videoSphere02.position.set(-100, 0, -100);
 				videoSphere02.scale.set(19000000, 19000000, 19000000)
-				scene.add(videoSphere02);
+				videoDomainMatrix.add(videoSphere02);
 				
 
 				// ==============================================================
 				// VideoSphere - End
 
 
+
+				// VideoSphere - Start
+				// ==============================================================
+				const video03 = document.getElementById('video03')
+				const video03_Tex = new THREE.VideoTexture(video03);
+				const video03_Mat =  new THREE.MeshBasicMaterial( {map: video03_Tex, side: THREE.DoubleSide, toneMapped: false} );
+
+				// const VideoSphereParams = {
+				// 	radius: 0.01,
+				// 	widthSegments: 32,
+				// 	heightSegments: 32,
+				// 	phiStart: 0,
+				// 	phiLength: 0,
+				// 	thetaStart: 0,
+				// 	thetaLength: 3.14159
+				// }
+
+				function regeneratVideoSphereGeometry02() {
+					let radius = VideoSphereParams.radius
+					let scaleRadius = radius * 0.1
+					let newGeometry = new THREE.SphereGeometry(
+
+						VideoSphereParams.radius,
+						VideoSphereParams.widthSegments,
+						VideoSphereParams.heightSegments,
+						VideoSphereParams.phiStart,
+						VideoSphereParams.phiLength,
+						VideoSphereParams.thetaStart,
+						VideoSphereParams.thetaLength,
+					)
+					videoSphere03.scale.x = scaleRadius
+					videoSphere03.scale.y = scaleRadius
+					videoSphere03.scale.z = scaleRadius
+					// mesh_leftHandSphere01.geometry.dispose()
+					// mesh_leftHandSphere01.geometry = newGeometry
+				}
+
+				const geo_videoSphere03 = new THREE.SphereGeometry(VideoSphereParams.radius, VideoSphereParams.widthSegments, VideoSphereParams.heightSegments)
+
+				videoSphere03 = new THREE.Mesh(geo_videoSphere03, video03_Mat);
+				videoSphere03.transparent = true;
+				videoSphere03.alphaMap = video03_Tex
+				videoSphere03.position.set(100, 0, -100);
+				videoSphere03.scale.set(10, 10, 10)
+				videoDomainMatrix.add(videoSphere03);
+				
+
+				// ==============================================================
+				// VideoSphere - End
+
+
+				// VideoSphere - Start
+				// ==============================================================
+				const video04 = document.getElementById('video04')
+				const video04_Tex = new THREE.VideoTexture(video04);
+				const video04_Mat =  new THREE.MeshBasicMaterial( {map: video04_Tex, side: THREE.DoubleSide, toneMapped: false} );
+
+				// const VideoSphereParams = {
+				// 	radius: 0.01,
+				// 	widthSegments: 32,
+				// 	heightSegments: 32,
+				// 	phiStart: 0,
+				// 	phiLength: 0,
+				// 	thetaStart: 0,
+				// 	thetaLength: 3.14159
+				// }
+
+				function regeneratVideoSphereGeometry03() {
+					let radius = VideoSphereParams.radius
+					let scaleRadius = radius * 0.1
+					let newGeometry = new THREE.SphereGeometry(
+
+						VideoSphereParams.radius,
+						VideoSphereParams.widthSegments,
+						VideoSphereParams.heightSegments,
+						VideoSphereParams.phiStart,
+						VideoSphereParams.phiLength,
+						VideoSphereParams.thetaStart,
+						VideoSphereParams.thetaLength,
+					)
+					videoSphere04.scale.x = scaleRadius
+					videoSphere04.scale.y = scaleRadius
+					videoSphere04.scale.z = scaleRadius
+					// mesh_leftHandSphere01.geometry.dispose()
+					// mesh_leftHandSphere01.geometry = newGeometry
+				}
+
+				const geo_videoSphere04 = new THREE.SphereGeometry(VideoSphereParams.radius, VideoSphereParams.widthSegments, VideoSphereParams.heightSegments)
+
+				videoSphere04 = new THREE.Mesh(geo_videoSphere04, video04_Mat);
+				videoSphere04.transparent = true;
+				videoSphere04.alphaMap = video04_Tex
+				videoSphere04.position.set(0, 0, -200);
+				videoSphere04.scale.set(10, 10, 10)
+				videoDomainMatrix.add(videoSphere04);
+
+
+				// ==============================================================
+				// VideoSphere - End
+
+
+
+				// VideoSphere - Start
+				// ==============================================================
+				const video05 = document.getElementById('video05')
+				const video05_Tex = new THREE.VideoTexture(video05);
+				const video05_Mat =  new THREE.MeshBasicMaterial( {map: video05_Tex, side: THREE.DoubleSide, toneMapped: false} );
+
+				// const VideoSphereParams = {
+				// 	radius: 0.01,
+				// 	widthSegments: 32,
+				// 	heightSegments: 32,
+				// 	phiStart: 0,
+				// 	phiLength: 0,
+				// 	thetaStart: 0,
+				// 	thetaLength: 3.14159
+				// }
+
+				function regeneratVideoSphereGeometry04() {
+					let radius = VideoSphereParams.radius
+					let scaleRadius = radius * 0.1
+					let newGeometry = new THREE.SphereGeometry(
+
+						VideoSphereParams.radius,
+						VideoSphereParams.widthSegments,
+						VideoSphereParams.heightSegments,
+						VideoSphereParams.phiStart,
+						VideoSphereParams.phiLength,
+						VideoSphereParams.thetaStart,
+						VideoSphereParams.thetaLength,
+					)
+					videoSphere05.scale.x = scaleRadius
+					videoSphere05.scale.y = scaleRadius
+					videoSphere05.scale.z = scaleRadius
+					// mesh_leftHandSphere01.geometry.dispose()
+					// mesh_leftHandSphere01.geometry = newGeometry
+				}
+
+				const geo_videoSphere05 = new THREE.SphereGeometry(VideoSphereParams.radius, VideoSphereParams.widthSegments, VideoSphereParams.heightSegments)
+
+				videoSphere05 = new THREE.Mesh(geo_videoSphere05, video05_Mat);
+				videoSphere05.transparent = true;
+				videoSphere05.alphaMap = video05_Tex
+				videoSphere05.position.set(-100, 0, -200);
+				videoSphere05.scale.set(10, 10, 10)
+				videoDomainMatrix.add(videoSphere05);
+
+
+				// ==============================================================
+				// VideoSphere - End
+
+				scene.add(videoDomainMatrix)
 
 				// // Video Group Test
 				// const VideoGroup = new THREE.Group();
@@ -4315,7 +4544,546 @@
 				// leftUI_Hand.add(leftHand_RectTools)
 				// camera.add(leftHand_RectTools)
 
+				const exampleRealitiesMatrix = new THREE.Group()
+				exampleRealitiesMatrix.position.set(0, 0, 0)
+				
+				// -----------------------
+				// Capsule Geometry = For some reason there isnt a constructor for the 
+				// Capsule Geometry. 
+				// -----------------------
+				// const CapsuleGeometryParams = {
+				// 	radius: 10,
+				// 	length: 10,
+				// 	capSegments: 10,
+				// 	heightSegments: 10
+				// }
 
+				// function regenerateCapsule() {
+				// 	let radius = CapsuleGeometryParams.radius
+				// 	let scaleRadius = radius * 0.1
+				// 	let newGeometry = new THREE.CapsuleGeometry(
+				// 		CapsuleGeometryParams.radius,
+				// 		CapsuleGeometryParams.length,
+				// 		CapsuleGeometryParams.capSegments,
+				// 		CapsuleGeometryParams.heightSegments,
+				// 	)
+
+				// 	testCapsule.scale.x = scaleRadius
+				// 	testCapsule.scale.y = scaleRadius
+				// 	testCapsule.scale.z = scaleRadius
+
+
+				// }
+
+				// const geo_capsuleExampleA01 = new THREE.CapsuleGeometry(
+				// 	CapsuleGeometryParams.radius, 
+				// 	CapsuleGeometryParams.length,
+				// 	CapsuleGeometryParams.capSegments,
+				// 	CapsuleGeometryParams.heightSegments,
+				// )
+
+				// const mat_capsuleExampleA01 = new THREE.MeshBasicMaterial(
+				// 	{
+				// 		map: Grid19Black, 
+				// 		side: THREE.DoubleSide 
+				// 	}
+				// )
+
+				// mesh_capsuleExampleA01 = new THREE.Mesh(
+				// 	geo_capsuleExampleA01,
+				// 	mat_capsuleExampleA01
+				// )
+
+				// mat_capsuleExampleA01.transparent = false
+				// mat_capsuleExampleA01.alphaMap = Grid19Black
+				// mat_capsuleExampleA01.wireframe = false
+
+				// mesh_capsuleExampleA01.position.set(0, 0, 0)
+
+				// exampleRealitiesMatrix.add(mesh_capsuleExampleA01)
+
+
+
+
+
+				// -----------------------
+				// # CircleGeometry
+				// -----------------------
+				
+				const CircleGeometryParams = {
+					radius: 10,
+					segments: 32,
+					thetaStart: 0,
+					thetaLength: 6.28,
+				}
+
+				function regenerateCircle() {
+					let radius = CircleGeometryParams
+					let scaleRadius = radius * 0.1
+					let newGeometry = new THREE.CircleGeometry(
+						CircleGeometryParams.radius,
+						CircleGeometryParams.segments,
+						CircleGeometryParams.thetaStart,
+						CircleGeometryParams.thetaLength,
+					)
+					mesh_CircleRealityA01.scale.x = scaleRadius
+					mesh_CircleRealityA01.scale.y = scaleRadius
+				
+				}
+
+				const geo_CircleRealityA01 = new THREE.CircleGeometry(
+					CircleGeometryParams.radius,
+					CircleGeometryParams.segments,
+					CircleGeometryParams.thetaStart,
+					CircleGeometryParams.thetaLength,
+				)
+
+				const mat_CircleRealityA01 = new THREE.MeshBasicMaterial(
+					{
+						map: testImg05,
+						side: THREE.DoubleSide,
+					}
+				)
+
+				mesh_CircleRealityA01 = new THREE.Mesh(
+					geo_CircleRealityA01, 
+					mat_CircleRealityA01,
+				)
+
+				mat_CircleRealityA01.transparent = false
+				mat_CircleRealityA01.alphaMap = testImg05
+				mat_CircleRealityA01.wireFrame = false
+
+				mesh_CircleRealityA01.position.set(0, 0, -100)
+				mesh_CircleRealityA01.scale.set(1, 1, 1)
+				scene.add(mesh_CircleRealityA01)
+
+				
+				// -----------------------
+				// # ConeGeometry
+				// -----------------------
+
+				const ConeGeometryParams = {
+					radius: 10,
+					height: 10,
+					radialSegments: 4,
+					heightSegements: 1,
+					openEnded: false,
+					thetaStart: 0,
+					thetaLength: 6.28
+				}
+
+				function regenerateCone() {
+					let radius = ConeGeometryParams.radius
+					let scaleRadius = radius * 0.1
+					let newGeometry = new THREE.ConeGeometry(
+						ConeGeometryParams.radius,
+						ConeGeometryParams.height,
+						ConeGeometryParams.radialSegments,
+						ConeGeometryParams.heightSegments,
+						ConeGeometryParams.openEnded,
+						ConeGeometryParams.thetaStart,
+						ConeGeometryParams.thetaLength
+					)
+					mesh_ConeRealityA01.scale.x = scaleRadius
+					mesh_ConeRealityA01.scale.y = scaleRadius
+					mesh_ConeRealityA01.scale.z = scaleRadius
+				}
+
+				const geo_ConeRealityA01 = new THREE.ConeGeometry(
+					ConeGeometryParams.radius,
+					ConeGeometryParams.height,
+					ConeGeometryParams.radialSegments,
+					ConeGeometryParams.heightSegments,
+					ConeGeometryParams.openEnded,
+					ConeGeometryParams.thetaStart,
+					ConeGeometryParams.thetaLength
+				)
+
+				const mat_ConeRealityA01 = new THREE.MeshBasicMaterial(
+					{
+						map: Grid19Black,
+						side: THREE.DoubleSide,
+					}
+				)
+
+				mesh_ConeRealityA01 = new THREE.Mesh(
+					geo_ConeRealityA01,
+					mat_ConeRealityA01,
+				)
+
+				mat_ConeRealityA01.transparent = false
+				mat_ConeRealityA01.alphaMap = Grid19Black
+				mat_ConeRealityA01.wireFrame = false
+
+				mesh_ConeRealityA01.position.set(0, 0, -1000)
+				exampleRealitiesMatrix.add(mesh_ConeRealityA01)
+
+
+				
+				// -----------------------
+				// # CylinderGeometry
+				// -----------------------
+
+				const CylinderGeometryParams = {
+					radiusTop: 10, 
+					radiusBottom: 10,
+					height: 10,
+					radialSegments: 24,
+					heightSegments: 1,
+					openEnded: true,
+					thetaStart: 0,
+					thetaLength: 6.28,
+				}
+
+				function regenerateCylinder() {
+					let height = CylinderGeometryParams.height
+					let scaleHeight = height * 0.1
+					let newGeometry = new THREE.CylinderGeometry(
+						CylinderGeometryParams.radiusTop,
+						CylinderGeometryParams.radiusBottom,
+						CylinderGeometryParams.height,
+						CylinderGeometryParams.radialSegments,
+						CylinderGeometryParams.heightSegments,
+						CylinderGeometryParams.openEnded,
+						CylinderGeometryParams.thetaStart,
+						CylinderGeometryParams.thetaLength
+					)
+					mesh_CylinderRealityA01.scale.x = scaleHeight
+					mesh_CylinderRealityA01.scale.y = scaleHeight
+					mesh_CylinderRealityA01.scale.z = scaleHeight
+				}
+
+
+				const geo_CylinderRealityA01 = new THREE.CylinderGeometry(
+					CylinderGeometryParams.radiusTop,
+					CylinderGeometryParams.radiusBottom,
+					CylinderGeometryParams.height,
+					CylinderGeometryParams.radialSegments,
+					CylinderGeometryParams.heightSegments,
+					CylinderGeometryParams.openEnded,
+					CylinderGeometryParams.thetaStart,
+					CylinderGeometryParams.thetaLength
+				)
+
+				const mat_CylinderRealityA01 = new THREE.MeshBasicMaterial(
+					{
+						map: testImg05,
+						side: THREE.DoubleSide,
+					}
+				)
+
+				mesh_CylinderRealityA01 = new THREE.Mesh(
+					geo_CylinderRealityA01,
+					mat_CylinderRealityA01,
+				)
+
+				mat_CylinderRealityA01.transparent = false
+				mat_CylinderRealityA01.alphaMap = testImg05
+				mat_CylinderRealityA01.wireFrame = false
+
+				mesh_CylinderRealityA01.position.set(0, 0, -1000)
+				exampleRealitiesMatrix.add(mesh_CylinderRealityA01)
+
+				
+				// -----------------------
+				// # CylinderGeometry
+				// -----------------------
+
+				const DodecahedronGeometryParams = {
+					radius: 10,
+					detail: 1,
+				}
+
+				function regenerateDodecahedron() {
+					let radius = DodecahedronGeometryParams.radius
+					let scaleRadius = radius * 0.1
+					let newGeometry = new THREE.DodecahedronGeometry(
+
+						DodecahedronGeometryParams.radius,
+						DodecahedronGeometryParams.detail,
+				
+					)
+					mesh_DodecahedronRealityA01.scale.x = scaleRadius
+					mesh_DodecahedronRealityA01.scale.y = scaleRadius
+					mesh_DodecahedronRealityA01.scale.z = scaleRadius
+				}
+
+
+				const geo_DodecahedronRealityA01 = new THREE.DodecahedronGeometry(
+					DodecahedronGeometryParams.radius,
+					DodecahedronGeometryParams.detail,
+				
+				)
+
+				const mat_DodecahedronRealityA01 = new THREE.MeshBasicMaterial(
+					{
+						map: testImg09,
+						side: THREE.DoubleSide,
+					}
+				)
+
+				mesh_DodecahedronRealityA01 = new THREE.Mesh(
+					geo_DodecahedronRealityA01,
+					mat_DodecahedronRealityA01,
+				)
+
+				mat_DodecahedronRealityA01.transparent = false
+				mat_DodecahedronRealityA01.alphaMap = testImg09
+				mat_DodecahedronRealityA01.wireFrame = false
+
+				mesh_DodecahedronRealityA01.position.set(-1000, 0, -1000)
+				exampleRealitiesMatrix.add(mesh_DodecahedronRealityA01)
+
+
+
+				// -----------------------
+				// # IcosahedronGeometry
+				// -----------------------
+
+				const IcosahedronGeometryParams = {
+					radius: 10,
+					detail: 1,
+				}
+
+				function regenerateIcosahedron() {
+					let radius = IcosahedronGeometryParams.radius
+					let scaleRadius = radius * 0.1
+					let newGeometry = new THREE.IcosahedronGeometry(
+
+						IcosahedronGeometryParams.radius,
+						IcosahedronGeometryParams.detail,
+				
+					)
+					mesh_IcosahedronRealityA01.scale.x = scaleRadius
+					mesh_IcosahedronRealityA01.scale.y = scaleRadius
+					mesh_IcosahedronRealityA01.scale.z = scaleRadius
+				}
+
+
+				const geo_IcosahedronRealityA01 = new THREE.IcosahedronGeometry(
+					IcosahedronGeometryParams.radius,
+					IcosahedronGeometryParams.detail,
+				
+				)
+
+				const mat_IcosahedronRealityA01 = new THREE.MeshBasicMaterial(
+					{
+						map: testImg05,
+						side: THREE.DoubleSide,
+					}
+				)
+
+				mesh_IcosahedronRealityA01 = new THREE.Mesh(
+					geo_IcosahedronRealityA01,
+					mat_IcosahedronRealityA01,
+				)
+
+				mat_IcosahedronRealityA01.transparent = false
+				mat_IcosahedronRealityA01.alphaMap = testImg05
+				mat_IcosahedronRealityA01.wireFrame = false
+
+				mesh_IcosahedronRealityA01.position.set(1000, 0, -1000)
+				exampleRealitiesMatrix.add(mesh_IcosahedronRealityA01)
+
+
+
+				// -----------------------
+				// # OctahedronGeometry
+				// -----------------------
+
+				const OctahedronGeometryParams = {
+					radius: 10,
+					detail: 0,
+				}
+
+				function regenerateOctahedron() {
+					let radius = OctahedronGeometryParams.radius
+					let scaleRadius = radius * 0.1
+					let newGeometry = new THREE.OctahedronGeometry(
+
+						OctahedronGeometryParams.radius,
+						OctahedronGeometryParams.detail,
+				
+					)
+					mesh_OctahedronRealityA01.scale.x = scaleRadius
+					mesh_OctahedronRealityA01.scale.y = scaleRadius
+					mesh_OctahedronRealityA01.scale.z = scaleRadius
+				}
+
+
+				const geo_OctahedronRealityA01 = new THREE.OctahedronGeometry(
+					OctahedronGeometryParams.radius,
+					OctahedronGeometryParams.detail,
+				
+				)
+
+				const mat_OctahedronRealityA01 = new THREE.MeshBasicMaterial(
+					{
+						map: Grid19Black,
+						side: THREE.DoubleSide,
+					}
+				)
+
+				mesh_OctahedronRealityA01 = new THREE.Mesh(
+					geo_OctahedronRealityA01,
+					mat_OctahedronRealityA01,
+				)
+
+				mat_OctahedronRealityA01.transparent = false
+				mat_OctahedronRealityA01.alphaMap = Grid19Black
+				mat_OctahedronRealityA01.wireFrame = false
+
+				mesh_OctahedronRealityA01.position.set(1000, 0, 1000)
+				exampleRealitiesMatrix.add(mesh_OctahedronRealityA01)
+
+
+
+				// -----------------------
+				// # TorusGeometry
+				// -----------------------
+
+				// Standard Donut
+				const TorusGeometryParams = {
+					radius: 10,
+					tube: 2,
+					radialSegments: 16,
+					tubularSegments: 100,
+					arc: 6.28
+				}
+
+				// const TorusGeometryParams = {
+				// 	radius: 1,
+				// 	tube: 10,
+				// 	radialSegments: 30,
+				// 	tubularSegments: 101,
+				// 	arc: 5.75
+				// }
+
+				function regenerateTorus() {
+					let radius = TorusGeometryParams.radius
+					let scaleRadius = radius * 0.1
+					let newGeometry = new THREE.TorusGeometry(
+
+						TorusGeometryParams.radius,
+						TorusGeometryParams.tube,
+						TorusGeometryParams.radialSegments,	
+						TorusGeometryParams.tubularSegments,
+						TorusGeometryParams.arc,
+				
+					)
+					mesh_TorusRealityA01.scale.x = scaleRadius
+					mesh_TorusRealityA01.scale.y = scaleRadius
+					mesh_TorusRealityA01.scale.z = scaleRadius
+				}
+
+
+				const geo_TorusRealityA01 = new THREE.TorusGeometry(
+					TorusGeometryParams.radius,
+					TorusGeometryParams.tube,
+					TorusGeometryParams.radialSegments,	
+					TorusGeometryParams.tubularSegments,
+					TorusGeometryParams.arc,
+				)
+
+				const mat_TorusRealityA01 = new THREE.MeshBasicMaterial(
+					{
+						map: Grid19Black,
+						side: THREE.DoubleSide,
+					}
+				)
+
+				mesh_TorusRealityA01 = new THREE.Mesh(
+					geo_TorusRealityA01,
+					mat_TorusRealityA01,
+				)
+
+				mat_TorusRealityA01.transparent = false
+				mat_TorusRealityA01.alphaMap = Grid19Black
+				mat_TorusRealityA01.wireFrame = false
+
+				mesh_TorusRealityA01.position.set(0, 20200, 0)
+				exampleRealitiesMatrix.add(mesh_TorusRealityA01)
+
+
+
+				// -----------------------
+				// # TorusKnotGeometry
+				// -----------------------
+
+				// Standard Donut
+				// const TorusKnotGeometryParams = {
+				// 	radius: 10,
+				// 	tube: 3,
+				// 	tubularSegments: 100,
+				// 	radialSegments: 16,
+				// 	p: 2,
+				// 	q: 3,
+				// }
+
+				// Gear A1 Torus Knot
+				const TorusKnotGeometryParams = {
+					radius: 6.213,
+					tube: 2.2,
+					tubularSegments: 300,
+					radialSegments: 4,
+					p: 1,
+					q: 20,
+				}
+			
+
+				
+
+				function regenerateTorusKnot() {
+					let radius = TorusKnotGeometryParams.radius
+					let scaleRadius = radius * 0.1
+					let newGeometry = new THREE.TorusKnotGeometry(
+
+						TorusKnotGeometryParams.radius,
+						TorusKnotGeometryParams.tube,
+						TorusKnotGeometryParams.tubularSegments,
+						TorusKnotGeometryParams.radialSegments,	
+						TorusKnotGeometryParams.p,
+						TorusKnotGeometryParams.q,
+				
+					)
+					mesh_TorusKnotRealityA01.scale.x = scaleRadius
+					mesh_TorusKnotRealityA01.scale.y = scaleRadius
+					mesh_TorusKnotRealityA01.scale.z = scaleRadius
+				}
+
+
+				const geo_TorusKnotRealityA01 = new THREE.TorusKnotGeometry(
+					TorusKnotGeometryParams.radius,
+					TorusKnotGeometryParams.tube,
+					TorusKnotGeometryParams.tubularSegments,
+					TorusKnotGeometryParams.radialSegments,	
+					TorusKnotGeometryParams.p,
+					TorusKnotGeometryParams.q,
+				)
+
+				const mat_TorusKnotRealityA01 = new THREE.MeshBasicMaterial(
+					{
+						map: testImg04,
+						side: THREE.DoubleSide,
+					}
+				)
+
+				mesh_TorusKnotRealityA01 = new THREE.Mesh(
+					geo_TorusKnotRealityA01,
+					mat_TorusKnotRealityA01,
+				)
+
+				mat_TorusKnotRealityA01.transparent = false
+				mat_TorusKnotRealityA01.alphaMap = testImg04
+				mat_TorusKnotRealityA01.wireFrame = false
+
+				mesh_TorusKnotRealityA01.position.set(0, 0, 0)
+				exampleRealitiesMatrix.add(mesh_TorusKnotRealityA01)
+
+
+
+				scene.add(exampleRealitiesMatrix)
 				
 
 
@@ -4729,6 +5497,9 @@
 
 				leftHandSphereMatrix.add(mesh_leftHandSphereC06)
 
+
+
+
 				
 
 
@@ -5077,7 +5848,8 @@
 				mat_mainContainer.alphaMap = mainContainerImgL0;
 				mesh_mainContainer.position.set(0, 0, 0);
 				// mesh_mainContainer.position.set(-15000, 0, 0);
-				mesh_mainContainer.scale.set(26, 26, 26);
+				// mesh_mainContainer.scale.set(26, 26, 26);
+				mesh_mainContainer.scale.set(1, 1, 1);
 				mesh_mainContainer.rotation.set(0, 0, 0)
 				mesh_mainContainer.rotateX( - Math.PI / 2 );
 				mesh_mainContainer.rotateZ( - Math.PI / 2 );
@@ -7618,6 +8390,8 @@
 				
 				const folderMainHud = gui.addFolder('Main Hub Position Testing')
 				folderMainHud.add(videoScreen.position, 'y').min(-20000).max(20000).step(20000).name('|- Opening Video');
+				
+				folderMainHud.add(videoScreen.position, 'z').min(-20000).max(20000).step(20000).name('|- Opening Video Distance');
 				folderMainHud.add(mainContainerEntranceVideoContainerA1_L0.position, 'x').min(-20000).max(20000).step(20000).name('|- Surface Layer');
 
 				// Search.GUI.TestSettings.Main
@@ -7669,10 +8443,50 @@
 
 				console.log(containerMatrixMaster00.position)
 
+				const folderAllRealities = gui.addFolder('All Realities')
+
+				// Circle Reality
+				folderAllRealities.add(CircleGeometryParams, 'radius', 10, 109975).onChange(regenerateCircle).name('Expand Circle Reality')
+
+				// Cone Reality
+				folderAllRealities.add(ConeGeometryParams, 'radius', 10, 109975).onChange(regenerateCone).name('Expand Cone Reality')
+
+				// Cylinder Reality
+				folderAllRealities.add(CylinderGeometryParams, 'height', 10, 109975).onChange(regenerateCylinder).name('Expand Cylinder Reality')
+
+				// Dodecahedron Reality
+				folderAllRealities.add(DodecahedronGeometryParams, 'radius', 10, 109975).onChange(regenerateDodecahedron).name('Expand Dodecahedron Reality')
+
+				// Icosahedron Reality
+				folderAllRealities.add(IcosahedronGeometryParams, 'radius', 10, 109975).onChange(regenerateIcosahedron).name('Expand Icosahedron Reality')
+
+				// Octahedron Reality
+				folderAllRealities.add(OctahedronGeometryParams, 'radius', 10, 1109975).onChange(regenerateOctahedron).name('Expand Octahedron Reality')
+
+				// Torus Reality
+				folderAllRealities.add(TorusGeometryParams, 'radius', 10, 109975).onChange(regenerateTorus).name('Expand Torus Reality')
+
+				// TorusKnot Reality
+				folderAllRealities.add(TorusKnotGeometryParams, 'radius', 10, 109975).onChange(regenerateTorusKnot).name('Expand TorusKnot Reality')
+
+
+
 
 				const folderSphereController = gui.addFolder('Domain Controller')
 				
 				folderSphereController.add(handSphereMatrixParams, 'radius', 10, 109975).onChange(regenerateLeftSphereMatrixGeometriesB02).name('Expand Main Grid Sphere')
+				
+				// Domain: White Hexagons
+				folderSphereController.add(VideoSphereParams, 'radius', 10, 199000000).onChange(regeneratVideoSphereGeometry).name('Expand WhiteHex Sphere')
+				
+				// Dommain: ColorfulShapes
+				folderSphereController.add(VideoSphereParams, 'radius', 10, 199000000).onChange(regeneratVideoSphereGeometry02).name('Expand Main ColorfulShapes Sphere')
+
+				// Domain: SunRays And Trees
+				folderSphereController.add(VideoSphereParams, 'radius', 10, 199000000).onChange(regeneratVideoSphereGeometry03).name('Expand Main ColorfulShapes Sphere')
+
+				// Domain: TechTunnel
+				folderSphereController.add(VideoSphereParams, 'radius', 10, 199000000).onChange(regeneratVideoSphereGeometry04).name('Expand Main TechTunnel Sphere')
 
 				folderSphereController.add(mesh_leftHandSphereB02.position, 'x').min(-75000).max(75000).step(100).name('Main Grid [ Forward Movement ]');
 
@@ -7962,7 +8776,7 @@
 				// camera.position.z += time * -0.01
 
 				mesh_timeSphere_L2.rotation.y = time * 0.0005;
-				mesh_Tube01.rotation.y = time * 0.0005
+				mesh_Tube01.rotation.y = time * 0.005
 				mesh_Torus01.rotation.z = time * 0.0001
 
 				// Command Center Animations
@@ -8193,12 +9007,41 @@
 				main_iWindow06Buttons.position.y = Math.abs(Math.cos(time * 0.0007) * 10) - 420
 
 
+				// Examaple Realities
+				mesh_TorusRealityA01.rotation.z = time * 0.001
+				mesh_TorusKnotRealityA01.rotation.z = time * 0.0001
+
+
 				// Camera Testing
 
 				// camera.position.x = Math.cos(time * 0.0002) * 20000
 				// camera.position.z = Math.sin(time * 0.0002) * 20000
 				// camera.position.y = Math.abs(Math.cos(time * 0.0002) * 100000)
+
+				camera.position.y = time * -5
+
+				// setTimeout(() => {
+					
+				// }, 1000)
 				
+				
+
+			//   setTimeout(() => {
+				
+				
+			// 	  camera.position.set(20000, 20000, -20000)
+			// 	  camera.lookAt(0, 0, 0)
+			//   }, 20000)
+
+
+
+
+
+
+
+
+
+
 
 				// ----- Dont Touch Below this line
 				prevTime = time;
