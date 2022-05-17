@@ -1,0 +1,100 @@
+# Start Menu
+
+## Shopping on W3
+
+### How to Tab
+|- N2S_01 - Read dat.gui code to see how to get it from the canvas and onto the main menu if possible. 
+
+
+|- # Buttons [ Closed ]
+   |- Outline Buttons
+   |- Animated Buttons
+
+
+|- # Buttons [ Closed ]
+   |- Outline Buttons
+   |- Animated Buttons
+      |- Click Button - // For Virtual Keyboard
+
+|- # More Section [ In Order ]
+:: Instructions: Go to how to then ctrl+f then type the topic desired below.
+
+
+// Good to just know
+   |- Copy Text to Clipboard
+   |- 
+   |- Center Vertically // makes css much easier
+   |- Center Button in Div // should be same as above
+   |- Transition on Hover 
+   |- Download
+   |- Full Height Element
+   |- Custom Scrollbar
+   |- Hide Scrollbar
+   |- Show/Force Scrollbar
+   |- Disable Text Selection
+   |- Disable Resizing of TextArea
+   |- Text Selection Color
+   |- Change bullet Color
+   |- Verical Line
+   |- Dividers
+   |- Animate Icons
+   |- Typewriter
+   |- Testimonials
+   |- Closable List Items
+   |- Typical Device Breakpoints
+   |- JS Media Queries
+   |- Syntax Highlighter
+   |- JS Animations
+   |- Get Iframe Elements
+
+
+// Larger components
+   |- Model Boxes // Raycaster + 3D item = alert w/ data
+   |- Delete Model // For adding or deleting info from 3D object
+   |- Timeline // 2D interface + 3D interface and view
+   |- Scroll Indicator // unknown
+   |- Range Sliders // like dat.gui sliders. 
+   |- Smooth Scrolling // For iframe sites
+   |- Gradient Bg Scroll // for iFrame items and Main Menu
+   |- Device Look // Good for smartphone, tablet, and laptop
+   |- Chat Messages // for concept page or track record keeping
+   |- Popup Chat Window // for concept page or track record keeping
+   |- 
+
+
+// css3D smaller components to build
+   // If component = html + css = easy CSS3D build
+   // If component = html + css + js = 
+   |- Tool Tips // pretty much any css3D or 2D object
+   |- Display Element Hover // our main tool for css3D 
+   |- Popups // Another tool to use with 2D + css3D
+   |- Collapsible // Another tool to use with 2D + css3D
+   |- Loaders // For my huge program
+   |- Flip Card // Nice for the 2D or CSS3D 
+   |- Flip Box // Should be similar to above.
+   |- SnackBar // Good for quick messages at the bottom of interface
+   |- Toggle Like/Dislike // pretty much any component
+   |- Toggle Hide/Show // 
+   |- Toggle Dark Mode // self explanatory
+   |- Toggle Text // Really should be called toggle state of compontent
+   |- Toggle TreeView 
+   |- Zoom over Hover // very useful 
+   |- Arrows
+   |- Shapes
+   |- Section Counter // just shows stats - check to see
+   |- 
+
+// Specifically for 2D 
+   |- List Group with Badges
+   |- 
+
+
+// CSS3D Applications to build
+   |- Calendar // component option 01
+   |- To-do List // component option 02
+   |- Countdown Timer // Good to have for whatever reason
+   |- Quotes SlideShow // 
+   |- Draggable HTML Element // unknown for now
+   |- 
+
+

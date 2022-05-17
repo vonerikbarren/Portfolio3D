@@ -3321,6 +3321,13 @@
 				PortfolioWebsitesController.add(AppleProductSite)
 
 
+				const ArtikaSite = new THREE.Group()
+				ArtikaSite.position.set(0, -4800, 0)
+				ArtikaSite.rotation.set(0, 0, 0)
+				ArtikaSite.add( new iFrameElement('https://vonerikbarren.github.io/Sheenas_Art_Space/', 0, 0, 0, 0))
+				PortfolioWebsitesController.add(ArtikaSite)
+
+
 				camera.add(PortfolioWebsitesController)
 
 
@@ -8391,7 +8398,7 @@
 				const folderMainHud = gui.addFolder('Main Hub Position Testing')
 				folderMainHud.add(videoScreen.position, 'y').min(-20000).max(20000).step(20000).name('|- Opening Video');
 				
-				folderMainHud.add(videoScreen.position, 'z').min(-20000).max(20000).step(20000).name('|- Opening Video Distance');
+				folderMainHud.add(videoScreen.position, 'z').min(-20000).max(20000).step(2000).name('|- Opening Video Distance');
 				folderMainHud.add(mainContainerEntranceVideoContainerA1_L0.position, 'x').min(-20000).max(20000).step(20000).name('|- Surface Layer');
 
 				// Search.GUI.TestSettings.Main
@@ -8910,6 +8917,7 @@
 				mesh_rightUIGear_A3_L0.rotation.z = time * 0.001
 				mesh_rightUIGear_A4_L0.rotation.z = time * 0.001
 				mesh_rightUIGear_A5_L0.rotation.z = time * 0.001
+				
 				mesh_rightUIGear_A6_L0.rotation.z = time * 0.0002
 				mesh_rightUIGear_A7_L0.rotation.z = time * 0.0002
 
@@ -9018,7 +9026,7 @@
 				// camera.position.z = Math.sin(time * 0.0002) * 20000
 				// camera.position.y = Math.abs(Math.cos(time * 0.0002) * 100000)
 
-				camera.position.y = time * -5
+				// camera.position.y = time * -5
 
 				// setTimeout(() => {
 					

@@ -25,7 +25,7 @@ const Raycasting_Notes = {
         'This technique can be used to detect if there is a wall in front of the player, test if the alser gun hit something, test if something is currently under the mouse to simulate mouse events, and many other things.'
       ],
       
-    }
+    },
 
     Chapter01: {
       Title: "Creating the Raycaster",
@@ -102,17 +102,17 @@ const Raycasting_Notes = {
 
 
         Header_B1: [
-          Title: "Testing on each frame (during an animation)",
-          Steps: {
+          "Title: Testing on each frame (during an animation)",
+          { Steps: {
             step01: 'Instantiate the raycaster',
             step02: 'create tick function / animate function',
             step03: 'cast the ray',
             step04: 'create a arrayVar that holds each object',
             step05: 'use the `intersectsObjects()` method on the arrVar',
-            step06: 'console.log()',
+            step06: 'console.log()', },
           },
 
-          Notes: [
+          [
             'Yet again, we really dont need to normalize the `rayDirection` because its length is already `1`. But its goodpractice to keep the `normalize()` in case we change the direction.',
             "\n",
 
