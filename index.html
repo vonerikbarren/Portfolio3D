@@ -438,6 +438,11 @@
 			}
 		</script>
 
+		<!-- Firebase Libraries -->
+		<!-- <script src="https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js"></script>  -->
+
 		<script type="module">
 
 			// Imports
@@ -446,6 +451,33 @@
 			import { GUI } from './libraries/config/lil-gui.module.min.js';
       	import { TWEEN } from './libraries/controllers/tween.module.min.js';
 			import { CSS3DRenderer, CSS3DObject } from './libraries/renderers/CSS3DRenderer.js';
+
+			// Import the functions you need from the SDKs you need
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
+			import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-analytics.js";
+			// TODO: Add SDKs for Firebase products that you want to use
+			// https://firebase.google.com/docs/web/setup#available-libraries
+		 
+			// Your web app's Firebase configuration
+			// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+			const firebaseConfig = {
+			  apiKey: "AIzaSyDHuKeKjkkZTpks6NgqBRFHPeRdpHmF5Rk",
+			  authDomain: "formtest-edd19.firebaseapp.com",
+			  databaseURL: "https://formtest-edd19-default-rtdb.firebaseio.com",
+			  projectId: "formtest-edd19",
+			  storageBucket: "formtest-edd19.appspot.com",
+			  messagingSenderId: "1082153727319",
+			  appId: "1:1082153727319:web:826049357eb46e51f07a12",
+			  measurementId: "G-MYHRMBN36Z"
+			};
+		 
+			// Initialize Firebase
+			const app = initializeApp(firebaseConfig);
+			const analytics = getAnalytics(app);
+
+			
+
+			
 
       const table = [
 			'ΔΗΝ', 'A Revelation of the mind', '1.00794', 1, 1,
@@ -1712,13 +1744,213 @@
 
 				// )
 
+				function makeFormWithDatabase(
+					formId,
+					title, 
+					labelA_ClassName, labelB_ClassName, labelC_ClassName, labelD_ClassName,
+					labelA_ClassContent, labelB_ClassContent, labelC_ClassContent, labelD_ClassContent,
+					inputA_id, inputB_id, inputC_id, inputD_id,
+					inputA_data, inputB_data, inputC_data, inputD_data,
+					buttonInsert_id, buttonRead_id,
+					x, y, z, ry,
+
+
+				) {
+
+					// Base Container
+					const formDataDiv = document.createElement('div')
+					formDataDiv.className = 'formDataDiv'
+					formDataDiv.backgroundColor = 'neonBlue'
+					formDataDiv.border = '10px black'
+					formDataDiv.borderRadius = '20px'
+
+					// Root :: Title :: 
+					const formDataTitle = document.createElement('h1')
+					formDataTitle.className = 'formDataTitle'
+					formDataTitle.textContent = title
+					formDataDiv.appendChild(formDataTitle)
+					
+					// Root :: FormData :: container
+					const formDataBox = document.createElement('form')
+					formDataBox.className = 'formDataBox'
+					formDataDiv.appendChild(formDataBox)
+
+					const br00 = document.createElement('br')
+					formDataDiv.appendChild(br00)
+
+
+					
+
+
+					// Children :: Label A :: 
+					const labelA = document.createElement('label')
+					labelA.className = labelA_ClassName
+					labelA.setAttribute('for', "fName")
+					labelA.textContent = labelA_ClassContent
+					formDataDiv.appendChild(labelA)
+
+					const br01 = document.createElement('br')
+					formDataDiv.appendChild(br01)
+
+					const inputA = document.createElement('input')
+					inputA.id = inputA_id
+					inputA.setAttribute('type', "text")
+					inputA.setAttribute('name', "fName")
+					inputA.setAttribute('value', inputA_data)
+					inputA.setAttribute('size', 100)
+					formDataDiv.appendChild(inputA)
+
+
+					const br02 = document.createElement('br')
+					formDataDiv.appendChild(br02)
+
+
+
+					// Children :: Label B :: 
+					const labelB = document.createElement('label')
+					labelB.className = labelB_ClassName
+					labelB.setAttribute('for', "fName")
+					labelB.textContent = labelB_ClassContent
+					formDataDiv.appendChild(labelB)
+
+					const br03 = document.createElement('br')
+					formDataDiv.appendChild(br03)
+
+					const inputB = document.createElement('input')
+					inputB.id = inputB_id
+					inputB.setAttribute('type', "text")
+					inputB.setAttribute('name', "fName")
+					inputB.setAttribute('value', inputB_data)
+					inputB.setAttribute('size', 100)
+					formDataDiv.appendChild(inputB)
+
+
+					const br04 = document.createElement('br')
+					formDataDiv.appendChild(br04)
+
+
+
+					// Children :: Label C :: 
+					const labelC = document.createElement('label')
+					labelC.className = labelC_ClassName
+					labelC.setAttribute('for', "fName")
+					labelC.textContent = labelC_ClassContent
+					formDataDiv.appendChild(labelC)
+
+					const br05 = document.createElement('br')
+					formDataDiv.appendChild(br05)
+
+					const inputC = document.createElement('input')
+					inputC.id = inputC_id
+					inputC.setAttribute('type', "text")
+					inputC.setAttribute('name', "fName")
+					inputC.setAttribute('value', inputC_data)
+
+					formDataDiv.appendChild(inputC)
+
+					const br06 = document.createElement('br')
+					formDataDiv.appendChild(br06)
+
+
+
+					// Children :: Label D :: 
+
+					const labelD = document.createElement('label')
+					labelD.className = labelD_ClassName
+					labelD.setAttribute('for', "fName")
+					labelD.textContent = labelD_ClassContent
+					formDataDiv.appendChild(labelD)
+
+					const br07 = document.createElement('br')
+					formDataDiv.appendChild(br07)
+
+					const inputD = document.createElement('input')
+					inputD.id = inputD_id
+					inputD.setAttribute('type', "text")
+					inputD.setAttribute('name', "fName")
+					inputD.setAttribute('value', inputD_data)
+
+					formDataDiv.appendChild(inputD)
+
+					const br08 = document.createElement('br')
+					formDataDiv.appendChild(br08)
+
+					// ------------- Database Information ---------------- // 
+						
+					
+
+					
+
+
+					// ----------- Buttons ------------ // 
+
+					
+
+
+					// Button for Insertions
+					const inputButton_insert = document.createElement('input')
+					inputButton_insert.id = buttonInsert_id,
+					inputButton_insert.setAttribute('type', "submit")
+					inputButton_insert.setAttribute('value', "Insert")
+					inputButton_insert.addEventListener('click', () => {
+						alert("Check to see if information has been submitted")
+
+						var userInputA, userInputB, userInputC, userInputD
+
+
+						function Ready() {
+							userInputA = document.getElementById(inputA_id).value
+							userInputB = document.getElementById(inputB_id).value
+							userInputC = document.getElementById(inputC_id).value
+							userInputD = document.getElementById(inputD_id).value
+						}
+
+						Ready()
+						app.database().ref('userData/').set({
+							FirstName: userInputA,
+							LastName: userInputB,
+							Age: userInputC,
+							Location: userInputD
+						})
+
+						
+						
+					})
+
+					// Push to formData
+					formDataDiv.appendChild(inputButton_insert)
+
+
+
+					const inputButton_Read = document.createElement('input')
+					inputButton_insert.id = buttonRead_id,
+					inputButton_Read.setAttribute('type', "submit")
+					inputButton_Read.setAttribute('value', "Read")
+					inputButton_Read.style.marginLeft = "25px"
+					inputButton_Read.addEventListener('click', () => {
+						let person = prompt("Please Enter your name", "Harry Potter")
+						if (person != null) {
+							alert("hello" + person + "! How are you doing? ")
+						}
+					})
+					formDataDiv.appendChild(inputButton_Read)
+
+					
+
+
+
+
+					const iWindowFormData = new CSS3DObject(formDataDiv)
+					iWindowFormData.position.set(x, y, z)
+					iWindowFormData.rotation.y = ry
+
+					return iWindowFormData
+
+				}
+
 				
 
-				function testAlert(message) {
-					let myMessage = alert(message)
-
-					return myMessage
-				}
+				
 
 
 				function makeForm(
@@ -3932,6 +4164,17 @@
 					'alertButton','alertButton',
 					'functionList.sphere',
 					0, 0, 0, 0,
+				))
+
+				formTest.add( new makeFormWithDatabase(
+					'test',
+					"Form Test With Database",
+					"fName", "lName", "age", "location",
+					'First Name', 'Last Name', 'Age', 'location',
+					"fName", "lName", "age", "location",
+					'Bob', 'Marley', 35, "Boston",
+					'alertButton','alertButton',
+					400, 0, 0, -0.2,
 				))
 
 				// const buttonAlert = document.getElementById('alertButton')
