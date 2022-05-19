@@ -1705,6 +1705,163 @@
 				// root.add(backgroundTest)
 
 
+				// function attachToggle(
+				// 	object, 
+				// 	toggleState,
+
+
+				// )
+
+				
+
+				function testAlert(message) {
+					let myMessage = alert(message)
+
+					return myMessage
+				}
+
+
+				function makeForm(
+					formId,
+					title, 
+					labelA_ClassName, labelB_ClassName, labelC_ClassName,
+					labelA_ClassContent, labelB_ClassContent, labelC_ClassContent,
+					inputA_id, inputB_id, inputC_id, 
+					inputA_data, inputB_data, inputC_data,
+					buttonId, buttonClassName, 
+					buttonFunction,
+					x, y, z, ry,
+
+
+				) {
+
+					// Base Container
+					const formDiv = document.createElement('div')
+					formDiv.className = 'formDiv'
+					formDiv.backgroundColor = 'neonBlue'
+					formDiv.border = '10px black'
+					formDiv.borderRadius = '20px'
+
+					// Root :: Title :: 
+					const formTitle = document.createElement('h1')
+					formTitle.className = 'formTitle'
+					formTitle.textContent = title
+					formDiv.appendChild(formTitle)
+					
+					// Root :: Form :: container
+					const formBox = document.createElement('form')
+					formBox.className = 'formBox'
+					formDiv.appendChild(formBox)
+
+					const br00 = document.createElement('br')
+					formDiv.appendChild(br00)
+
+
+					
+
+
+					// Children :: Label A :: 
+					const labelA = document.createElement('label')
+					labelA.className = labelA_ClassName
+					labelA.setAttribute('for', "fName")
+					labelA.textContent = labelA_ClassContent
+					formDiv.appendChild(labelA)
+
+					const br01 = document.createElement('br')
+					formDiv.appendChild(br01)
+
+					const inputA = document.createElement('input')
+					inputA.id = inputA_id
+					inputA.setAttribute('type', "text")
+					inputA.setAttribute('name', "fName")
+					inputA.setAttribute('value', inputA_data)
+					inputA.setAttribute('size', 100)
+					formDiv.appendChild(inputA)
+
+
+					const br02 = document.createElement('br')
+					formDiv.appendChild(br02)
+
+
+
+					// Children :: Label B :: 
+					const labelB = document.createElement('label')
+					labelB.className = labelB_ClassName
+					labelB.setAttribute('for', "fName")
+					labelB.textContent = labelB_ClassContent
+					formDiv.appendChild(labelB)
+
+					const br03 = document.createElement('br')
+					formDiv.appendChild(br03)
+
+					const inputB = document.createElement('input')
+					inputB.id = inputB_id
+					inputB.setAttribute('type', "text")
+					inputB.setAttribute('name', "fName")
+					inputB.setAttribute('value', inputB_data)
+					inputB.setAttribute('size', 100)
+					formDiv.appendChild(inputB)
+
+
+					const br04 = document.createElement('br')
+					formDiv.appendChild(br04)
+
+					// Children :: Label C :: 
+					const labelC = document.createElement('label')
+					labelC.className = labelC_ClassName
+					labelC.setAttribute('for', "fName")
+					labelC.textContent = labelC_ClassContent
+					formDiv.appendChild(labelC)
+
+					const br05 = document.createElement('br')
+					formDiv.appendChild(br05)
+
+					const inputC = document.createElement('input')
+					inputC.id = inputC_id
+					inputC.setAttribute('type', "text")
+					inputC.setAttribute('name', "fName")
+					inputC.setAttribute('value', inputC_data)
+
+					formDiv.appendChild(inputC)
+
+					const br06 = document.createElement('br')
+					formDiv.appendChild(br06)
+
+
+					const inputButton = document.createElement('input')
+					inputButton.className = buttonClassName
+					inputButton.setAttribute('type', "submit")
+					inputButton.setAttribute('value', "Submit")
+					inputButton.addEventListener('click', () => {
+						let person = prompt("Please Enter your name", "Harry Potter")
+						if (person != null) {
+							alert("hello" + person + "! How are you doing? ")
+						}
+					})
+					formDiv.appendChild(inputButton)
+
+					// const inputButton01 = document.createElement('button')
+					// inputButton01.id = buttonId
+					// inputButton01.className = buttonClassName
+					// inputButton01.setAttribute('type', "button")
+					// inputButton01.addEventListener('click', () => {
+
+					// })
+					
+					formDiv.appendChild(inputButton)
+
+
+
+
+					const iWindowForm = new CSS3DObject(formDiv)
+					iWindowForm.position.set(x, y, z)
+					iWindowForm.rotation.y = ry
+
+					return iWindowForm
+
+				}
+
+
 				function makeTable_5x5(
 					x, y, z, ry,
 					TableTitle, 
@@ -2392,11 +2549,11 @@
 							break;
 						
 						case 'KeyZ':
-							canMoveVerticallyUp = true;
+							if ( canJump === true ) velocity.y += 200
 							break;
 						
 						case 'KeyY': 
-							canMoveVerticallyDown = true;
+							if ( canJump === true ) velocity.y -= 200
 							break
 
 					}
@@ -2436,6 +2593,7 @@
 				document.addEventListener( 'keydown', onKeyDown );
 				document.addEventListener( 'keyup', onKeyUp );
 
+		
     		const buttonTable = document.getElementById('table');
 				buttonTable.addEventListener('click', function () {
 
@@ -2464,6 +2622,7 @@
 
 			 });
 
+			 
 			 transform(targets.table, 2000);
 			//  transform(camera, 2000)
 
@@ -3697,7 +3856,7 @@
 
 
 				const tableTest001 = new THREE.Group()
-				tableTest001.position.set(0, 0, -1000)
+				tableTest001.position.set(0, 0, -2000)
 
 				tableTest001.add( new makeTable_5x5(
 					0, 0, 0, 0,
@@ -3751,6 +3910,39 @@
 
 
 				scene.add(tableTest001)
+
+
+
+				const formTest = new THREE.Group()
+				formTest.position.set(0, 0, -1000)
+
+				const functionList = {
+					sphere: buttonSphere,
+					helix: buttonHelix,
+					grid: buttonGrid,
+				}
+
+				formTest.add( new makeForm(
+					'test',
+					"Form Test",
+					"fName", "lName", "age",
+					'First Name', 'Last Name', 'Age',
+					"fName", "lName", "age",
+					'Bob', 'Marley', 35,
+					'alertButton','alertButton',
+					'functionList.sphere',
+					0, 0, 0, 0,
+				))
+
+				// const buttonAlert = document.getElementById('alertButton')
+			 	// buttonAlert.addEventListener('click', function() {
+				//  		alert('Welcome, you are successful... Hello World')
+
+			 	// })
+
+
+
+				scene.add(formTest)
 				
 
 				// backgroundTest = makeElementObject('div', 400, 400)
