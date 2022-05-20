@@ -452,28 +452,31 @@
       	import { TWEEN } from './libraries/controllers/tween.module.min.js';
 			import { CSS3DRenderer, CSS3DObject } from './libraries/renderers/CSS3DRenderer.js';
 
-			// Import the functions you need from the SDKs you need
-			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
-			import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-analytics.js";
-			// TODO: Add SDKs for Firebase products that you want to use
-			// https://firebase.google.com/docs/web/setup#available-libraries
-		 
-			// Your web app's Firebase configuration
-			// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-			const firebaseConfig = {
-			  apiKey: "AIzaSyDHuKeKjkkZTpks6NgqBRFHPeRdpHmF5Rk",
-			  authDomain: "formtest-edd19.firebaseapp.com",
-			  databaseURL: "https://formtest-edd19-default-rtdb.firebaseio.com",
-			  projectId: "formtest-edd19",
-			  storageBucket: "formtest-edd19.appspot.com",
-			  messagingSenderId: "1082153727319",
-			  appId: "1:1082153727319:web:826049357eb46e51f07a12",
-			  measurementId: "G-MYHRMBN36Z"
-			};
-		 
-			// Initialize Firebase
-			const app = initializeApp(firebaseConfig);
-			const analytics = getAnalytics(app);
+      // ------------------ Configurations -------------------- // 
+
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+         apiKey: "AIzaSyAXGCA1w5cHCPOp90Syuvxlqnd9mMr3Ap8",
+         authDomain: "formtest02-e3383.firebaseapp.com",
+         databaseURL: "https://formtest02-e3383-default-rtdb.firebaseio.com",
+         projectId: "formtest02-e3383",
+         storageBucket: "formtest02-e3383.appspot.com",
+         messagingSenderId: "222453041647",
+         appId: "1:222453041647:web:e5d3a584698c96b9574e1a"
+      };
+      
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+
+      import {getDatabase, ref, get, set, child, update, remove}
+      from "https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js"
+
+      const db = getDatabase()
 
 			
 
@@ -1743,6 +1746,251 @@
 
 
 				// )
+
+				function makeFormDatabaseTable5x5(
+					componentID, 
+					x, y, z, ry,
+					FormTitle,
+					labelA, labelB, labelC, labelD, labelE,
+					inputA, inputB, inputC, inputD, inputE,
+					TableTitle,
+					th01, th02, th03, th04, th05,
+					tdA1, tdA2, tdA3, tdA4, tdA5,
+					tdB1, tdB2, tdB3, tdB4, tdB5,
+					tdC1, tdC2, tdC3, tdC4, tdC5,
+					tdD1, tdD2, tdD3, tdD4, tdD5,
+					tdE1, tdE2, tdE3, tdE4, tdE5,
+					
+				) {
+
+
+
+					// |- # Root Div ##################################################
+					const databaseFormRootDiv = document.createElement('div')
+					databaseFormRootDiv.id = "DatabseFormDiv_root"
+
+					// |- ## Form Div =================================================
+					const databaseFormDiv = document.createElement('div')
+					databaseFormDiv.id = "DatabaseFormDiv"
+					databaseFormRootDiv.appendChild(databaseFormDiv)
+
+
+					// |- ### Form Component
+					const databaseFormDataTitle = document.createElement('h1')
+					databaseFormDataTitle.id = "DatabaseFormDataTitle"
+					databaseFormDataTitle.className = 'databaseFormDataTitle'
+					databaseFormDataTitle.textContent = title
+					databaseFormDiv.appendChild(databaseFormDataTitle)
+
+					// Root :: FormData :: container
+					const databaseFormDataBox = document.createElement('form')
+					databaseFormDataBox.id = "DatabaseFormDataBox"
+					databaseFormDataBox.className = 'databaseFormDataBox'
+					databaseFormDiv.appendChild(databaseFormDataBox)
+
+					const break00 = document.createElement('br')
+					databaseFormDiv.appendChild(br00)
+
+
+
+					// Children :: Label A :: 
+					const databaseLabelA = document.createElement('label')
+					databaseLabelA.id = "DatabaseLabelA"
+					databaseLabelA.className = databaseLabelA_ClassName
+					databaseLabelA.setAttribute('for', "fName")
+					// databaseLabelA.textContent = ""
+					databaseFormDiv.appendChild(databaseLabelA)
+
+					const break01 = document.createElement('br')
+					databaseFormDiv.appendChild(break01)
+
+					const databaseInputA = document.createElement('input')
+					databaseInputA.id = databaseInputA_id
+					databaseInputA.setAttribute('type', "text")
+					databaseInputA.setAttribute('name', "fName")
+					databaseInputA.setAttribute('value', databaseInputA_data)
+					databaseInputA.setAttribute('size', 100)
+					databaseFormDiv.appendChild(databaseInputA)
+
+
+					const break02 = document.createElement('br')
+					databaseFormDiv.appendChild(break02)
+
+
+					// |- ## Table Div ================================================
+					const databaseTableDiv = document.createElement('div')
+					databaseTableDiv.id = "DatabaseFormTableDiv"
+					databaseFormRootDiv.appendChild(databaseTableDiv)
+
+					const databaseTableTitle = document.createElement('h1')
+					databaseTableTitle.className = 'databaseTableTitle'
+					databaseTableTitle.textContent = databaseTableTitle
+					databaseTableDiv.appendChild(databaseTableTitle)
+
+					const databaseTableComponent = document.createElement('table')
+					tableDiv.className = 'databaseTableComponent'
+					databaseTableDiv.appendChild(databaseTableComponent)
+
+
+					// |- ### Table Headers -------------------------------------------
+
+					const databaseTableHeaderRow = document.createElement('tr')
+					databaseTableHeaderRow.id = "DatabaseTableHeaderRow"
+					databaseTableHeaderRow.className = 'databaseTableHeaderRow'
+					databaseTableComponent.appendChild(databaseTableHeaderRow)
+
+					const databaseTableHeader01 = document.createElement('th')
+					databaseTableTableHeader01.id = "DatabaseTableTableHeader01"
+					databaseTableHeader01.className = 'databaseTableHeader01'
+					databaseTableHeader01.textContent = th01
+					databaseTableHeaderRow.appendChild(databaseTableHeader01)
+
+					const databaseTableHeader02 = document.createElement('th')
+					databaseTableTableHeader02.id = "DatabaseTableTableHeader02"
+					databaseTableHeader02.className = 'databaseTableHeader02'
+					databaseTableHeader02.textContent = th02
+					databaseTableHeaderRow.appendChild(databaseTableHeader02)
+
+					const databaseTableHeader03 = document.createElement('th')
+					databaseTableHeader03.id = "DatabaseTableHeader03"
+					databaseTableHeader03.className = 'databaseTableHeader03'
+					databaseTableHeader03.textContent = th03
+					databaseTableHeaderRow.appendChild(databaseTableHeader03)
+
+					const databaseTableHeader04 = document.createElement('th')
+					databaseTableHeader04.id = "DatabaseTableHeader04"
+					databaseTableHeader04.className = 'databaseTableHeader04'
+					databaseTableHeader04.textContent = th04
+					databaseTableHeaderRow.appendChild(databaseTableHeader04)
+					
+					const databaseTableHeader05 = document.createElement('th')
+					databaseTableHeader05.id = "DatabaseTableHeader05"
+					databaseTableHeader05.className = 'databaseTableHeader05'
+					databaseTableHeader05.textContent = th05
+					databaseTableHeaderRow.appendChild(databaseTableHeader05)
+
+					// |- ### Table Row A ---------------------------------------------
+
+					const databaseTableRowA = document.createElement('tr')
+					databaseTableRowA.id = "DatabaseTableRowA"
+					databaseTableRowA.className = 'databaseTableRowA'
+					databaseTableComponent.appendChild(databaseTableRowA)
+
+					const databaseTableDataA01 = document.createElement('td')
+					databaseTableDataA01.id = "DatabaseTableDataA01"
+					databaseTableDataA01.className = 'databaseTableDataA01'
+					databaseTableDataA01.textContent = tdA1
+					databaseTableRowA.appendChild(databaseTableDataA01)
+
+					const databaseTableDataA02 = document.createElement('td')
+					databaseTableDataA02.id = "DatabaseTableDataA02"
+					databaseTableDataA02.className = 'databaseTableDataA02'
+					databaseTableDataA02.textContent = tdA2
+					databaseTableRowA.appendChild(databaseTableDataA02)
+
+					const databaseTableDataA03 = document.createElement('td')
+					databaseTableDataA03.id = "DatabaseTableDataA03"
+					databaseTableDataA03.className = 'databaseTableDataA03'
+					databaseTableDataA03.textContent = tdA3
+					databaseTableRowA.appendChild(databaseTableDataA03)
+
+					const databaseTableDataA04 = document.createElement('td')
+					databaseTableDataA04.id = "DatabaseTableDataA04"
+					databaseTableDataA04.className = 'databaseTableDataA04'
+					databaseTableDataA04.textContent = tdA4
+					databaseTableRowA.appendChild(databaseTableDataA04)
+
+					const databaseTableDataA05 = document.createElement('td')
+					databaseTableDataA05.id = "DatabaseTableDataA05"
+					databaseTableDataA05.className = 'databaseTableDataA05'
+					databaseTableDataA05.textContent = tdA5
+					databaseTableRowA.appendChild(databaseTableDataA05)
+
+
+					// |- ### Table Row B ---------------------------------------------
+
+					const databaseTableRowB = document.createElement('tr')
+					databaseTableRowB.id = "DatabaseTableRowB"
+					databaseTableRowB.className = 'databaseTableRowB'
+					databaseTableComponent.appendChild(databaseTableRowB)
+
+					const databaseTableDataB01 = document.createElement('td')
+					databaseTableDataB01.id = "DatabaseTableDataB01"
+					databaseTableDataB01.className = 'databaseTableDataB01'
+					databaseTableDataB01.textContent = tdA1
+					databaseTableRowB.appendChild(databaseTableDataB01)
+
+					const databaseTableDataB02 = document.createElement('td')
+					databaseTableDataB02.id = "DatabaseTableDataB02"
+					databaseTableDataB02.className = 'databaseTableDataB02'
+					databaseTableDataB02.textContent = tdA2
+					databaseTableRowB.appendChild(databaseTableDataB02)
+
+					const databaseTableDataB03 = document.createElement('td')
+					databaseTableDataB03.id = "DatabaseTableDataB03"
+					databaseTableDataB03.className = 'databaseTableDataB03'
+					databaseTableDataB03.textContent = tdA3
+					databaseTableRowB.appendChild(databaseTableDataB03)
+
+					const databaseTableDataB04 = document.createElement('td')
+					databaseTableDataB04.id = "DatabaseTableDataB04"
+					databaseTableDataB04.className = 'databaseTableDataB04'
+					databaseTableDataB04.textContent = tdA4
+					databaseTableRowB.appendChild(databaseTableDataB04)
+
+					const databaseTableDataB05 = document.createElement('td')
+					databaseTableDataB05.id = "DatabaseTableDataB05"
+					databaseTableDataB05.className = 'databaseTableDataB05'
+					databaseTableDataB05.textContent = tdA5
+					databaseTableRowB.appendChild(databaseTableDataB05)
+
+
+					// |- ### Table Row C ---------------------------------------------
+
+					const databaseTableRowC = document.createElement('tr')
+					databaseTableRowC.id = "DatabaseTableRowC"
+					databaseTableRowC.className = 'databaseTableRowC'
+					databaseTableComponent.appendChild(databaseTableRowC)
+
+					const databaseTableDataC01 = document.createElement('td')
+					databaseTableDataC01.id = "DatabaseTableDataC01"
+					databaseTableDataC01.className = 'databaseTableDataC01'
+					databaseTableDataC01.textContent = tdA1
+					databaseTableRowC.appendChild(databaseTableDataC01)
+
+					const databaseTableDataC02 = document.createElement('td')
+					databaseTableDataC02.id = "DatabaseTableDataC02"
+					databaseTableDataC02.className = 'databaseTableDataC02'
+					databaseTableDataC02.textContent = tdA2
+					databaseTableRowC.appendChild(databaseTableDataC02)
+
+					const databaseTableDataC03 = document.createElement('td')
+					databaseTableDataC03.id = "DatabaseTableDataC03"
+					databaseTableDataC03.className = 'databaseTableDataC03'
+					databaseTableDataC03.textContent = tdA3
+					databaseTableRowC.appendChild(databaseTableDataC03)
+
+					const databaseTableDataC04 = document.createElement('td')
+					databaseTableDataC04.id = "DatabaseTableDataC04"
+					databaseTableDataC04.className = 'databaseTableDataC04'
+					databaseTableDataC04.textContent = tdA4
+					databaseTableRowC.appendChild(databaseTableDataC04)
+
+					const databaseTableDataC05 = document.createElement('td')
+					databaseTableDataC05.id = "DatabaseTableDataC05"
+					databaseTableDataC05.className = 'databaseTableDataC05'
+					databaseTableDataC05.textContent = tdA5
+					databaseTableRowC.appendChild(databaseTableDataC05)
+
+					
+
+
+
+
+
+
+				}
+
 
 				function makeFormWithDatabase(
 					formId,
