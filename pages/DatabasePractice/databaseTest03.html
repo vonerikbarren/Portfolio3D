@@ -4,22 +4,88 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Database Test</title>
+   <title>Database Test with Table</title>
    <style>label{display: inline-block; width:80px}</style>
+
+   <style>
+   table {
+         font-family: arial, sans-serif;
+         border-collapse: collapse;
+         width: 50%;
+      }
+
+      td, th {
+         border: 1px solid #dddddd;
+         text-align: center;
+         padding: 8px;
+      }
+
+      tr:nth-child(even) {
+         background-color: #dddddd;
+      }
+   </style>
 </head>
 
 <!-- Body Section -->
 <body>
 
    <!-- Labels and Containers for Inputs -->
-   <label>Name</label> <input id="Namebox" type="text"> <br><br>
-   <label>RollNo</label> <input id="Rollbox" type="text"> <br><br>
-   <label>Section</label> <input id="Secbox" class="SecB" type="text"> <br><br>
-   <label>Gender</label> 
-   <select id="Genbox" type="text">
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-   </select>
+   <label>Title of Deck</label> <input id="DeckTitle" type="text"> <br><br>
+   <label>Front Side</label> <input id="FrontSide" type="text"> <br><br>
+   <label>Back Side</label> <input id="BackSide" class="SecB" type="text"> <br><br>
+   <label>Card Code</label> <input id="CardCode" type="text"> <br> <br>
+   <label>Date and Time</label> <input id="DateTime" type="datetime-local">
+   
+
+   <hr>
+
+   <table>
+
+      <!-- Header -->
+      <tr>
+         <th id="TableTitle">Title</th>
+         <th id="TableFrontSide">Front Side</th>
+         <th id="TableBackSide">Back Side</th>
+         <th id="TableCardCode">Card Code</th>
+         <th id="DateTime">Date and Time</th>
+      </tr>
+
+      <!-- Table: Row A -->
+      <tr>
+         <td id="A1"></td>
+         <td id="A2"></td>
+         <td id="A3"></td>
+         <td id="A4"></td>
+         <td id="A5"></td>
+      </tr>
+
+      <!-- Table: Row B -->
+      <tr>
+         <td id="B1"></td>
+         <td id="B2"></td>
+         <td id="B3"></td>
+         <td id="B4"></td>
+      </tr>
+
+      <!-- Table: Row C -->
+      <tr>
+         <td id="C1"></td>
+         <td id="C2"></td>
+         <td id="C3"></td>
+         <td id="C4"></td>
+      </tr>
+
+      <!-- Table: Row D -->
+      <tr>
+         <td id="D1"></td>
+         <td id="D2"></td>
+         <td id="D3"></td>
+         <td id="D4"></td>
+      </tr>
+
+   </table>
+
+   <br>
 
    <!-- Buttons for action -->
    <hr>
@@ -60,10 +126,11 @@
 
 
       // ------------------ References -------------------- // 
-      var namebox = document.getElementById("Namebox")
-      var rollbox = document.getElementById("Rollbox")
-      var secbox = document.getElementById("Secbox")
-      var genbox = document.getElementById("Genbox")
+      var deckTitle = document.getElementById("DeckTitle")
+      var frontSide = document.getElementById("FrontSide")
+      var backSide = document.getElementById("BackSide")
+      var cardCode = document.getElementById("CardCode")
+      var dateTime = document.getElementById("DateTime")
 
 
       var insBtn = document.getElementById("Insbtn")
@@ -71,17 +138,29 @@
       var updBtn = document.getElementById("Updbtn")
       var delBtn = document.getElementById("Delbtn")
 
+      var cell_A1 = document.getElementById("A1")
+      var cell_A2 = document.getElementById("A2")
+      var cell_A3 = document.getElementById("A3")
+      var cell_A4 = document.getElementById("A4")
+
+      var cellB1 = document.getElementById("B1")
+      var cellB2 = document.getElementById("B2")
+      var cellB3 = document.getElementById("B3")
+      var cellB4 = document.getElementById("B4")
+
+
       console.log(insBtn.value)
 
 
       // ------------------ Insert Data -------------------- // 
 
       function InsertData(){
-         set(ref(db, "TheStudents/" + rollbox.value), {
-            NameofStd: namebox.value,
-            RollNo: rollbox.value,
-            Section: secbox.value,
-            Gender: genbox.value,
+         set(ref(db, "TheTestDeck/" + cardCode.value), {
+            TitleOfDeck: deckTitle.value,
+            FrontSide: frontSide.value,
+            BackSide: backSide.value,
+            CardCode: cardCode.value,
+            DateAndTime: dateTime.value,
          })
          .then(() => {
             alert("data stored succesffuly")
@@ -98,11 +177,12 @@
       function SelectData() {
          const dbref = ref(db)
 
-         get(child(dbref, "TheStudents/" + rollbox.value)).then((snapshot) => {
+         get(child(dbref, "TheTestDeck/" + cardCode.value)).then((snapshot) => {
             if(snapshot.exists()) {
-               namebox.value = snapshot.val().NameofStd
-               secbox.value = snapshot.val().Section
-               genbox.value = snapshot.val().Gender
+               deckTitle.value = snapshot.val().TitleOfDeck
+               frontSide.value = snapshot.val().FrontSide
+               backSide.value = snapshot.val().BackSide
+               dateTime.value = snapshot.val().DateAndTime
             }
 
             else {
@@ -118,10 +198,11 @@
       // ------------------ Update Data -------------------- // 
 
       function UpdateData() {
-         update(ref(db, "TheStudents/" + rollbox.value), {
-            NameofStd: namebox.value,
-            Section: secbox.value,
-            Gender: genbox.value,
+         update(ref(db, "TheTestDeck/" + cardCode.value), {
+            TitleOfDeck: deckTitle.value,
+            FrontSide: frontSide.value,
+            BackSide: backSide.value,
+            DateAndTime: dateTime.value,
          })
          .then(() => {
             alert("data updated succesffuly")
@@ -136,7 +217,7 @@
       // ------------------ Delete Data -------------------- // 
 
       function DeleteData() {
-         remove(ref(db, "TheStudents/" + rollbox.value))
+         remove(ref(db, "TheTestDeck/" + cardCode.value))
          .then(() => {
             alert("data deleted succesffuly")
          })
