@@ -1747,348 +1747,76 @@
 
 				// )
 
-				function makeFormDatabaseTable3x5(
-					componentID, 
+				function makeDatabaseFormWithTable2x2(
 					x, y, z, ry,
-					DatabaseFormDataTitle,
-					databaseLabelA, 
-					databaseLabelB, 
-					databaseLabelC, 
-					inputA, inputB, inputC,
-					// DatabaseTableTitle,
-					// DBth01, DBth02, DBth03, DBth04, DBth05,
-					// DBtdA1, DBtdA2, DBtdA3, DBtdA4, DBtdA5,
-					// DBtdB1, DBtdB2, DBtdB3, DBtdB4, DBtdB5,
-					// DBtdC1, DBtdC2, DBtdC3, DBtdC4, DBtdC5,
-					// dbTdD1, dbTdD2, dbTdD3, dbTdD4, dbTdD5,
-					// dbTdE1, dbTdE2, dbTdE3, dbTdE4, dbTdE5,
-					
+					rootDiv_id,
+					DatabaseFormComponent_id,
+					DatabaseFormTitle_id,
+					DatabaseForm_id, 
+					FormTitleDataLabel_id, FormTitleData_id, 
+
+
+
+
 				) {
-
-
-
-					// |- # Root Div ##################################################
-					const databaseFormRootDiv = document.createElement('div')
-					databaseFormRootDiv.id = "DatabseFormDiv_root"
-
-					// |- ## Form Div =================================================
+					
+					// |- # Root Div #################################
 					const databaseFormDiv = document.createElement('div')
-					databaseFormDiv.id = "DatabaseFormDiv"
-					databaseFormRootDiv.appendChild(databaseFormDiv)
+					databaseFormDiv.id = rootDiv_id
 
+					// |- ## Form Div ================================================
+					const databaseFormComponent = document.createElement('div')
+					databaseFormComponent.id = DatabaseFormComponent_id
 
-					// |- ### Form Component
-					const databaseFormDataTitle = document.createElement('h1')
-					databaseFormDataTitle.id = "DatabaseFormDataTitle"
-					databaseFormDataTitle.className = 'databaseFormDataTitle'
-					databaseFormDataTitle.textContent = title
-					databaseFormDiv.appendChild(databaseFormDataTitle)
+					const databaseFormTitle = document.createElement('h1')
+					databaseFormTitle.id = DatabaseFormTitle_id
+					databaseFormTitle.setAttribute('type', "text")
+					databaseFormComponent.appendChild(databaseFormTitle)
 
-					// Root :: FormData :: container
-					const databaseFormDataBox = document.createElement('form')
-					databaseFormDataBox.id = "DatabaseFormDataBox"
-					databaseFormDataBox.className = 'databaseFormDataBox'
-					databaseFormDiv.appendChild(databaseFormDataBox)
+					const breakLineA01 = document.createElement('hr')
 
-					const break00 = document.createElement('br')
-					databaseFormDiv.appendChild(br00)
+					// |- ## Form Component
+					const databaseForm = document.createElement('form')
+					databaseForm.id = DatabaseForm_id
+					databaseFormComponent.appendChild(databaseForm)
 
+					// ----
 
+					// |- ### Data Label for Title = FormTitleData 
+					const formTitleDataLabel = document.createElement('label')
+					formTitleDataLabel.id = FormTitleDataLabel_id
+					databaseForm.appendChild(formTitleDataLabel)
 
-					// Children :: Label A :: ----------------------------------------------
-					const databaseLabelA = document.createElement('label')
-					databaseLabelA.id = "DatabaseLabelA"
-					databaseLabelA.className = databaseLabelA_ClassName
-					databaseLabelA.setAttribute('for', "fName")
-					// databaseLabelA.textContent = ""
-					databaseFormDiv.appendChild(databaseLabelA)
+					// |- ### formTitleData - Data input
+					const formTitleData = document.createElement('input')
+					formTitleData.id = FormTitleData_id
+					databaseForm.appendChild(formTitleData)
 
-					const break01 = document.createElement('br')
-					databaseFormDiv.appendChild(break01)
+					// ----
 
-					const databaseInputA = document.createElement('input')
-					databaseInputA.id = databaseInputA_id
-					databaseInputA.setAttribute('type', "text")
-					databaseInputA.setAttribute('name', "fName")
-					databaseInputA.setAttribute('value', databaseInputA_data)
-					databaseInputA.setAttribute('size', 100)
-					databaseFormDiv.appendChild(databaseInputA)
 
+					const breakLineA02 = document.createElement('hr')
 
-					const break02 = document.createElement('br')
-					databaseFormDiv.appendChild(break02)
 
+					// ----
 
-					// Children :: Label B :: ----------------------------------------------
-					const databaseLabelB = document.createElement('label')
-					databaseLabelB.className = databaseLabelB_ClassName
-					databaseLabelB.setAttribute('for', "fName")
-					databaseLabelB.textContent = databaseLabelB_ClassContent
-					databaseFormDiv.appendChild(databaseLabelB)
 
-					const break03 = document.createElement('br')
-					databaseFormDiv.appendChild(break03)
 
-					const databaseInputB = document.createElement('input')
-					databaseInputB.id = databaseInputB_id
-					databaseInputB.setAttribute('type', "text")
-					databaseInputB.setAttribute('name', "fName")
-					databaseInputB.setAttribute('value', databaseInputB_data)
-					databaseInputB.setAttribute('size', 100)
-					databaseFormDiv.appendChild(databaseInputB)
 
 
-					const break04 = document.createElement('br')
-					databaseFormDiv.appendChild(break04)
-
-
-					// Children :: Label C :: ----------------------------------------------
-					const databaseLabelC = document.createElement('label')
-					databaseLabelC.className = databaseLabelC_ClassName
-					databaseLabelC.setAttribute('for', "fName")
-					databaseLabelC.textContent = databaseLabelC_ClassContent
-					databaseFormDiv.appendChild(databaseLabelC)
-
-					const break05 = document.createElement('br')
-					databaseFormDiv.appendChild(break05)
-
-					const databaseInputC = document.createElement('input')
-					databaseInputC.id = databaseInputC_id
-					databaseInputC.setAttribute('type', "text")
-					databaseInputC.setAttribute('name', "fName")
-					databaseInputC.setAttribute('value', databaseInputC_data)
-
-					databaseFormDiv.appendChild(databaseInputC)
-
-					const break06 = document.createElement('br')
-					databaseFormDiv.appendChild(break06)
-
-
-					// Children :: Label D :: 
-
-					const databaseLabelD = document.createElement('label')
-					databaseLabelD.className = databaseLabelD_ClassName
-					databaseLabelD.setAttribute('for', "fName")
-					databaseLabelD.textContent = databaseLabelD_ClassContent
-					databaseFormDiv.appendChild(databaseLabelD)
-
-					const break07 = document.createElement('br')
-					databaseFormDiv.appendChild(break07)
-
-					const databaseInputD = document.createElement('input')
-					databaseInputD.id = databaseInputD_id
-					databaseInputD.setAttribute('type', "text")
-					databaseInputD.setAttribute('name', "fName")
-					databaseInputD.setAttribute('value', databaseInputD_data)
-
-					databaseFormDiv.appendChild(databaseInputD)
-
-					const break08 = document.createElement('br')
-					databaseFormDiv.appendChild(break08)
-
-
-					// ----------- database Form Buttons ------------ // 
-
-					// Button for Insertions
-					const databaseInputButton_insert = document.createElement('input')
-					databaseInputButton_insert.id = buttonInsert_id,
-					databaseInputButton_insert.setAttribute('type', "submit")
-					databaseInputButton_insert.setAttribute('value', "Insert")
-					databaseInputButton_insert.addEventListener('click', () => {
-						alert("Check to see if information has been submitted")
-
-						var userInputA, userInputB, userInputC, userInputD
-
-
-						function Ready() {
-							userInputA = document.getElementById(databaseInputA_id).value
-							userdatabaseInputB = document.getElementById(databaseInputB_id).value
-							userdatabaseInputC = document.getElementById(databaseInputC_id).value
-							userdatabaseInputD = document.getElementById(databaseInputD_id).value
-						}
-
-						set(ref(db, "TheTestDeck/" + cardCode.value), {
-							TitleOfDeck: userInputA.value,
-							FrontSide: userInputB.value,
-							BackSide: userInputC.value,
-							CardCode: userInputD.value,
-							
-						})
-						.then(() => {
-							alert("data stored succesffuly")
-						})
-						.catch((error) => {
-							alert("unsuccessful, error" + error)
-							console.log(Error)
-						})
-
-						
-						
-					})
-
-					// Push to formData
-					formDataDiv.appendChild(databaseInputButton_insert)
-
-
-
-					// // |- ## Table Div ================================================
-					// const databaseTableDiv = document.createElement('div')
-					// databaseTableDiv.id = "DatabaseFormTableDiv"
-					// databaseFormRootDiv.appendChild(databaseTableDiv)
-
-					// const databaseTableTitle = document.createElement('h1')
-					// databaseTableTitle.id = DatabaseTableTitle
-					// databaseTableTitle.className = 'databaseTableTitle'
-					// databaseTableTitle.textContent = databaseTableTitle
-					// databaseTableDiv.appendChild(databaseTableTitle)
-
-					// const databaseTableComponent = document.createElement('table')
-					// tableDiv.className = 'databaseTableComponent'
-					// databaseTableDiv.appendChild(databaseTableComponent)
-
-
-					// // |- ### Table Headers -------------------------------------------
-
-					// const databaseTableHeaderRow = document.createElement('tr')
-					// databaseTableHeaderRow.id = "DatabaseTableHeaderRow"
-					// databaseTableHeaderRow.className = 'databaseTableHeaderRow'
-					// databaseTableComponent.appendChild(databaseTableHeaderRow)
-
-					// const databaseTableHeader01 = document.createElement('th')
-					// databaseTableTableHeader01.id = "DBth01"
-					// databaseTableHeader01.className = 'databaseTableHeader01'
-					// databaseTableHeaderRow.appendChild(databaseTableHeader01)
-
-					// const databaseTableHeader02 = document.createElement('th')
-					// databaseTableTableHeader02.id = "DBth02"
-					// databaseTableHeader02.className = 'databaseTableHeader02'
-					// databaseTableHeaderRow.appendChild(databaseTableHeader02)
-
-					// const databaseTableHeader03 = document.createElement('th')
-					// databaseTableHeader03.id = "DBth03"
-					// databaseTableHeader03.className = 'databaseTableHeader03'
-					// databaseTableHeaderRow.appendChild(databaseTableHeader03)
-
-					// const databaseTableHeader04 = document.createElement('th')
-					// databaseTableHeader04.id = "DBth04"
-					// databaseTableHeader04.className = 'databaseTableHeader04'
-					// databaseTableHeaderRow.appendChild(databaseTableHeader04)
-					
-					// const databaseTableHeader05 = document.createElement('th')
-					// databaseTableHeader05.id = "DBth05"
-					// databaseTableHeader05.className = 'databaseTableHeader05'
-					// databaseTableHeaderRow.appendChild(databaseTableHeader05)
-
-					// // |- ### Table Row A ---------------------------------------------
-
-					// const databaseTableRowA = document.createElement('tr')
-					// databaseTableRowA.id = "DatabaseTableRowA"
-					// databaseTableRowA.className = 'databaseTableRowA'
-					// databaseTableComponent.appendChild(databaseTableRowA)
-
-					// const databaseTableDataA01 = document.createElement('td')
-					// databaseTableDataA01.id = "DBtdA1"
-					// databaseTableDataA01.className = 'databaseTableDataA01'
-					// databaseTableRowA.appendChild(databaseTableDataA01)
-
-					// const databaseTableDataA02 = document.createElement('td')
-					// databaseTableDataA02.id = "DBtdA2"
-					// databaseTableDataA02.className = 'databaseTableDataA02'
-					// databaseTableRowA.appendChild(databaseTableDataA02)
-
-					// const databaseTableDataA03 = document.createElement('td')
-					// databaseTableDataA03.id = "DBtdA3"
-					// databaseTableDataA03.className = 'databaseTableDataA03'
-					// databaseTableRowA.appendChild(databaseTableDataA03)
-
-					// const databaseTableDataA04 = document.createElement('td')
-					// databaseTableDataA04.id = "DBtdA4"
-					// databaseTableDataA04.className = 'databaseTableDataA04'
-					// databaseTableRowA.appendChild(databaseTableDataA04)
-
-					// const databaseTableDataA05 = document.createElement('td')
-					// databaseTableDataA05.id = "DBtdA5"
-					// databaseTableDataA05.className = 'databaseTableDataA05'
-					// databaseTableRowA.appendChild(databaseTableDataA05)
-
-
-					// // |- ### Table Row B ---------------------------------------------
-
-					// const databaseTableRowB = document.createElement('tr')
-					// databaseTableRowB.id = "DatabaseTableRowB"
-					// databaseTableRowB.className = 'databaseTableRowB'
-					// databaseTableComponent.appendChild(databaseTableRowB)
-
-					// const databaseTableDataB01 = document.createElement('td')
-					// databaseTableDataB01.id = "DBtdB1"
-					// databaseTableDataB01.className = 'databaseTableDataB01'
-					// databaseTableRowB.appendChild(databaseTableDataB01)
-
-					// const databaseTableDataB02 = document.createElement('td')
-					// databaseTableDataB02.id = "DBtdB2"
-					// databaseTableDataB02.className = 'databaseTableDataB02'
-					// databaseTableRowB.appendChild(databaseTableDataB02)
-
-					// const databaseTableDataB03 = document.createElement('td')
-					// databaseTableDataB03.id = "DBtdB3"
-					// databaseTableDataB03.className = 'databaseTableDataB03'
-					// databaseTableRowB.appendChild(databaseTableDataB03)
-
-					// const databaseTableDataB04 = document.createElement('td')
-					// databaseTableDataB04.id = "DBtdB4"
-					// databaseTableDataB04.className = 'databaseTableDataB04'
-					// databaseTableRowB.appendChild(databaseTableDataB04)
-
-					// const databaseTableDataB05 = document.createElement('td')
-					// databaseTableDataB05.id = "DBtdB5"
-					// databaseTableDataB05.className = 'databaseTableDataB05'
-					// databaseTableRowB.appendChild(databaseTableDataB05)
-
-
-					// // |- ### Table Row C ---------------------------------------------
-
-					// const databaseTableRowC = document.createElement('tr')
-					// databaseTableRowC.id = "DatabaseTableRowC"
-					// databaseTableRowC.className = 'databaseTableRowC'
-					// databaseTableComponent.appendChild(databaseTableRowC)
-
-					// const databaseTableDataC01 = document.createElement('td')
-					// databaseTableDataC01.id = "DBtdC1"
-					// databaseTableDataC01.className = 'databaseTableDataC01'
-					// databaseTableRowC.appendChild(databaseTableDataC01)
-
-					// const databaseTableDataC02 = document.createElement('td')
-					// databaseTableDataC02.id = "DBtdC2"
-					// databaseTableDataC02.className = 'databaseTableDataC02'
-					// databaseTableRowC.appendChild(databaseTableDataC02)
-
-					// const databaseTableDataC03 = document.createElement('td')
-					// databaseTableDataC03.id = "DBtdC3"
-					// databaseTableDataC03.className = 'databaseTableDataC03'
-					// databaseTableRowC.appendChild(databaseTableDataC03)
-
-					// const databaseTableDataC04 = document.createElement('td')
-					// databaseTableDataC04.id = "DBtdC4"
-					// databaseTableDataC04.className = 'databaseTableDataC04'
-					// databaseTableRowC.appendChild(databaseTableDataC04)
-
-					// const databaseTableDataC05 = document.createElement('td')
-					// databaseTableDataC05.id = "DBtdC5"
-					// databaseTableDataC05.className = 'databaseTableDataC05'
-					// databaseTableRowC.appendChild(databaseTableDataC05)
-
-					
-
-
-					const databaseiWindowFormData = new CSS3DObject(databaseFormRootDiv)
+					// Pushing Function Out
+					const databaseiWindowFormData = new CSS3DObject(databaseFormDiv)
 					databaseiWindowFormData.position.set(x, y, z)
 					databaseiWindowFormData.rotation.y = ry
 
 					return databaseiWindowFormData
 
 
-
 				}
+
+
+
+
 
 
 				function makeFormWithDatabase(
@@ -4524,8 +4252,6 @@
 					400, 0, 0, -0.2,
 				))
 
-
-
 				// const buttonAlert = document.getElementById('alertButton')
 			 	// buttonAlert.addEventListener('click', function() {
 				//  		alert('Welcome, you are successful... Hello World')
@@ -4537,17 +4263,20 @@
 				scene.add(formTest)
 
 
-				const databaseFormTable = new THREE.Group()
-				databaseFormTable.position.set(0, 0, 200)
+				const databaseFormWithTableRoot = new THREE.Group()
+				databaseFormWithTableRoot.position.set(0, 0, -250)
 
-				databaseFormTable.add( new makeFormDatabaseTable3x5(
-					"tableTest01",
+				databaseFormWithTableRoot.add( new makeDatabaseFormWithTable2x2(
 					0, 0, 0, 0,
-					"TableTestForm01",
-					"labelA", "labelB", "labelC", "labelD"
+					"FirstDatabaseForm",
+					"FormTest",
+					"Deck Test",
+					"DeckForm01",
+					"DeckTestLabel", 'DeckTestData',
 				))
 
-				scene.add(databaseFormTable)
+				// Final Commit 
+				scene.add(databaseFormWithTableRoot)
 				
 
 				// backgroundTest = makeElementObject('div', 400, 400)
