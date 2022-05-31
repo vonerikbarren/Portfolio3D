@@ -5,9 +5,45 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="./assets/css/main.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Quantico&display=swap" rel="stylesheet">
+
 		<style>
-			.lil-gui {
+			/* .lil-gui {
 				z-index: 2000;
+			} */
+
+			/* h1.a {
+			font-family: "Audiowide", sans-serif;
+			}
+
+			h1.b {
+			font-family: "Sofia", sans-serif;
+			}
+
+			h1.c {
+			font-family: "Trirong", serif;
+			} */
+
+			@font-face {
+				font-family: "Quantico";
+				src: url("./assets/fonts/Quantico-Regular.ttf") format(woff2);
+
+				src: url("./assets/fonts/Quantico-Bold.ttf") format(woff2);
+
+				src: url("./assets/fonts/Quantico-Italic.ttf") format(woff2);
+
+				src: url("./assets/fonts/Quantico-BoldItalic.ttf") format(woff2);
+
+				font-weight: 400;
+				font-style: normal;
+			}
+			
+			body {
+				font-family: Georgia, sans-serif;
+				font-family: "Quantico", sans-serif;
 			}
 
 			#blocker {
@@ -66,7 +102,7 @@
 		}
 	}
 
-		#menu {
+		/* #menu {
 			position: absolute;
 			bottom: 500px;
          left: 10px;
@@ -75,7 +111,7 @@
          padding: 20px;
          border: 1px solid rgba(0, 255, 179, 0.95);
          box-shadow: 1px 1px 2px rgba(0, 255, 179);
-		}
+		} */
 
 		
 
@@ -115,7 +151,7 @@
 			height: 360px;
 			box-shadow: 0px 0px 12px rgba(0, 255, 187, 0.87);
 			border: 1px solid rgba(0, 238, 255, 0.25);
-   background-color: rgba(0, 255, 187, 0.87);
+   		background-color: rgba(0, 255, 187, 0.87);
 			font-family: Helvetica, sans-serif;
 			text-align: center;
 			line-height: normal;
@@ -316,9 +352,209 @@
 		}
 
 
+		/* CSS GRID AKA MAIN MENU */
+		.grid-container {
+			display: grid;
+			grid-template-columns: 550px auto 550px;
+			grid-template-rows: 100px 300px 300px 350px 120px;
+			background-color: #a500fe79;
+			padding: 10px;
+			height: 100%
 
-	
+		}
+		.grid-item {
+			/* background-color: rgba(0, 255, 187, 0.27);
+			border: 2.5px groove  rgba(0, 255, 187, 0.87); */
+			background-color: rgba(174, 0, 255, 0.27);
+			border: 2.5px groove  rgba(195, 0, 255, 0.87);
+			padding: 20px;
+			font-size: 30px;
+			text-align: center;
+ 		}
 
+
+		 * {box-sizing:border-box}
+
+		/* Slideshow container */
+		.slideshow-container {
+		max-width: 1000px;
+		position: relative;
+		margin: auto;
+		}
+
+		/* Hide the images by default */
+		.mySlides {
+		display: none;
+		}
+
+		/* Next & previous buttons */
+		.prev, .next {
+		cursor: pointer;
+		position: absolute;
+		top: 50%;
+		width: auto;
+		margin-top: -22px;
+		padding: 16px;
+		color: white;
+		font-weight: bold;
+		font-size: 18px;
+		transition: 0.6s ease;
+		border-radius: 0 3px 3px 0;
+		user-select: none;
+		}
+
+		/* Position the "next button" to the right */
+		.next {
+		right: 0;
+		border-radius: 3px 0 0 3px;
+		}
+
+		/* On hover, add a black background color with a little bit see-through */
+		.prev:hover, .next:hover {
+		background-color: rgba(0,0,0,0.8);
+		}
+
+		/* Caption text */
+		.text {
+		color: #f2f2f2;
+		font-size: 15px;
+		padding: 8px 12px;
+		position: absolute;
+		bottom: 8px;
+		width: 100%;
+		text-align: center;
+		}
+
+		/* Number text (1/3 etc) */
+		.numbertext {
+		color: #f2f2f2;
+		font-size: 12px;
+		padding: 8px 12px;
+		position: absolute;
+		top: 0;
+		}
+
+		/* The dots/bullets/indicators */
+		.dot {
+		cursor: pointer;
+		height: 15px;
+		width: 15px;
+		margin: 0 2px;
+		background-color: #bbb;
+		border-radius: 50%;
+		display: inline-block;
+		transition: background-color 0.6s ease;
+		}
+
+		.active, .dot:hover {
+		background-color: #717171;
+		}
+
+		/* Fading animation */
+		.fade {
+		animation-name: fade;
+		animation-duration: 1.5s;
+		}
+
+		@keyframes fade {
+		from {opacity: .4}
+		to {opacity: 1}
+		}
+
+		/* ------------------------- */
+		/* side Nav */
+		/* ------------------------- */
+		.sidenav {
+		height: 100%;
+		width: 0;
+		position: fixed;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		background-color:  rgba(0, 64, 47, 0.65);
+		overflow-x: hidden;
+		transition: 0.5s;
+		padding-top: 60px;
+		}
+
+		.sidenav a {
+		padding: 8px 8px 8px 32px;
+		text-decoration: none;
+		font-size: 25px;
+		color: #818181;
+		display: block;
+		transition: 0.3s;
+		}
+
+		.sidenav a:hover {
+		color: #00ff9d;
+		}
+
+		.sidenav .closebtn {
+		position: absolute;
+		top: 0;
+		right: 25px;
+		font-size: 36px;
+		margin-left: 50px;
+		}
+
+		#main {
+		transition: margin-left .5s;
+		padding: 16px;
+		}
+
+		@media screen and (max-height: 450px) {
+		.sidenav {padding-top: 15px;}
+		.sidenav a {font-size: 18px;}
+		}
+
+
+		/* ------------------------- */
+		/* side Nav Right */
+		/* ------------------------- */
+		.sidenavRight {
+		height: 100%;
+		width: 0;
+		position: fixed;
+		z-index: 1;
+		top: 0;
+		right: 0;
+		background-color:  rgba(0, 64, 47, 0.65);
+		overflow-x: hidden;
+		transition: 0.5s;
+		padding-top: 60px;
+		}
+
+		.sidenavRight a {
+		padding: 8px 8px 8px 32px;
+		text-decoration: none;
+		font-size: 25px;
+		color: #818181;
+		display: block;
+		transition: 0.3s;
+		}
+
+		.sidenavRight a:hover {
+		color: #00ff9d;
+		}
+
+		.sidenavRight .closebtn {
+		position: absolute;
+		top: 0;
+		left: 25px;
+		font-size: 36px;
+		margin-left: 50px;
+		}
+
+		#mainRight {
+		transition: margin-right .5s;
+		padding: 16px;
+		}
+
+		@media screen and (max-height: 450px) {
+		.sidenavRight {padding-top: 15px;}
+		.sidenavRight a {font-size: 18px;}
+		}
  
   
 
@@ -326,94 +562,176 @@
 	</head>
 	<body>
 		<div id="blocker">
-			<div id="VideoContainer" class="videoContainer">
-				<h2>Video Drawer</h2>
-
-				<!-- IntroductionVideo -->
-				<video id="video" class="myVideo01" playsinline muted controls webkit-playsinline  autoplay loop width="320" height="240" src="./assets/video/FastHands03.mp4" style="border: 5px 5px black;"></video>
-
-				<!-- VideoDomain01: whiteHexes -->
-				<video id="video02" class="myVideo02" playsinline controls webkit-playsinline  autoplay loop width="320" height="240" src="./assets/video/whiteHexBg02.mp4"border: 5px 5px black;"></video>
-
-				<!-- VideoDomain02: Unknown -->
-				<video id="video03" class="myVideo03" playsinline controls webkit-playsinline  autoplay loop width="320" height="240" src="./assets/video/ColorfulData02.mp4"border: 5px 5px black;"></video>
 
 
-				<!-- VideoDomain03: Unknown -->
-				<video id="video04" class="myVideo04" playsinline controls webkit-playsinline  autoplay loop width="320" height="240" src="./assets/video/TreesAndSunrays.mp4"border: 5px 5px black;"></video>
+
+			<div class="grid-container">
+
+				<!-- Cell #1 -->
+				<div class="grid-item">
+					<!-- [ Side Nav ] -->
+					<div id="mySidenav" class="sidenav">
+						<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+						<!-- <a href="#">About</a>
+						<a href="#">Services</a>
+						<a href="#">Clients</a>
+						<a href="#">Contact</a> -->
+
+						<div id="VideoContainer" class="videoContainer">
+							<h2>Tool Drawer</h2>
+							<div id="sideDrawButtonToggles">
+								<button id="table2" onclick="byeVideo()">Video Manager</button><br/>
+							</div>
+			
+							<!-- IntroductionVideo -->
+							<video id="video" class="myVideo01" playsinline muted controls webkit-playsinline  autoplay loop width="320" height="240" src="./assets/video/FastHands03.mp4" style="border: 5px 5px black;"></video>
+			
+							<!-- VideoDomain01: whiteHexes -->
+							<video id="video02" class="myVideo02" playsinline controls webkit-playsinline  autoplay loop width="320" height="240" src="./assets/video/whiteHexBg02.mp4"border: 5px 5px black;"></video>
+			
+							<!-- VideoDomain02: Unknown -->
+							<video id="video03" class="myVideo03" playsinline controls webkit-playsinline loop width="320" height="240" src="./assets/video/ColorfulData02.mp4"border: 5px 5px black;"></video>
+			
+			
+							<!-- VideoDomain03: Unknown -->
+							<video id="video04" class="myVideo04" playsinline controls webkit-playsinline loop width="320" height="240" src="./assets/video/TreesAndSunrays.mp4"border: 5px 5px black;"></video>
+			
+			
+							<!-- VideoDomain03: Unknown -->
+							<video id="video05" class="myVideo05" playsinline controls webkit-playsinline loop width="320" height="240" src="./assets/video/TechTunnel01.mp4"border: 5px 5px black;"></video>
+			
+						</div>
+					 </div>
+					 
+					 <div id="main">
+						<!-- <h3>Left  <hr> Drawer</h3> -->
+						<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Left Drawer</span>
+					 </div>
+				</div>
+
+				<!-- Cell #2 -->
+				<div class="grid-item">2</div>
+
+				<!-- Cell 3 -->
+				<div class="grid-item">
+					<div id="mySidenavRight" class="sidenavRight">
+						<a href="javascript:void(0)" class="closebtnRight" onclick="closeNavRight()">&times;</a>
+						<!-- <a href="#">About</a>
+						<a href="#">Services</a>
+						<a href="#">Clients</a>
+						<a href="#">Contact</a> -->
+
+						<div id="VideoContainer" class="videoContainer">
+							<h2>Tool Drawer</h2>
+							<div id="sideDrawButtonToggles">
+								<button id="table">TABLE</button>
+								<button id="sphere">SPHERE</button>
+								<button id="helix">HELIX</button>
+								<button id="grid">GRID</button>
+								
+							</div>
+			
+
+			
+						</div>
+					 </div>
+					 
+					 <div id="mainRight">
+						<!-- <h2>Side-Menu</h2> -->
+						<span style="font-size:30px;cursor:pointer" onclick="openNavRight()">&#9776; Right Drawer </span>
+					 </div>
+				</div>
+				
+
+				<!-- Cell #4 -->
+				<div class="grid-item">
+					4
+				</div>
+
+				<!-- Cell #5 -->
+				<div class="grid-item">
+
+				</div>
+
+				<!-- Cell #6 -->
+				<div class="grid-item">
+					<!-- Slideshow container -->
+					<div class="slideshow-container">
+
+						<!-- Full-width images with number and caption text -->
+						<div class="mySlides fade">
+						<div class="numbertext">1 / 3</div>
+						<img src="./assets/img/backgrounds/Grids/Grid01.jpg" style="width:100%">
+						<div class="text">Caption Text</div>
+						</div>
+					
+						<div class="mySlides fade">
+						<div class="numbertext">2 / 3</div>
+						<img src="./assets/img/backgrounds/Grids/Grid01.jpg" style="width:100%">
+						<div class="text">Caption Two</div>
+						</div>
+					
+						<div class="mySlides fade">
+						<div class="numbertext">3 / 3</div>
+						<img src="./assets/img/backgrounds/Grids/Grid01.jpg" style="width:100%">
+						<div class="text">Caption Three</div>
+						</div>
+					
+						<!-- Next and previous buttons -->
+						<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+						<a class="next" onclick="plusSlides(1)">&#10095;</a>
+					</div>
+					<br>
+					
+					<!-- The dots/circles -->
+					<div style="text-align:center">
+						<span class="dot" onclick="currentSlide(1)"></span>
+						<span class="dot" onclick="currentSlide(2)"></span>
+						<span class="dot" onclick="currentSlide(3)"></span>
+ 					</div>
+				</div>  
+				
+				<div class="grid-item">7</div>
+				<div class="grid-item">
+					<div id="menu">
+
+					<!-- Instructions -->
+					<div id="instructions">
+						<p style="font-size:36px">
+							Click to Enter
+						</p>
+						<p>
+							Move: WASDF<br/>
+							Jump: SPACE<br/>
+							Look: MOUSE
+						</p>
+					</div>
+
+			 
+						<div id="timeChecker"></div>
+						<div id="positionChecker"></div>
+							 
+			 
+					 </div>
+				</div>
 
 
-				<!-- VideoDomain03: Unknown -->
-				<video id="video05" class="myVideo05" playsinline controls webkit-playsinline  autoplay loop width="320" height="240" src="./assets/video/TechTunnel01.mp4"border: 5px 5px black;"></video>
-
-			</div>
+				<div class="grid-item">9</div>
+				<div class="grid-item">10</div>
+				<div class="grid-item">11</div>
+				<div class="grid-item">12</div>  
+				<div class="grid-item">13</div>
+				<div class="grid-item">14</div>
+				<div class="grid-item">15</div>  
+			 </div>
+			</div>  
+			
 
       	<div	div id="container"></div>
 			<div id="containter2"></div>
 
-      <!-- Menu -->
-      <div id="menu">
-
-			
-
-
-
-        <button id="table">TABLE</button>
-        <button id="sphere">SPHERE</button>
-        <button id="helix">HELIX</button>
-        <button id="grid">GRID</button>
-        <button id="table2" onclick="byeVideo()">Video Manager</button><br/>
-
-		  <div id="timeChecker"></div>
-		  <div id="positionChecker"></div>
-				
-
-      </div>
-
-		
-
-      <form>
-        <input type="text" name="search" placeholder="Search..">
-      </form>
-
-
-		<div class="container_form">
-			<form action="action_page.php">
 		 
-			  <label for="fname">First Name</label>
-			  <input type="text" id="fname" name="firstname" placeholder="Your name..">
-		 
-			  <label for="lname">Last Name</label>
-			  <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-		 
-			  <label for="country">Country</label>
-			  <select id="country" name="country">
-				 <option value="australia">Australia</option>
-				 <option value="canada">Canada</option>
-				 <option value="usa">USA</option>
-			  </select>
-		 
-			  <label for="subject">Subject</label>
-			  <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-		 
-			  <input type="submit" value="Submit">
-		 
-			</form>
-		 </div>
 
-
-		 
-      <!-- Instructions -->
-			<div id="instructions">
-				<p style="font-size:36px">
-					Click to Enter
-				</p>
-				<p>
-					Move: WASDF<br/>
-					Jump: SPACE<br/>
-					Look: MOUSE
-				</p>
-			</div>
       <div id="formTest">
 
       </div>
@@ -436,6 +754,29 @@
 				videoElement04.classList.toggle("myVideo04")
 				videoElement05.classList.toggle("myVideo05")
 			}
+
+			function openNav() {
+			document.getElementById("mySidenav").style.width = "550px";
+			document.getElementById("main").style.marginLeft = "550px";
+			}
+
+			function closeNav() {
+			document.getElementById("mySidenav").style.width = "0";
+			document.getElementById("main").style.marginLeft= "0";
+			}
+
+
+			function openNavRight() {
+			document.getElementById("mySidenavRight").style.width = "550px";
+			document.getElementById("mainRight").style.marginRight = "550px";
+			}
+
+			function closeNavRight() {
+			document.getElementById("mySidenavRight").style.width = "0";
+			document.getElementById("mainRight").style.marginRight = "0";
+			}
+
+			
 		</script>
 
 		<!-- Firebase Libraries -->
@@ -603,6 +944,23 @@
 			'Og', 'Oganesson', '(294)', 18, 7
 		];
 
+			//...............................................................................................................................
+			//...................DDDDD............................l....................................iii...................................
+			//...000000.........DDDDDDDDD........................lll.............................tttt..iii...................................
+			//..00000000........DDDDDDDDDDD......................lll.............................tttt..iii...................................
+			//..00000000........DDDDDDDDDDD......................lll.............................tttt..iii...................................
+			//.0000..0000.......DDDD...DDDDD..eeeeee....ccccccc..lll...aaaaaaa..rrrrrr..aaaaaaa.attttt.iii...ooooooo...nnnnnnnnn..ssssssss...
+			//.0000..0000.......DDDD....DDDD.eeeeeeee..ccccccccc.lll..aaaaaaaa..rrrrrr.aaaaaaaa.attttt.iii..ooooooooo..nnnnnnnnn..ssssssss...
+			//.0000..0000.......DDDD....DDDDDeeeeeeeeeeccccccccc.lll.laaaaaaaaa.rrrrrrraaaaaaaaaattttt.iii.ioooooooooo.nnnnnnnnn.nsssssssss..
+			//.0000..00000-----.DDDD....DDDDDeee..eeeeeccc..cccc.lll.laaa.aaaaa.rrrr..raaa.aaaaa.tttt..iii.iooo...oooo.nnnn.nnnn.nsssssssss..
+			//.0000..00000-----.DDDD....DDDDDeeeeeeeeeeccc.......lll..aaaaaaaaa.rrr....aaaaaaaaa.tttt..iii.iooo...oooo.nnn...nnn..ssssssss...
+			//.0000..00000-----.DDDD...DDDDDDeeeeeeeeeeccc.......lll.laaaaaaaaa.rrr...raaaaaaaaa.tttt..iii.iooo...oooo.nnn...nnn..ssssssss...
+			//.0000..00000-----.DDDD...DDDD.Deee......eccc..cccc.lll.laaaa.aaaa.rrr...raaaa.aaaa.tttt..iii.iooo...oooo.nnn...nnn.nsssssssss..
+			//.0000000000.......DDDDDDDDDDD.Deeeeeeeeeeccccccccc.lll.laaa.aaaaa.rrr...raaa.aaaaa.tttt..iii.ioooooooooo.nnn...nnn.nssss.ssss..
+			//..00000000........DDDDDDDDDD..Deeeeeeee..cccccccc..lll.laaaaaaaaa.rrr...raaaaaaaaa.ttttt.iii..ooooooooo..nnn...nnn.nsssssssss..
+			//..0000000.........DDDDDDDDD....eeeeeeee..cccccccc..lll.laaaaaaaaa.rrr...raaaaaaaaa.ttttt.iii...ooooooo...nnn...nnn..ssssssss...
+			//....0000.........................eeee......cccc..........aaa..............aaa........ttt........ooooo................ssssss....
+			//...............................................................................................................................
 
 
 			// Initial Variable Declarations
@@ -1398,6 +1756,7 @@
 			let mesh_IcosahedronRealityA01
 			let mesh_OctahedronRealityA01
 			let mesh_TorusRealityA01
+			let mesh_TorusRealityA02
 			let mesh_TorusKnotRealityA01
 			
 
@@ -1465,7 +1824,26 @@
 			init();
 			animate();
 
-			// Function A = Init_Setup
+			//....................................................................
+			//......1111............-IIII..INNNN......NNNN..NIIII.IITTTTTTTTTTTT..
+			//.....11111............-IIII..INNNNN.....NNNN..NIIII.IITTTTTTTTTTTT..
+			//....111111............-IIII..INNNNNN....NNNN..NIIII.IITTTTTTTTTTTT..
+			//.111111111............-IIII..INNNNNN....NNNN..NIIII.IITTTTTTTTTTTT..
+			//.111111111............-IIII..INNNNNNN...NNNN..NIIII......TTTTT......
+			//.111111111............-IIII..INNNNNNN...NNNN..NIIII......TTTTT......
+			//.111111111............-IIII..INNNNNNNN..NNNN..NIIII......TTTTT......
+			//.....11111............-IIII..INNNNNNNN..NNNN..NIIII......TTTTT......
+			//.....11111............-IIII..INNNNNNNNN.NNNN..NIIII......TTTTT......
+			//.....11111...11------.-IIII..INNNNNNNNNNNNNN..NIIII......TTTTT......
+			//.....11111...11------.-IIII..INNNN.NNNNNNNNN..NIIII......TTTTT......
+			//.....11111...11------.-IIII..INNNN..NNNNNNNN..NIIII......TTTTT......
+			//.....11111...11------.-IIII..INNNN..NNNNNNNN..NIIII......TTTTT......
+			//.....11111............-IIII..INNNN...NNNNNNN..NIIII......TTTTT......
+			//.....11111............-IIII..INNNN...NNNNNNN..NIIII......TTTTT......
+			//.....11111............-IIII..INNNN....NNNNNN..NIIII......TTTTT......
+			//.....11111............-IIII..INNNN....NNNNNN..NIIII......TTTTT......
+			//.....11111............-IIII..INNNN.....NNNNN..NIIII......TTTTT......
+			//....................................................................
 			function init() {
 
 				const videoContainer = document.getElementById('VideoContainer')
@@ -1474,11 +1852,11 @@
 				// camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 9000000 );
 				// console.log(camera)
 
-				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 500000 );
+				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000000 );
 				console.log(camera)
 
 				// |- Camera - Base
-				camera.position.set(0, 0, 0);
+				camera.position.set(0, 0, 150);
 				
 
 				// |- Camera A little higher 
@@ -1497,7 +1875,7 @@
 				scene = new THREE.Scene();
 				root = new THREE.Object3D()
 				scene.background = new THREE.Color( 0xffffff );
-				// scene.fog = new THREE.Fog( 0xffffff, 0, 750 );
+				// scene.fog = new THREE.Fog( 0xffffff, 10000, 750 );
 
 				// Light Setup
 				const light = new THREE.HemisphereLight( 0xeeeeff, 0x777788, 0.75 );
@@ -1523,8 +1901,11 @@
 				const testImg10 = textureLoader.load('./assets/img/backgrounds/random/GreenTech01.jpg')
 
 				// Grids
+				const Grid13Purple = textureLoader.load('./assets/img/backgrounds/Grids/Grid13.jpeg')
 				const Grid19Black = textureLoader.load('./assets/img/backgrounds/Grids/Grid19_Black.jpg')
 				const Grid19White = textureLoader.load('./assets/img/backgrounds/Grids/Grid19_White.jpg')
+				// const Grid19White = textureLoader.load('./assets/img/backgrounds/Grids/Grid19_White.jpg')
+
 
 				// Info Graphs
 				const infograph01 = textureLoader.load('./assets/img/backgrounds/infoGraphs/Emissions_Infograph00.png')
@@ -1746,6 +2127,29 @@
 
 
 				// )
+
+				//........................................................................................................
+				//...............................................S...............S........................................
+				//.....22222.................CCCCCCCCC.......SSSSSSSSS.......SSSSSSSSS.......333333.....DDDDDDDDDDDD......
+				//...222222222..............CCCCCCCCCCC.....SSSSSSSSSSS.....SSSSSSSSSSS.....333333333...DDDDDDDDDDDDD.....
+				//..22222222222............CCCCCCCCCCCCC...SSSSSSSSSSSSS...SSSSSSSSSSSSS...33333333333..DDDDDDDDDDDDDD....
+				//..222222222222..........CCCCCCCCCCCCCCC..SSSSSSSSSSSSSS..SSSSSSSSSSSSSS.333333333333..DDDDDDDDDDDDDDD...
+				//..22222.222222.........CCCCCCC...CCCCCC.SSSSSS...SSSSSS.SSSSSS...SSSSSS.333333.33333..DDDDD....DDDDDD...
+				//.22222...22222.........CCCCCC.....CCCCC.SSSSS.....SSSSS.SSSSS.....SSSSS.33333..33333..DDDDD.....DDDDDD..
+				//.22222...22222.........CCCCC......CCCCC..SSSSSS..........SSSSSS.........3333...33333..DDDDD......DDDDD..
+				//.........22222.........CCCCC.............SSSSSSSSSS......SSSSSSSSSS.........33333333..DDDDD......DDDDD..
+				//........222222.........CCCCC.............SSSSSSSSSSSSS...SSSSSSSSSSSSS......3333333...DDDDD......DDDDD..
+				//......2222222.2-------.CCCCC..............SSSSSSSSSSSSS...SSSSSSSSSSSSS.....33333333..DDDDD......DDDDD..
+				//.....22222222.2-------.CCCCC................SSSSSSSSSSS.....SSSSSSSSSSS.....33333333..DDDDD......DDDDD..
+				//....2222222...2-------.CCCCC......CCCCC........SSSSSSSS........SSSSSSSS........333333.DDDDD......DDDDD..
+				//...2222222....2-------.CCCCC......CCCCC.SSSSS.....SSSSSSSSSSS.....SSSSSS3333....33333.DDDDD.....DDDDDD..
+				//..2222222..............CCCCCC....CCCCCC.SSSSS......SSSSSSSSSS......SSSSS33333...33333.DDDDD....DDDDDD...
+				//..222222222222..........CCCCCCCCCCCCCCC.SSSSSSS..SSSSSS.SSSSSSS..SSSSSS.33333..333333.DDDDDDDDDDDDDDD...
+				//..222222222222..........CCCCCCCCCCCCCC...SSSSSSSSSSSSSS..SSSSSSSSSSSSSS.333333333333..DDDDDDDDDDDDDD....
+				//.2222222222222...........CCCCCCCCCCCC....SSSSSSSSSSSSS...SSSSSSSSSSSSS...33333333333..DDDDDDDDDDDDDD....
+				//.2222222222222............CCCCCCCCCC......SSSSSSSSSSS.....SSSSSSSSSSS.....333333333...DDDDDDDDDDDD......
+				//............................CCCCCCC.........SSSSSSSS........SSSSSSSS........33333.......................
+				//........................................................................................................
 
 				function makeDatabaseFormWithTable2x2(
 					x, y, z, ry,
@@ -2430,6 +2834,8 @@
 
 				}
 
+
+
 				function importImage (
 					srcLink,
 					hrefLink,
@@ -2784,6 +3190,28 @@
         }
 
 
+			//.......................................................................................................
+			//.....33333..............EEEEEEEEEEEEE..................................................................
+			//...333333333............EEEEEEEEEEEEE............................................ttttt.................
+			//..33333333333...........EEEEEEEEEEEEE............................................ttttt.................
+			//..33333333333...........EEEEEEEEEEEEE............................................ttttt.................
+			//..33333.33333...........EEEE..........Evvvv....vvvvv....eeeee.....nnnn..nnnn.....ttttt.....ssssss......
+			//.33333...3333...........EEEE..........Evvvv....vvvvv..eeeeeeeee...nnnnnnnnnnnn.ntttttttt..sssssssss....
+			//.33333..33333...........EEEE..........Evvvv...vvvvvv.eeeeeeeeeee..nnnnnnnnnnnn.ntttttttt.sssssssssss...
+			//.....33333333...........EEEEEEEEEEEEE..vvvvv..vvvvv.eeeeeeeeeeee..nnnnnnnnnnnnnnttttttttssssssssssss...
+			//.....33333333...........EEEEEEEEEEEEE..vvvvv..vvvvv.eeeeee.eeeeee.nnnnnn.nnnnnn..ttttt..sssss..sssss...
+			//.....33333333.3-------..EEEEEEEEEEEEE..vvvvv..vvvv..eeeee...eeeee.nnnnn...nnnnn..ttttt..ssssssssssss...
+			//.....3333333333-------..EEEEEEEEEEEEE...vvvvvvvvvv..eeeeeeeeeeeee.nnnnn...nnnnn..ttttt..sssssssssss....
+			//........3333333-------..EEEE............vvvvvvvvvv..eeeeeeeeeeeee.nnnnn...nnnnn..ttttt...sssssssssss...
+			//.33333...333333-------..EEEE............vvvvvvvvv...eeeeeeeeeeeee.nnnnn...nnnnn..ttttt....sssssssssss..
+			//.33333...33333..........EEEE.............vvvvvvvv...eeeee...eeeee.nnnnn...nnnnn..ttttt..sssssssssssss..
+			//.333333.333333..........EEEEEEEEEEEEEE...vvvvvvvv...eeeeee.eeeeee.nnnnn...nnnnn..ttttt..sssss...sssss..
+			//..333333333333..........EEEEEEEEEEEEEE...vvvvvvv....eeeeeeeeeeeee.nnnnn...nnnnn..tttttttsssssssssssss..
+			//..33333333333...........EEEEEEEEEEEEEE....vvvvvv.....eeeeeeeeeee..nnnnn...nnnnn..ttttttt.sssssssssss...
+			//...333333333............EEEEEEEEEEEEEE....vvvvvv......eeeeeeeee...nnnnn...nnnnn...tttttt.sssssssssss...
+			//.....333333.............................................eeeee......................ttttt...sssssss.....
+			//.......................................................................................................
+
 
 
 				// Instructions Event Setup
@@ -2801,7 +3229,7 @@
 					instructions.style.display = '';
 					blocker.style.display = 'none';
 					instructions.style.cursor = 'default'
-					VideoContainer.style.zIndex = 1001;
+					// VideoContainer.style.zIndex = 1001;
 
 				});
 
@@ -2959,13 +3387,23 @@
 				scene.add( floor );
 
 
-
-
-				// ########################
-				// -----------------
-				// Geometries
-				// -----------------
-				// ########################
+				//......................................................................................................................
+				//......................GGGGG.................................................................iii.......................
+				//.....44444..........GGGGGGGGG..................................................tttt.........iii.......................
+				//.....44444.........GGGGGGGGGG..................................................tttt.........iii.......................
+				//....444444........GGGGGGGGGGGG.................................................tttt.........iii.......................
+				//...4444444........GGGG....GGGG...eeeeee....ooooooo...mmmmmmmmmmmmm....eeeeee..ettttt.rrrrrr.iii...eeeeee...ssssssss...
+				//...4444444.......-GGGG....GGGG..eeeeeeee..ooooooooo..mmmmmmmmmmmmmm..eeeeeeee.ettttt.rrrrrr.iii..eeeeeeee..ssssssss...
+				//..44444444.......-GGG...GGGGGG.Geeeeeeeeeeoooooooooo.mmmmmmmmmmmmmm.meeeeeeeeeettttt.rrrrrr.iii.ieeeeeeeeeesssssssss..
+				//.4444.4444.4------GGG...GGGGGG.Geee..eeeeeooo...oooo.mmmm.mmmm..mmm.meee..eeee.tttt..rrrr...iii.ieee..eeeeesssssssss..
+				//.4444.4444.4------GGG...GGGGGG.Geeeeeeeeeeooo...oooo.mmm..mmmm..mmm.meeeeeeeee.tttt..rrr....iii.ieeeeeeeee.ssssssss...
+				//.44444444444------GGGG..GGGGGG.Geeeeeeeeeeooo...oooo.mmm..mmmm..mmm.meeeeeeeee.tttt..rrr....iii.ieeeeeeeee.ssssssss...
+				//.44444444444-----.GGGG....GGGG.Geee......eooo...oooo.mmm..mmmm..mmm.meee.......tttt..rrr....iii.ieee......esssssssss..
+				//.4444444444.......GGGGGGGGGGGG.Geeeeeeeeeeoooooooooo.mmm..mmmm..mmm.meeeeeeeee.tttt..rrr....iii.ieeeeeeeeeessss.ssss..
+				//......4444.........GGGGGGGGGGG.Geeeeeeee..ooooooooo..mmm..mmmm..mmm.meeeeeeee..ttttt.rrr....iii.ieeeeeeee.esssssssss..
+				//......4444..........GGGGGGGGGG..eeeeeeee...ooooooo...mmm..mmmm..mmm..eeeeeeee..ttttt.rrr....iii..eeeeeeee..ssssssss...
+				//.....................GGGG.........eeee......ooooo......................eeee......ttt...............eeee.....ssssss....
+				//......................................................................................................................
 
 				sphereNotifierMatrix = new THREE.Group()
 				sphereNotifierMatrix.position.set(0, 100, -2700)
@@ -3018,7 +3456,7 @@
 				mesh_Tube01 = new THREE.Mesh(geo_Tube01, mat_Tube01);
 				mat_Tube01.transparent = false;
 				mat_Tube01.alphaMap = Grid19Black;
-				mesh_Tube01.position.set(0, 4026, 0);
+				mesh_Tube01.position.set(0, 5000000, 0);
 				// mesh_Tube01.rotateX( - Math.PI / 2 );
 				mesh_Tube01.scale.y = 90
 				scene.add(mesh_Tube01);
@@ -3031,7 +3469,8 @@
 				mesh_Torus01 = new THREE.Mesh(geo_Torus01, mat_Torus01);
 				mat_Torus01.transparent = false;
 				mat_Torus01.alphaMap = testImg05;
-				mesh_Torus01.position.set(-1000000, 40000, 0); // 9000 = floor w/o cut
+				// mesh_Torus01.position.set(-1000000, 40000, 0); // 9000 = floor w/o cut
+				mesh_Torus01.position.set(0, 5000000, 0); // 9000 = floor w/o cut
 				mesh_Torus01.rotateX( - Math.PI / 2 );
 				// mesh_Torus01.scale.y = 90
 				scene.add(mesh_Torus01);
@@ -3043,7 +3482,7 @@
 				// ###########################################################################################
 
 				tubes_Communication_root = new THREE.Group()
-				tubes_Communication_root.position.set(0, 20200, 0)
+				tubes_Communication_root.position.set(0, 5000000, 0)
 
 				// Left to Right Tube
 				const geo_CommunicationTubeLR = new THREE.BoxGeometry(75000, 500, 500, 64, 64, 64)
@@ -3116,7 +3555,27 @@
 
 
 				
-
+				//.........................................................................................................
+				//...5555555555.........-VVVV......VVVVVViiiii..........dddd...............ΔΔΔΔΔ............ΟΟΟΟΟΟΟΟ.......
+				//...5555555555.........-VVVVV.....VVVVV.iiiii..........dddd...............ΔΔΔΔΔΔ.........ΟΟΟΟΟΟΟΟΟΟΟ......
+				//..55555555555..........VVVVV.....VVVVV.iiiii..........dddd...............ΔΔΔΔΔΔ........ΟΟΟΟΟΟΟΟΟΟΟΟΟΟ....
+				//..55555555555..........VVVVV.....VVVVV.iiiii..........dddd..............ΔΔΔΔΔΔΔΔ.......ΟΟΟΟΟΟΟΟΟΟΟΟΟΟ....
+				//..55555555555..........VVVVVV...VVVVV..iiii......dddd.dddd..............ΔΔΔΔΔΔΔΔ......ΟΟΟΟΟΟΟ..ΟΟΟΟΟΟΟ...
+				//..5555..................VVVVV...VVVVV..iiiii...ddddddddddd..............ΔΔΔΔΔΔΔΔ......ΟΟΟΟΟ.....ΟΟΟΟΟΟ...
+				//..555555555.............VVVVV...VVVVV..iiiii..dddddddddddd.............ΔΔΔΔΔΔΔΔΔΔ....ΟΟΟΟΟΟ......ΟΟΟΟΟ...
+				//..5555555555............VVVVV..VVVVV...iiiii.idddddddddddd.............ΔΔΔΔΔΔΔΔΔΔ....ΟΟΟΟΟ.......ΟΟΟΟΟ...
+				//..55555555555............VVVVV.VVVVV...iiiii.idddddddddddd............ΔΔΔΔΔ.ΔΔΔΔΔ....ΟΟΟΟΟ.......ΟΟΟΟΟΟ..
+				//..5555555555555-------...VVVVV.VVVVV...iiiii.idddd...ddddd.d-------...ΔΔΔΔΔ..ΔΔΔΔΔ...ΟΟΟΟΟ........ΟΟΟΟΟ..
+				//..55555.5555555-------...VVVVV.VVVV....iiiii.idddd....dddd.d-------...ΔΔΔΔ...ΔΔΔΔΔ...ΟΟΟΟΟ.......ΟΟΟΟΟ...
+				//.........555555-------....VVVVVVVVV....iiiii.iddd.....dddd.d-------..ΔΔΔΔΔ....ΔΔΔΔΔ..ΟΟΟΟΟ.......ΟΟΟΟΟ...
+				//.........555555-------....VVVVVVVVV....iiiii.idddd...ddddd.d-------..ΔΔΔΔΔ....ΔΔΔΔΔ..ΟΟΟΟΟΟ......ΟΟΟΟΟ...
+				//.55555...55555............VVVVVVVV.....iiiii.idddd...ddddd..........ΔΔΔΔΔ.....ΔΔΔΔΔ...ΟΟΟΟΟΟ....ΟΟΟΟΟΟ...
+				//.555555.555555.............VVVVVVV.....iiiii.iddddd.dddddd..........ΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔ..ΟΟΟΟΟΟΟΟΟΟΟΟΟΟΟ....
+				//.555555555555..............VVVVVVV.....iiiii.idddddddddddd..........ΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔ...ΟΟΟΟΟΟΟΟΟΟΟΟΟΟ....
+				//..55555555555..............VVVVVV......iiiii..dddddddddddd.........-ΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔ..ΟΟΟΟΟΟΟΟΟΟΟΟΟ.....
+				//...555555555................VVVVV......iiiii...ddddddddddd.........-ΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔ....ΟΟΟΟΟΟΟΟΟΟ......
+				//....555555......................................ddddd......................................ΟΟΟΟΟΟ........
+				//.........................................................................................................
 
 
 				
@@ -3413,6 +3872,25 @@
 				mesh_toolkit_background.position.set(0, 200, 0);
 				mesh_toolkit_background.rotation.set(0, 0, 0);
 				TSC_LeftColumnA00.add(mesh_toolkit_background);
+
+
+				//..........................................................................................................
+				//...................LL.........HH......H.........iii........TTTTTTTTT.......................ll.............
+				//...666666.........LLLL.......HHHH...HHHH........iii.......TTTTTTTTTTT.....................olll............
+				//..66666666........LLLL.......HHHH...HHHH........iii.......TTTTTTTTTTT.....................olll............
+				//..666666666.......LLLL.......HHHH...HHHH........iii.......TTTTTTTTTTT.....................olll............
+				//.6666..6666.......LLLL.......HHHH...HHHH........iii...........TTTT....ooooooo....ooooooo..olll..sssssss...
+				//.66666666.........LLLL.......HHHHHHHHHHH........iii...........TTTT...ooooooooo..ooooooooo.olll.lssssssss..
+				//.666666666........LLLL.......HHHHHHHHHHH........iii...........TTTT..Tooooooooo.oooooooooo.olll.lssssssss..
+				//.66666666666-----.LLLL.......HHHHHHHHHHH.------.iii.------....TTTT..Tooo..ooooooooo..oooooolll.lssssssss..
+				//.66666666666-----.LLLL.......HHHHHHHHHHH.------.iii.------....TTTT..Tooo...oooooooo...ooooolll.lssssssss..
+				//.6666..66666-----.LLLL.......HHHH...HHHH.------.iii.------....TTTT..Tooo...oooooooo...ooooolll..ssssssss..
+				//.6666..66666-----.LLLL.......HHHH...HHHH.------.iii.------....TTTT..Tooo..ooooooooo..oooooolll.lssssssss..
+				//.6666666666.......LLLLLLLLLL.HHHH...HHHH........iii...........TTTT..Tooooooooo.oooooooooo.olll.lssss.sss..
+				//..66666666........LLLLLLLLLL.HHHH...HHHH........iii...........TTTT...ooooooooo..ooooooooo.olll.lssssssss..
+				//...6666666........LLLLLLLLLL.HHHH...HHHH........iii...........TTTT...oooooooo...oooooooo..olll..ssssssss..
+				//....6666...............................................................ooooo......ooooo..........sssss....
+				//..........................................................................................................
 
 
 				// Application 00 - Online Timer
@@ -3750,6 +4228,31 @@
 
 
 
+				//..........................................................................................................................
+				//..........................................................................................................................
+				//.7777777777777..........PPPPPPPPPPP......................................fffff................lllll..iiii.................
+				//.7777777777777..........PPPPPPPPPPPPP...........................tttt....ffffff................lllll..iiii.................
+				//.7777777777777..........PPPPPPPPPPPPP...........................tttt....ffffff................lllll..iiii.................
+				//.7777777777777..........PPPPPPPPPPPPPP..........................tttt....ffffff................lllll..iiii.................
+				//.7777777777777..........PPPP....PPPPPP....ooooooo.....rrrr..rrr.tttt....ffff......ooooooo.....lllll..iiii.....ooooooo.....
+				//........77777...........PPPP.....PPPPP...ooooooooo....rrrrrrrrrttttttttffffffff..ooooooooo....lllll..iiii....ooooooooo....
+				//.......77777............PPPP.....PPPPP..ooooooooooo...rrrrrrrrrttttttttffffffff.ooooooooooo...lllll..iiii...ooooooooooo...
+				//.......77777............PPPP....PPPPPP.ooooooooooooo..rrrrrrrrrttttttttffffffffooooooooooooo..lllll..iiii..ooooooooooooo..
+				//......77777.............PPPPPPPPPPPPPP.oooooo.oooooo..rrrrrrrrr.tttt....ffff...oooooo.oooooo..lllll..iiii..oooooo.oooooo..
+				//......77777...7-------..PPPPPPPPPPPPP..ooooo...ooooo..rrrrr.....tttt....ffff...ooooo...ooooo..lllll..iiii..ooooo...ooooo..
+				//.....77777....7-------..PPPPPPPPPPPPP.Poooo.....ooooo.rrrrr.....tttt....ffff..foooo.....ooooo.lllll..iiii.ioooo.....oooo..
+				//.....77777....7-------..PPPPPPPPPPP...Poooo.....ooooo.rrrrr.....tttt....ffff..foooo.....ooooo.lllll..iiii.ioooo.....oooo..
+				//....77777.....7-------..PPPP..........Poooo.....ooooo.rrrrr.....tttt....ffff..foooo.....ooooo.lllll..iiii.ioooo.....oooo..
+				//....77777...............PPPP...........ooooo...ooooo..rrrrr.....tttt....ffff...ooooo...ooooo..lllll..iiii..ooooo...ooooo..
+				//....77777...............PPPP...........oooooo.oooooo..rrrrr.....tttt....ffff...oooooo.oooooo..lllll..iiii..oooooo.oooooo..
+				//....7777................PPPP...........ooooooooooooo..rrrrr.....tttttt..ffff...ooooooooooooo..lllll..iiii..ooooooooooooo..
+				//....7777................PPPP............ooooooooooo...rrrrr.....tttttt..ffff....ooooooooooo...lllll..iiii...ooooooooooo...
+				//...77777................PPPP.............ooooooooo....rrrrr.....tttttt..ffff.....ooooooooo....lllll..iiii....ooooooooo....
+				//...........................................oooooo.................tttt.............oooooo......................oooooo.....
+				//..........................................................................................................................
+
+
+
 
 				// WebSites Portfolio
 				const PortfolioWebsitesController = new THREE.Group()
@@ -3836,6 +4339,27 @@
 				PortfolioCryptoWebAppsController.add(CryptoAnalysisD)
 				
 				camera.add(PortfolioCryptoWebAppsController)
+
+
+
+
+				//.................................................................................................
+				//...................RRRRR........HH......H.........TTTTTTTTT.......................ll.............
+				//...888888.........RRRRRRRRRR...HHHH...HHHH.......TTTTTTTTTTT.....................olll............
+				//..88888888........RRRRRRRRRRR..HHHH...HHHH.......TTTTTTTTTTT.....................olll............
+				//.888888888........RRRRRRRRRRR..HHHH...HHHH.......TTTTTTTTTTT.....................olll............
+				//.8888..8888.......RRRR...RRRRR.HHHH...HHHH...........TTTT....ooooooo....ooooooo..olll..sssssss...
+				//.888888888........RRRR...RRRRR.HHHHHHHHHHH...........TTTT...ooooooooo..ooooooooo.olll.lssssssss..
+				//..88888888........RRRRRRRRRRR..HHHHHHHHHHH...........TTTT..Tooooooooo.oooooooooo.olll.lssssssss..
+				//..88888888.8-----.RRRRRRRRRRR..HHHHHHHHHHH.H-----....TTTT..Tooo..ooooooooo..oooooolll.lssssssss..
+				//.88888888888-----.RRRRRRRRRRR..HHHHHHHHHHH.H-----....TTTT..Tooo...oooooooo...ooooolll.lssssssss..
+				//.8888..88888-----.RRRR..RRRRR..HHHH...HHHH.H-----....TTTT..Tooo...oooooooo...ooooolll..ssssssss..
+				//.8888..88888-----.RRRR...RRRR..HHHH...HHHH.H-----....TTTT..Tooo..ooooooooo..oooooolll.lssssssss..
+				//.8888888888.......RRRR...RRRR..HHHH...HHHH...........TTTT..Tooooooooo.oooooooooo.olll.lssss.sss..
+				//.8888888888.......RRRR...RRRR..HHHH...HHHH...........TTTT...ooooooooo..ooooooooo.olll.lssssssss..
+				//..88888888........RRRR...RRRRR.HHHH...HHHH...........TTTT...oooooooo...oooooooo..olll..ssssssss..
+				//...88888......................................................ooooo......ooooo..........sssss....
+				//.................................................................................................
 
 
 				// Right Side Tool Kit
@@ -4052,6 +4576,7 @@
 
 
 
+
 				// Tool Application 02 - Text Editor
 				tool03_iWindow_WebDevToolsRight = new THREE.Group()
 				tool03_iWindow_WebDevToolsRight.position.set(0, -1000, 0)
@@ -4148,6 +4673,15 @@
 					'RightWebDevTools'
 				))	
 
+				main_iWindow06Buttons.add( new makeAnchor(
+					170, 70,
+					20,
+					1200, 0, 0,
+					'lightGrey',
+					'[Characters]-[Toolkit]',
+					'https://playcode.io/new',
+					'RightWebDevTools'
+				))	
 
 				scene.add(TSC_RightColumnA00)
 				camera.add(TSC_RightColumnA00)
@@ -4155,7 +4689,23 @@
 
 
 
-
+				//..........................................................................
+				//..................TTTTTTTTT......................bl.......................
+				//...888888........-TTTTTTTTTT.........aabb.......bbll......................
+				//..88888888.......-TTTTTTTTTT.........aabb.......bbll......................
+				//.888888888.......-TTTTTTTTTT.........aabb.......bbll......................
+				//.8888..8888..........TTTT...aaaaaaa..aabbbbbbb..bbll..leeeeee...essssss...
+				//.888888888...........TTTT..Taaaaaaaa.aabbbbbbbb.bbll..leeeeeee.eesssssss..
+				//..88888888...........TTTT..Taaaaaaaa.aabbbbbbbb.bbll.lleeeeeee.eesssssss..
+				//..88888888.8-----....TTTT..Taaaaaaaa.aabbb.bbbbbbbll.llee..eeeeeesssssss..
+				//.88888888888-----....TTTT...aaaaaaaa.aabb...bbbbbbll.lleeeeeeeeeesssssss..
+				//.8888..88888-----....TTTT..Taaaaaaaa.aabb...bbbbbbll.lleeeeeeee.esssssss..
+				//.8888..88888-----....TTTT..Taaaaaaaa.aabb..bbbbbbbll.llee......eesssssss..
+				//.8888888888..........TTTT..Taaaaaaaa.aabbbbbbbb.bbll.lleeeeeeeeeesss.sss..
+				//.8888888888..........TTTT..Taaaaaaaa.aabbbbbbbb.bbll.lleeeeeee.eesssssss..
+				//..88888888...........TTTT..Taaaaaaaaaaabbbbbbb..bbll..leeeeeee..esssssss..
+				//...88888.....................aaa..........bbb...........eeee.....sssss....
+				//..........................................................................
 
 
 
@@ -4445,6 +4995,31 @@
 				// OfficialContainerReality_A1_L0.add(ContainerShell_Back_A1_L0)
 
 				
+				//........................................................................................
+				//...................................................///U.................................
+				//.....99999.............UUUUU......UUUUU..IIIII.....///UUUUU.....UUUUU.UXXXXX.....XXXXX..
+				//...999999999...........UUUUU......UUUUU..IIIII....////UUUUU.....UUUUU..XXXXXX...XXXXXX..
+				//..99999999999..........UUUUU......UUUUU..IIIII....////UUUUU.....UUUUU..XXXXXX..XXXXXX...
+				//..99999999999..........UUUUU......UUUUU..IIIII....////UUUUU.....UUUUU...XXXXXX.XXXXXX...
+				//.999999.999999.........UUUUU......UUUUU..IIIII.../////UUUUU.....UUUUU...XXXXXXXXXXXX....
+				//.99999...99999.........UUUUU......UUUUU..IIIII...////.UUUUU.....UUUUU....XXXXXXXXXX.....
+				//.99999...99999.........UUUUU......UUUUU..IIIII../////.UUUUU.....UUUUU.....XXXXXXXXX.....
+				//.99999...99999.........UUUUU......UUUUU..IIIII..////..UUUUU.....UUUUU.....XXXXXXXX......
+				//.999999.999999.........UUUUU......UUUUU..IIIII..////..UUUUU.....UUUUU......XXXXXXX......
+				//.99999999999999-------.UUUUU......UUUUU..IIIII./////..UUUUU.....UUUUU......XXXXXXX......
+				//..9999999999999-------.UUUUU......UUUUU..IIIII.////...UUUUU.....UUUUU.....XXXXXXXX......
+				//...999999999999-------.UUUUU......UUUUU..IIIII.////...UUUUU.....UUUUU.....XXXXXXXXX.....
+				//....99999999999-------..UUUUU....UUUUUU..IIIIII////...UUUUU.....UUUUU....XXXXXXXXXXX....
+				//..9999...99999..........UUUUU....UUUUU...IIIIII///....UUUUUU....UUUUU...XXXXXXXXXXXX....
+				//.999999.99999...........UUUUUUUUUUUUUU...IIIIII///.....UUUUUUUUUUUUUU...XXXXXX.XXXXXX...
+				//..99999999999...........UUUUUUUUUUUUUU...IIIIII//......UUUUUUUUUUUUUU..XXXXXX..XXXXXX...
+				//..99999999999............UUUUUUUUUUUU....IIIIII//.......UUUUUUUUUUUU...XXXXXX...XXXXXX..
+				//...999999999..............UUUUUUUUUU.....IIIIII//........UUUUUUUUUU...UXXXXX....XXXXXX..
+				//....999999..................UUUUUU.........................UUUUUU.......................
+				//........................................................................................
+
+
+
 				// UI V2 Start
 				// ##############################################################################
 				RealityUI_Version02 = new THREE.Group()
@@ -5136,7 +5711,23 @@
 				// exampleRealitiesMatrix.add(mesh_capsuleExampleA01)
 
 
-
+				//........................................................................................................
+				//............................DDDDD............................................aii........................
+				//....111.....000000.........-DDDDDDDD.........................................aii........................
+				//...1111....10000000........-DDDDDDDDDD.......................................aii........................
+				//.111111....10000000........-DDDDDDDDDD.......................................aii........................
+				//.111111...1100..0000.......-DDD...DDDDD..ooooooo...ommmmmmmmmmmm....aaaaaaa..aii..innnnnnnn..nsssssss...
+				//.111111...1100..0000.......-DDD....DDDD.Doooooooo..ommmmmmmmmmmmm..maaaaaaa..aii..innnnnnnn..nsssssss...
+				//....111...1100..0000.......-DDD....DDDDDDooooooooo.ommmmmmmmmmmmm.mmaaaaaaaa.aii..innnnnnnn.nnssssssss..
+				//....111...1100..000000----.-DDD....DDDDDDoo...oooo.ommm.mmmm..mmm.mmaa.aaaaa.aii..innn.nnnn.nnssssssss..
+				//....111...1100..000000----.-DDD....DDDDDDoo...oooo.omm..mmmm..mmm..maaaaaaaa.aii..inn...nnn..nsssssss...
+				//....111...1100..000000----.-DDD...DDDDDDDoo...oooo.omm..mmmm..mmm.mmaaaaaaaa.aii..inn...nnn..nsssssss...
+				//....111...1100..000000----.-DDD...DDDD.DDoo...oooo.omm..mmmm..mmm.mmaaa.aaaa.aii..inn...nnn.nnssssssss..
+				//....111...1100000000.......-DDDDDDDDDD.DDooooooooo.omm..mmmm..mmm.mmaa.aaaaa.aii..inn...nnn.nnsss.ssss..
+				//....111....10000000........-DDDDDDDDD...Doooooooo..omm..mmmm..mmm.mmaaaaaaaa.aii..inn...nnn.nnssssssss..
+				//....111....1000000.........-DDDDDDDD.....ooooooo...omm..mmmm..mmm.mmaaaaaaaa.aii..inn...nnn..nsssssss...
+				//.............0000.........................ooooo.....................aaa.......................ssssss....
+				//........................................................................................................
 
 
 				// -----------------------
@@ -5187,7 +5778,7 @@
 				mat_CircleRealityA01.alphaMap = testImg05
 				mat_CircleRealityA01.wireFrame = false
 
-				mesh_CircleRealityA01.position.set(0, 0, -100)
+				mesh_CircleRealityA01.position.set(0, -500, -100)
 				mesh_CircleRealityA01.scale.set(1, 1, 1)
 				scene.add(mesh_CircleRealityA01)
 
@@ -5249,7 +5840,7 @@
 				mat_ConeRealityA01.alphaMap = Grid19Black
 				mat_ConeRealityA01.wireFrame = false
 
-				mesh_ConeRealityA01.position.set(0, 0, -1000)
+				mesh_ConeRealityA01.position.set(-100, -500, -100)
 				exampleRealitiesMatrix.add(mesh_ConeRealityA01)
 
 
@@ -5315,7 +5906,7 @@
 				mat_CylinderRealityA01.alphaMap = testImg05
 				mat_CylinderRealityA01.wireFrame = false
 
-				mesh_CylinderRealityA01.position.set(0, 0, -1000)
+				mesh_CylinderRealityA01.position.set(100, -500, -100)
 				exampleRealitiesMatrix.add(mesh_CylinderRealityA01)
 
 				
@@ -5365,7 +5956,7 @@
 				mat_DodecahedronRealityA01.alphaMap = testImg09
 				mat_DodecahedronRealityA01.wireFrame = false
 
-				mesh_DodecahedronRealityA01.position.set(-1000, 0, -1000)
+				mesh_DodecahedronRealityA01.position.set(100, -500, -300)
 				exampleRealitiesMatrix.add(mesh_DodecahedronRealityA01)
 
 
@@ -5416,7 +6007,7 @@
 				mat_IcosahedronRealityA01.alphaMap = testImg05
 				mat_IcosahedronRealityA01.wireFrame = false
 
-				mesh_IcosahedronRealityA01.position.set(1000, 0, -1000)
+				mesh_IcosahedronRealityA01.position.set(-100, -500, -200)
 				exampleRealitiesMatrix.add(mesh_IcosahedronRealityA01)
 
 
@@ -5467,7 +6058,7 @@
 				mat_OctahedronRealityA01.alphaMap = Grid19Black
 				mat_OctahedronRealityA01.wireFrame = false
 
-				mesh_OctahedronRealityA01.position.set(1000, 0, 1000)
+				mesh_OctahedronRealityA01.position.set(100, -500, -200)
 				exampleRealitiesMatrix.add(mesh_OctahedronRealityA01)
 
 
@@ -5508,6 +6099,9 @@
 					mesh_TorusRealityA01.scale.x = scaleRadius
 					mesh_TorusRealityA01.scale.y = scaleRadius
 					mesh_TorusRealityA01.scale.z = scaleRadius
+					mesh_TorusRealityA02.scale.x = scaleRadius
+					mesh_TorusRealityA02.scale.y = scaleRadius
+					mesh_TorusRealityA02.scale.z = scaleRadius
 				}
 
 
@@ -5535,8 +6129,38 @@
 				mat_TorusRealityA01.alphaMap = Grid19Black
 				mat_TorusRealityA01.wireFrame = false
 
-				mesh_TorusRealityA01.position.set(0, 20200, 0)
+				mesh_TorusRealityA01.position.set(0, -500, -200)
 				exampleRealitiesMatrix.add(mesh_TorusRealityA01)
+
+
+				const geo_TorusRealityA02 = new THREE.TorusGeometry(
+					TorusGeometryParams.radius,
+					TorusGeometryParams.tube,
+					TorusGeometryParams.radialSegments,	
+					TorusGeometryParams.tubularSegments,
+					TorusGeometryParams.arc,
+				)
+
+				const mat_TorusRealityA02 = new THREE.MeshBasicMaterial(
+					{
+						map: Grid19Black,
+						side: THREE.DoubleSide,
+					}
+				)
+
+				mesh_TorusRealityA02 = new THREE.Mesh(
+					geo_TorusRealityA02,
+					mat_TorusRealityA02,
+				)
+
+				mat_TorusRealityA02.transparent = false
+				mat_TorusRealityA02.alphaMap = Grid19Black
+				mat_TorusRealityA02.wireFrame = false
+
+				mesh_TorusRealityA02.position.set(0, -500, -200)
+				mesh_TorusRealityA02.rotateX( - Math.PI / 2 )
+				exampleRealitiesMatrix.add(mesh_TorusRealityA02)
+
 
 
 
@@ -5611,7 +6235,7 @@
 				mat_TorusKnotRealityA01.alphaMap = testImg04
 				mat_TorusKnotRealityA01.wireFrame = false
 
-				mesh_TorusKnotRealityA01.position.set(0, 0, 0)
+				mesh_TorusKnotRealityA01.position.set(-100, -500, -300)
 				exampleRealitiesMatrix.add(mesh_TorusKnotRealityA01)
 
 
@@ -6123,6 +6747,28 @@
 				}
 
 
+				//................................................................................................
+				//..................................... [[[.......-▢▢▢▢▢▢▢▢▢▢▢▢▢.........................---]]]..
+				//....111......111..................... [[[.......-▢▢▢▢▢▢▢▢▢▢▢▢▢...........ΔΔΔΔ..........---]]]..
+				//...1111.....1111..................... [[[......--............▢▢.........ΔΔΔΔΔΔ.........---]]]..
+				//.111111...111111..................... [........--............▢▢.........ΔΔΔΔΔΔ...........-]]]..
+				//.111111...111111..................... [........--............▢▢.........ΔΔΔΔΔΔ...........-]]]..
+				//.111111...111111..................... [........--............▢▢........ΔΔΔΔΔΔΔΔ..........-]]]..
+				//....111......111..................... [........--............▢▢........ΔΔΔΔΔΔΔΔ..........-]]]..
+				//....111......111...111---------...... [..[[[-----............▢▢▢▢----.-ΔΔΔ.ΔΔΔΔΔ.ΔΔΔ----.-]]]..
+				//....111......111...111---------...... [..[[[-----............▢▢▢▢----.-ΔΔΔ..ΔΔΔΔ.ΔΔΔ----.-]]]..
+				//....111......111...111---------...... [..[[[-----............▢▢▢▢----.-ΔΔΔ..ΔΔΔΔ.ΔΔΔ----.-]]]..
+				//....111......111...111---------...... [..[[[-----............▢▢▢▢------ΔΔ....ΔΔΔΔΔΔΔ----.-]]]..
+				//....111......111..................... [........--............▢▢......--ΔΔΔΔΔΔΔΔΔΔ........-]]]..
+				//....111......111..................... [........--............▢▢.....---ΔΔΔΔΔΔΔΔΔΔ........-]]]..
+				//....111......111..................... [.........-▢▢▢▢▢▢▢▢▢▢▢▢▢......---ΔΔΔΔΔΔΔΔΔΔΔ.......-]]]..
+				//..................................... [.........-▢▢▢▢▢▢▢▢▢▢▢▢▢...........................-]]]..
+				//..................................... [[[..............................................---]]]..
+				//..................................... [[[..............................................---]]]..
+				//..................................... [[[..............................................---]]]..
+				//................................................................................................
+
+
 
 				// Width, Height, Depth
 				const geo_containerMainBodyA00 = new THREE.BoxGeometry(2000, 2000, 2000, 64, 64, 64)
@@ -6325,7 +6971,23 @@
 				// camera.attach(leftHandSphere01)
 
 				
-
+				//..........................................................................
+				//............................RRRRR........HH......H............OOOOOO......
+				//....111.....222222.........-RRRRRRRRR...RHHH...HHHH..........OOOOOOOOO....
+				//...1111....12222222........-RRRRRRRRRR..RHHH...HHHH.........OOOOOOOOOO....
+				//.111111....122222222.......-RRRRRRRRRR..RHHH...HHHH........-OOOOOOOOOOO...
+				//.111111...1122..2222.......-RRR...RRRRR.RHHH...HHHH........-OOO....OOOO...
+				//.111111...1122..2222.......-RRR...RRRRR.RHHHHHHHHHH........-OOO....OOOOO..
+				//....111........22222.......-RRRRRRRRRR..RHHHHHHHHHH.......--OO......OOOO..
+				//....111.......22222.22----.-RRRRRRRRRR..RHHHHHHHHHH.HH------OO......OOOO..
+				//....111......222222.22----.-RRRRRRRRRR..RHHHHHHHHHH.HH------OO......OOOO..
+				//....111.....222222..22----.-RRR..RRRRR..RHHH...HHHH.HH----.-OOO....OOOOO..
+				//....111....12222....22----.-RRR...RRRR..RHHH...HHHH.HH----.-OOO....OOOO...
+				//....111...1122222222.......-RRR...RRRR..RHHH...HHHH........-OOOOOOOOOOO...
+				//....111...1122222222.......-RRR...RRRR..RHHH...HHHH.........OOOOOOOOOO....
+				//....111...1122222222.......-RRR...RRRRR.RHHH...HHHH..........OOOOOOOOO....
+				//..............................................................OOOOOO......
+				//..........................................................................
 
 
 				// Right Hand Sphere 01 - Unknown
@@ -6364,6 +7026,27 @@
 				camera.attach(rightHandSphere01)
 
 
+
+				//......................................................................................................
+				//............................MMM.....MMM.............aii.............................. [[[[..... ]]]..
+				//....111.....333333.........-MMMM...MMMMM............aii.............................. [[[[..... ]]]..
+				//...1111....13333333........-MMMM...MMMMM............aii.............................. [[[[..... ]]]..
+				//.111111...113333333........-MMMMM..MMMMM............aii.............................. [[.........]]]..
+				//.111111...1133.3333........-MMMMM.MMMMMM...aaaaaaa..aii..innnnnnnn................... [[.........]]]..
+				//.111111...1133.3333........-MMMMM.MMMMMM..Maaaaaaa..aii..innnnnnnn................... [[.........]]]..
+				//....111......333333........-MMMMM.MMMMMM.MMaaaaaaaa.aii..innnnnnnn................... [[.........]]]..
+				//....111......333333.33----.-MMMMM.MMMMMM.MMaa.aaaaa.aii..innn.nnnn.nn----------...... [[.........]]]..
+				//....111......333333333----.-MMMMMMMMMMMM..Maaaaaaaa.aii..inn...nnn.nn----------...... [[.........]]]..
+				//....111...1133..333333----.-MM.MMMMMMMMM.MMaaaaaaaa.aii..inn...nnn.nn----------...... [[.........]]]..
+				//....111...1133..333333----.-MM.MMMMM.MMM.MMaaa.aaaa.aii..inn...nnn.nn----------...... [[.........]]]..
+				//....111...1133333333.......-MM.MMMMM.MMM.MMaa.aaaaa.aii..inn...nnn................... [[.........]]]..
+				//....111...113333333........-MM.MMMMM.MMM.MMaaaaaaaa.aii..inn...nnn................... [[.........]]]..
+				//....111....13333333........-MM.MMMMM.MMM.MMaaaaaaaa.aii..inn...nnn................... [[.........]]]..
+				//.............3333..........................aaa....................................... [[.........]]]..
+				//..................................................................................... [[[[..... ]]]..
+				//..................................................................................... [[[[..... ]]]..
+				//..................................................................................... [[[[..... ]]]..
+				//......................................................................................................
 
 
 
@@ -6491,10 +7174,10 @@
 					mainContainerVideoContainer_Params.thetaStart,
 					mainContainerVideoContainer_Params.thetaLength
 				)
-				const mat_mainContainerEntranceVideoContainerA1_L0 = new THREE.MeshBasicMaterial({ map: testImg05, side: THREE.DoubleSide });
+				const mat_mainContainerEntranceVideoContainerA1_L0 = new THREE.MeshBasicMaterial({ map: mainUIDisplay4_L0, side: THREE.DoubleSide });
 				mesh_mainContainerEntranceVideoContainerA1_L0 = new THREE.Mesh(geo_mainContainerEntranceVideoContainerA1_L0, mat_mainContainerEntranceVideoContainerA1_L0);
-				mat_mainContainerEntranceVideoContainerA1_L0.transparent = false;
-				mat_mainContainerEntranceVideoContainerA1_L0.alphaMap = testImg05;
+				mat_mainContainerEntranceVideoContainerA1_L0.transparent = true;
+				mat_mainContainerEntranceVideoContainerA1_L0.alphaMap = mainUIDisplay4_L0;
 				mesh_mainContainerEntranceVideoContainerA1_L0.position.set(0, 0, 0);
 				mesh_mainContainerEntranceVideoContainerA1_L0.rotation.set(0, 3.14, 0);
 				mesh_mainContainerEntranceVideoContainerA1_L0.rotateY( - Math.PI / 2 );
@@ -6503,6 +7186,29 @@
 				mainContainerEntranceVideoContainerA1_L0.add(mesh_mainContainerEntranceVideoContainerA1_L0)
 				scene.add(mainContainerEntranceVideoContainerA1_L0)
 				camera.attach(mainContainerEntranceVideoContainerA1_L0)
+
+
+
+				//.........................................................................................................................
+				//............................PPPPP........................ojj...PPPPP......................................l..............
+				//....111.......44444........-PPPPPPPPP....................ojj..jPPPPPPPPP.................................ell.............
+				//...1111.......44444........-PPPPPPPPP....................ojj..jPPPPPPPPP.................................ell.............
+				//.111111......444444........-PPPPPPPPPP...................ojj..jPPPPPPPPPP................................ell.............
+				//.111111.....4444444........-PPP...PPPP.Prrrrr..ooooooo...ojj..jPPP...PPPP..aaaaaaa..annnnnnnn...eeeeee...ell..lsssssss...
+				//.111111.....4444444........-PPP...PPPP.Prrrrr.roooooooo..ojj..jPPP...PPPP.Paaaaaaa..annnnnnnn..neeeeeee..ell..lsssssss...
+				//....111....14444444........-PPPPPPPPPP.Prrrrrrrooooooooo.ojj..jPPPPPPPPPPPPaaaaaaaa.annnnnnnn.nneeeeeeee.ell.llssssssss..
+				//....111...1144.4444.44----.-PPPPPPPPPP.Prrr..rroo...oooo.ojj..jPPPPPPPPPPPPaa.aaaaa.annn.nnnn.nnee..eeee.ell.llssssssss..
+				//....111...1144.4444.44----.-PPPPPPPPP..Prr...rroo...oooo.ojj..jPPPPPPPPP..Paaaaaaaa.ann...nnn.nneeeeeeee.ell..lsssssss...
+				//....111...114444444444----.-PPPPPPPP...Prr...rroo...oooo.ojj..jPPPPPPPP..PPaaaaaaaa.ann...nnn.nneeeeeeee.ell..lsssssss...
+				//....111...114444444444----.-PPP........Prr...rroo...oooo.ojj..jPPP.......PPaaa.aaaa.ann...nnn.nnee.......ell.llssssssss..
+				//....111...1144444444.......-PPP........Prr...rrooooooooo.ojj..jPPP.......PPaa.aaaaa.ann...nnn.nneeeeeeee.ell.llsss.ssss..
+				//....111........4444........-PPP........Prr....roooooooo..ojj..jPPP.......PPaaaaaaaa.ann...nnn.nneeeeeee..ell.llssssssss..
+				//....111........4444........-PPP........Prr.....ooooooo...ojj..jPPP.......PPaaaaaaaa.ann...nnn..neeeeeee..ell..lsssssss...
+				//................................................ooooo....ojj...............aaa...................eeee..........ssssss....
+				//.......................................................ooojj.............................................................
+				//.......................................................ooojj.............................................................
+				//.......................................................ooojj.............................................................
+				//.........................................................................................................................
 
 				
 				// ProjectPanels
@@ -7604,6 +8310,28 @@
 
 				// root.add(backgroundTest)
 
+
+
+				//..........................................................................................................................
+				//...........................-TTTTTTTT.TTii...........................eeW....WW.....WW.................................el...
+				//....111....15555555.......--TTTTTTTTTTTii..........................eeeWW..WWWW...WWWWWWhh...........................eell..
+				//...1111....15555555.......--TTTTTTTTTTTii...........................eeWW..WWWWW..WWWWWWhh...........................eell..
+				//.111111....15555555.......--TTTTTTTTTTTii...........................eeWW..WWWWW.WWWWWWWhh...........................eell..
+				//.111111....155................TTTT...TTii.iimmmmmmmmmmmm...meeeeee..eeWW.WWWWWW.WWWW.WWhhhhhhh...heeeeee...eeeeeee..eell..
+				//.111111....1555555............TTTT...TTii.iimmmmmmmmmmmmm..meeeeeee..eWWWWWWWWW.WWWW.WWhhhhhhhh..heeeeeee..eeeeeeee.eell..
+				//....111...115555555...........TTTT...TTii.iimmmmmmmmmmmmm.mmeeeeeee..eWWWWWWWWW.WWWW.WWhhhhhhhh.hheeeeeee.eeeeeeeee.eell..
+				//....111...115555555555----....TTTT...TTii.iimm..mmmm.mmmm.mmee..eeee.eWWWWWWWWWWWWW..WWhh..hhhh.hhee..eeeeeeee..eeeeeell..
+				//....111...1155.5555555----....TTTT...TTii.iimm..mmmm.mmmm.mmeeeeeeee.eWWWWWWWWWWWWW..WWhh..hhhh.hheeeeeeeeeeeeeeeeeeeell..
+				//....111.........555555----....TTTT...TTii.iimm..mmmm.mmmm.mmeeeeeeee..WWWWWW.WWWWWW..WWhh..hhhh.hheeeeeeeeeeeeeeeeeeeell..
+				//....111...1155..555555----....TTTT...TTii.iimm..mmmm.mmmm.mmee........WWWWWW.WWWWWW..WWhh..hhhh.hhee......eeee......eell..
+				//....111...1155555555..........TTTT...TTii.iimm..mmmm.mmmm.mmeeeeeeee..WWWWW..WWWWW...WWhh..hhhh.hheeeeeeeeeeeeeeeeeeeell..
+				//....111...115555555...........TTTT...TTii.iimm..mmmm.mmmm.mmeeeeeee....WWWW..WWWWW...WWhh..hhhh.hheeeeeee.eeeeeeeee.eell..
+				//....111....15555555...........TTTT...TTii.iimm..mmmm.mmmm..meeeeeee....WWWW..WWWWW...WWhh..hhhh..heeeeeee..eeeeeeee.eell..
+				//............55555............................................eeee..................................eeee......eeee.........
+				//..........................................................................................................................
+
+
+
 				//#########################################
 				// # Time Wheel
 				//#########################################
@@ -7673,6 +8401,26 @@
 
 				// Final TimeWheel
 				scene.add(TimeWheel01)
+
+
+
+				//..........................................................................................................................
+				//...........................-TTTTTTTT.TTii...........................eeW....WW.....WW.................................el...
+				//....111.....666666........--TTTTTTTTTTTii..........................eeeWW..WWWW...WWWWWWhh...........................eell..
+				//...1111....16666666.......--TTTTTTTTTTTii...........................eeWW..WWWWW..WWWWWWhh...........................eell..
+				//.111111....166666666......--TTTTTTTTTTTii...........................eeWW..WWWWW.WWWWWWWhh...........................eell..
+				//.111111...1166..6666..........TTTT...TTii.iimmmmmmmmmmmm...meeeeee..eeWW.WWWWWW.WWWW.WWhhhhhhh...heeeeee...eeeeeee..eell..
+				//.111111...11666666............TTTT...TTii.iimmmmmmmmmmmmm..meeeeeee..eWWWWWWWWW.WWWW.WWhhhhhhhh..heeeeeee..eeeeeeee.eell..
+				//....111...116666666...........TTTT...TTii.iimmmmmmmmmmmmm.mmeeeeeee..eWWWWWWWWW.WWWW.WWhhhhhhhh.hheeeeeee.eeeeeeeee.eell..
+				//....111...116666666666----....TTTT...TTii.iimm..mmmm.mmmm.mmee..eeee.eWWWWWWWWWWWWW..WWhh..hhhh.hhee..eeeeeeee..eeeeeell..
+				//....111...116666666666----....TTTT...TTii.iimm..mmmm.mmmm.mmeeeeeeee.eWWWWWWWWWWWWW..WWhh..hhhh.hheeeeeeeeeeeeeeeeeeeell..
+				//....111...1166..666666----....TTTT...TTii.iimm..mmmm.mmmm.mmeeeeeeee..WWWWWW.WWWWWW..WWhh..hhhh.hheeeeeeeeeeeeeeeeeeeell..
+				//....111...1166..666666----....TTTT...TTii.iimm..mmmm.mmmm.mmee........WWWWWW.WWWWWW..WWhh..hhhh.hhee......eeee......eell..
+				//....111...1166666666..........TTTT...TTii.iimm..mmmm.mmmm.mmeeeeeeee..WWWWW..WWWWW...WWhh..hhhh.hheeeeeeeeeeeeeeeeeeeell..
+				//....111....16666666...........TTTT...TTii.iimm..mmmm.mmmm.mmeeeeeee....WWWW..WWWWW...WWhh..hhhh.hheeeeeee.eeeeeeeee.eell..
+				//....111.....6666666...........TTTT...TTii.iimm..mmmm.mmmm..meeeeeee....WWWW..WWWWW...WWhh..hhhh..heeeeeee..eeeeeeee.eell..
+				//.............6666............................................eeee..................................eeee......eeee.........
+				//..........................................................................................................................
 
 
 				//#########################################
@@ -7852,12 +8600,30 @@
 
 
 
+				//.............................................................................................................................
+				//.............................................................................................................................
+				//............................RRRRR..................................PPPPP......................................l..............
+				//....111...1177777777.......-RRRRRRRRR.......................cttt..tPPPPPPPPP.................................ell.............
+				//...1111...1177777777.......-RRRRRRRRRR......................cttt..tPPPPPPPPP.................................ell.............
+				//.111111...1177777777.......-RRRRRRRRRR......................cttt..tPPPPPPPPPP................................ell.............
+				//.111111........77777.......-RRR...RRRRR..eeeeee....ccccccc.cctttt.tPPP...PPPP..aaaaaaa..annnnnnnn...eeeeee...ell..lsssssss...
+				//.111111.......77777........-RRR...RRRRR.Reeeeeee..ecccccccccctttt.tPPP...PPPP.Paaaaaaa..annnnnnnn..neeeeeee..ell..lsssssss...
+				//....111.......7777.........-RRRRRRRRRR.RReeeeeeeeeecccccccccctttt.tPPPPPPPPPPPPaaaaaaaa.annnnnnnn.nneeeeeeee.ell.llssssssss..
+				//....111......77777..77----.-RRRRRRRRRR.RRee..eeeeeecc..cccc.cttt..tPPPPPPPPPPPPaa.aaaaa.annn.nnnn.nnee..eeee.ell.llssssssss..
+				//....111......7777...77----.-RRRRRRRRRR.RReeeeeeeeeecc.......cttt..tPPPPPPPPP..Paaaaaaaa.ann...nnn.nneeeeeeee.ell..lsssssss...
+				//....111.....77777...77----.-RRR..RRRRR.RReeeeeeeeeecc.......cttt..tPPPPPPPP..PPaaaaaaaa.ann...nnn.nneeeeeeee.ell..lsssssss...
+				//....111.....7777....77----.-RRR...RRRR.RRee......eecc..cccc.cttt..tPPP.......PPaaa.aaaa.ann...nnn.nnee.......ell.llssssssss..
+				//....111.....7777...........-RRR...RRRR.RReeeeeeeeeecccccccc.cttt..tPPP.......PPaa.aaaaa.ann...nnn.nneeeeeeee.ell.llsss.ssss..
+				//....111.....7777...........-RRR...RRRR.RReeeeeee..eccccccc..ctttt.tPPP.......PPaaaaaaaa.ann...nnn.nneeeeeee..ell.llssssssss..
+				//....111.....7777...........-RRR...RRRRR.Reeeeeee..eccccccc..ctttt.tPPP.......PPaaaaaaaa.ann...nnn..neeeeeee..ell..lsssssss...
+				//..........................................eeee......cccc......ttt..............aaa...................eeee..........ssssss....
+				//.............................................................................................................................
 				
 				//#########################################
 				// # DataTower_RectPanels
 				//#########################################
 				DataTower_RectPanels_Count8 = new THREE.Group()
-				DataTower_RectPanels_Count8.position.set(-3500, 0, 2700)
+				DataTower_RectPanels_Count8.position.set(3500, 0, 2700)
 				DataTower_RectPanels_Count8.scale.set(0.1, 0.1, 0.1)
 				
 
@@ -7966,8 +8732,8 @@
 				// # Testimonials
 				//#########################################
 				testimonialMatrix = new THREE.Group()
-				testimonialMatrix.position.set( 0, 100, 0 )
-				testimonialMatrix.position.set( 0.5, 0.5, 0.5 )
+				testimonialMatrix.position.set( 0, 20000, 0 )
+				testimonialMatrix.scale.set( 0.5, 0.5, 0.5 )
 
 				// Front Card
 				const geo_testimonialPanel01 = new THREE.CircleGeometry(1500, 2000)
@@ -8095,8 +8861,23 @@
 
 
 				
-			
-
+				//........................................................................................
+				//............................MMM.....MMM.............aii.................................
+				//....111.....888888.........-MMMM...MMMMM............aii......................ΔΔΔΔΔ......
+				//...1111....18888888........-MMMM...MMMMM............aii......................ΔΔΔΔΔ......
+				//.111111...118888888........-MMMMM..MMMMM............aii......................ΔΔΔΔΔ......
+				//.111111...1188..8888.......-MMMMM.MMMMMM...aaaaaaa..aii..innnnnnnn..........ΔΔΔΔΔΔΔ.....
+				//.111111...118888888........-MMMMM.MMMMMM..Maaaaaaa..aii..innnnnnnn..........ΔΔΔΔΔΔΔ.....
+				//....111....18888888........-MMMMM.MMMMMM.MMaaaaaaaa.aii..innnnnnnn.........ΔΔΔΔ.ΔΔΔΔ....
+				//....111....18888888.88----.-MMMMM.MMMMMM.MMaa.aaaaa.aii..innn.nnnn.nn----..ΔΔΔΔ.ΔΔΔΔ....
+				//....111...118888888888----.-MMMMMMMMMMMM..Maaaaaaaa.aii..inn...nnn.nn----..ΔΔΔ..ΔΔΔΔ....
+				//....111...1188..888888----.-MM.MMMMMMMMM.MMaaaaaaaa.aii..inn...nnn.nn----.-ΔΔΔ...ΔΔΔΔ...
+				//....111...1188..888888----.-MM.MMMMM.MMM.MMaaa.aaaa.aii..inn...nnn.nn----.-ΔΔΔ...ΔΔΔΔ...
+				//....111...1188888888.......-MM.MMMMM.MMM.MMaa.aaaaa.aii..inn...nnn.......--ΔΔΔΔΔΔΔΔΔΔΔ..
+				//....111...1188888888.......-MM.MMMMM.MMM.MMaaaaaaaa.aii..inn...nnn.......--ΔΔΔΔΔΔΔΔΔΔΔ..
+				//....111....18888888........-MM.MMMMM.MMM.MMaaaaaaaa.aii..inn...nnn.......--ΔΔΔΔΔΔΔΔΔΔΔ..
+				//............88888..........................aaa..........................................
+				//........................................................................................
 				
 				//#########################################
 				// Reality of Unknowns
@@ -8105,17 +8886,19 @@
 				// Component Root
 				RealityOfUnknowns_Root_L0 = new THREE.Group()
 				// Distance Location
-				RealityOfUnknowns_Root_L0.position.set(0, 100000, 9500000)
+				// RealityOfUnknowns_Root_L0.position.set(0, 100000, 9500000)
+				// RealityOfUnknowns_Root_L0.position.set(0, -883000, 0)
+				RealityOfUnknowns_Root_L0.position.set(0, 5000000, 0)
 
 				// Near Location
 				// RealityOfUnknowns_Root_L0.position.set(0, 100000, 0)
 
 				// Outer wall - Start
 				const geo_RealityOfUknowns_A1_L0 = new THREE.OctahedronGeometry(1000000, 0)
-				const mat_RealityOfUknowns_A1_L0 = new THREE.MeshBasicMaterial({ map: testImg07, side: THREE.DoubleSide });
+				const mat_RealityOfUknowns_A1_L0 = new THREE.MeshBasicMaterial({ map: testImg08, side: THREE.DoubleSide });
 				mesh_RealityOfUknowns_A1_L0 = new THREE.Mesh(geo_RealityOfUknowns_A1_L0, mat_RealityOfUknowns_A1_L0)
-				mat_RealityOfUknowns_A1_L0.transparent = true;
-				mat_RealityOfUknowns_A1_L0.alphaMap = testImg07
+				mat_RealityOfUknowns_A1_L0.transparent = false;
+				mat_RealityOfUknowns_A1_L0.alphaMap = testImg08
 				mat_RealityOfUknowns_A1_L0.wireframe = false;
 				mesh_RealityOfUknowns_A1_L0.position.set(0, 895000, 200)
 				mesh_RealityOfUknowns_A1_L0.rotateY( - Math.PI / 3.14 );
@@ -8178,7 +8961,7 @@
 
 				// Large Number here = The box dimensions all at the same time. 
 				for (let i = 0; i < realityCount * 3; i++) {
-					realityPositions[i] = (Math.random() - 0.5) * 500000
+					realityPositions[i] = (Math.random() - 0.5) * 5000
 					realityColors[i] = Math.random()
 				}
 
@@ -8187,7 +8970,7 @@
 
 				// Particle Material init()
 				const realityParticlesMaterial = new THREE.PointsMaterial()
-				realityParticlesMaterial.size = 2000
+				realityParticlesMaterial.size = 500
 				realityParticlesMaterial.sizeAttenuation = true;
 				// realityParticlesMaterial.color = new THREE.Color('#8ff') // neonblue
 				realityParticlesMaterial.color = new THREE.Color('#FFD700') // Gold
@@ -8228,7 +9011,7 @@
 				const geo_RealityUnknown_MainFloor_A1_L0 = new THREE.BoxGeometry(10000, 100, 10000, 64, 64, 64)
 				const mat_RealityUnknown_MainFloor_A1_L0 = new THREE.MeshBasicMaterial({ map: testImg05, side: THREE.DoubleSide });
 				mesh_RealityUnknown_MainFloor_A1_L0 = new THREE.Mesh(geo_RealityUnknown_MainFloor_A1_L0, mat_RealityUnknown_MainFloor_A1_L0);
-				mat_RealityUnknown_MainFloor_A1_L0.transparent = true;
+				mat_RealityUnknown_MainFloor_A1_L0.transparent = false;
 				mat_RealityUnknown_MainFloor_A1_L0.alphaMap = testImg05;
 				// mesh_RealityUnknown_MainFloor_A1_L0.position.set(-21628, 85323, -40228);
 				mesh_RealityUnknown_MainFloor_A1_L0.position.set(0, 0, 0);
@@ -8253,7 +9036,7 @@
 				const geo_RealityUnknown_UpperFloor_Lvln1 = new THREE.BoxGeometry(10000, 100, 10000, 64, 64, 64)
 				const mat_RealityUnknown_UpperFloor_Lvln1 = new THREE.MeshBasicMaterial({ map: testImg05, side: THREE.DoubleSide });
 				mesh_RealityUnknown_UpperFloor_Lvln1 = new THREE.Mesh(geo_RealityUnknown_UpperFloor_Lvln1, mat_RealityUnknown_UpperFloor_Lvln1);
-				mat_RealityUnknown_UpperFloor_Lvln1.transparent = true;
+				mat_RealityUnknown_UpperFloor_Lvln1.transparent = false;
 				mat_RealityUnknown_UpperFloor_Lvln1.alphaMap = testImg05;
 				// mesh_RealityUnknown_UpperFloor_Lvln1.position.set(-21628, 85323, -40228);
 				mesh_RealityUnknown_UpperFloor_Lvln1.position.set(0, 0, 0);
@@ -8278,7 +9061,7 @@
 				const geo_RealityUnknown_UpperFloor_Lvln2 = new THREE.BoxGeometry(10000, 100, 10000, 64, 64, 64)
 				const mat_RealityUnknown_UpperFloor_Lvln2 = new THREE.MeshBasicMaterial({ map: testImg05, side: THREE.DoubleSide });
 				mesh_RealityUnknown_UpperFloor_Lvln2 = new THREE.Mesh(geo_RealityUnknown_UpperFloor_Lvln2, mat_RealityUnknown_UpperFloor_Lvln2);
-				mat_RealityUnknown_UpperFloor_Lvln2.transparent = true;
+				mat_RealityUnknown_UpperFloor_Lvln2.transparent = false;
 				mat_RealityUnknown_UpperFloor_Lvln2.alphaMap = testImg05;
 				// mesh_RealityUnknown_UpperFloor_Lvln2.position.set(-21628, 85323, -40228);
 				mesh_RealityUnknown_UpperFloor_Lvln2.position.set(0, 0, 0);
@@ -8302,7 +9085,7 @@
 				const geo_RealityUnknown_UpperFloor_Lvln3 = new THREE.BoxGeometry(10000, 100, 10000, 64, 64, 64)
 				const mat_RealityUnknown_UpperFloor_Lvln3 = new THREE.MeshBasicMaterial({ map: testImg05, side: THREE.DoubleSide });
 				mesh_RealityUnknown_UpperFloor_Lvln3 = new THREE.Mesh(geo_RealityUnknown_UpperFloor_Lvln3, mat_RealityUnknown_UpperFloor_Lvln3);
-				mat_RealityUnknown_UpperFloor_Lvln3.transparent = true;
+				mat_RealityUnknown_UpperFloor_Lvln3.transparent = false;
 				mat_RealityUnknown_UpperFloor_Lvln3.alphaMap = testImg05;
 				// mesh_RealityUnknown_UpperFloor_Lvln3.position.set(-21628, 85323, -40228);
 				mesh_RealityUnknown_UpperFloor_Lvln3.position.set(0, 0, 0);
@@ -8327,7 +9110,7 @@
 				const geo_RealityUnknown_UpperFloor_Lvln4 = new THREE.BoxGeometry(10000, 100, 10000, 64, 64, 64)
 				const mat_RealityUnknown_UpperFloor_Lvln4 = new THREE.MeshBasicMaterial({ map: testImg05, side: THREE.DoubleSide });
 				mesh_RealityUnknown_UpperFloor_Lvln4 = new THREE.Mesh(geo_RealityUnknown_UpperFloor_Lvln4, mat_RealityUnknown_UpperFloor_Lvln4);
-				mat_RealityUnknown_UpperFloor_Lvln4.transparent = true;
+				mat_RealityUnknown_UpperFloor_Lvln4.transparent = false;
 				mat_RealityUnknown_UpperFloor_Lvln4.alphaMap = testImg05;
 				// mesh_RealityUnknown_UpperFloor_Lvln4.position.set(-21628, 85323, -40228);
 				mesh_RealityUnknown_UpperFloor_Lvln4.position.set(0, 0, 0);
@@ -8352,7 +9135,7 @@
 				const geo_RealityUnknown_UpperFloor_Lvln5 = new THREE.BoxGeometry(7500, 100, 7500, 64, 64, 64)
 				const mat_RealityUnknown_UpperFloor_Lvln5 = new THREE.MeshBasicMaterial({ map: testImg05, side: THREE.DoubleSide });
 				mesh_RealityUnknown_UpperFloor_Lvln5 = new THREE.Mesh(geo_RealityUnknown_UpperFloor_Lvln5, mat_RealityUnknown_UpperFloor_Lvln5);
-				mat_RealityUnknown_UpperFloor_Lvln5.transparent = true;
+				mat_RealityUnknown_UpperFloor_Lvln5.transparent = false;
 				mat_RealityUnknown_UpperFloor_Lvln5.alphaMap = testImg05;
 				// mesh_RealityUnknown_UpperFloor_Lvln5.position.set(-21628, 85323, -40228);
 				mesh_RealityUnknown_UpperFloor_Lvln5.position.set(0, 0, 0);
@@ -8376,7 +9159,7 @@
 				const geo_RealityUnknown_UpperFloor_Lvl1 = new THREE.BoxGeometry(10000, 100, 10000, 64, 64, 64)
 				const mat_RealityUnknown_UpperFloor_Lvl1 = new THREE.MeshBasicMaterial({ map: testImg05, side: THREE.DoubleSide });
 				mesh_RealityUnknown_UpperFloor_Lvl1 = new THREE.Mesh(geo_RealityUnknown_UpperFloor_Lvl1, mat_RealityUnknown_UpperFloor_Lvl1);
-				mat_RealityUnknown_UpperFloor_Lvl1.transparent = true;
+				mat_RealityUnknown_UpperFloor_Lvl1.transparent = false;
 				mat_RealityUnknown_UpperFloor_Lvl1.alphaMap = testImg05;
 				// mesh_RealityUnknown_UpperFloor_Lvl1.position.set(-21628, 85323, -40228);
 				mesh_RealityUnknown_UpperFloor_Lvl1.position.set(0, 0, 0);
@@ -8401,7 +9184,7 @@
 				const geo_RealityUnknown_UpperFloor_Lvl2 = new THREE.BoxGeometry(10000, 100, 10000, 64, 64, 64)
 				const mat_RealityUnknown_UpperFloor_Lvl2 = new THREE.MeshBasicMaterial({ map: testImg05, side: THREE.DoubleSide });
 				mesh_RealityUnknown_UpperFloor_Lvl2 = new THREE.Mesh(geo_RealityUnknown_UpperFloor_Lvl2, mat_RealityUnknown_UpperFloor_Lvl2);
-				mat_RealityUnknown_UpperFloor_Lvl2.transparent = true;
+				mat_RealityUnknown_UpperFloor_Lvl2.transparent = false;
 				mat_RealityUnknown_UpperFloor_Lvl2.alphaMap = testImg05;
 				// mesh_RealityUnknown_UpperFloor_Lvl2.position.set(-21628, 85323, -40228);
 				mesh_RealityUnknown_UpperFloor_Lvl2.position.set(0, 0, 0);
@@ -8426,7 +9209,7 @@
 				const geo_RealityUnknown_UpperFloor_Lvl3 = new THREE.BoxGeometry(10000, 100, 10000, 64, 64, 64)
 				const mat_RealityUnknown_UpperFloor_Lvl3 = new THREE.MeshBasicMaterial({ map: testImg05, side: THREE.DoubleSide });
 				mesh_RealityUnknown_UpperFloor_Lvl3 = new THREE.Mesh(geo_RealityUnknown_UpperFloor_Lvl3, mat_RealityUnknown_UpperFloor_Lvl3);
-				mat_RealityUnknown_UpperFloor_Lvl3.transparent = true;
+				mat_RealityUnknown_UpperFloor_Lvl3.transparent = false;
 				mat_RealityUnknown_UpperFloor_Lvl3.alphaMap = testImg05;
 				// mesh_RealityUnknown_UpperFloor_Lvl3.position.set(-21628, 85323, -40228);
 				mesh_RealityUnknown_UpperFloor_Lvl3.position.set(0, 0, 0);
@@ -8452,7 +9235,7 @@
 				const geo_RealityUnknown_UpperFloor_Lvl4 = new THREE.BoxGeometry(10000, 100, 10000, 64, 64, 64)
 				const mat_RealityUnknown_UpperFloor_Lvl4 = new THREE.MeshBasicMaterial({ map: testImg05, side: THREE.DoubleSide });
 				mesh_RealityUnknown_UpperFloor_Lvl4 = new THREE.Mesh(geo_RealityUnknown_UpperFloor_Lvl4, mat_RealityUnknown_UpperFloor_Lvl4);
-				mat_RealityUnknown_UpperFloor_Lvl4.transparent = true;
+				mat_RealityUnknown_UpperFloor_Lvl4.transparent = false;
 				mat_RealityUnknown_UpperFloor_Lvl4.alphaMap = testImg05;
 				// mesh_RealityUnknown_UpperFloor_Lvl4.position.set(-21628, 85323, -40228);
 				mesh_RealityUnknown_UpperFloor_Lvl4.position.set(0, 0, 0);
@@ -8477,7 +9260,7 @@
 				const geo_RealityUnknown_UpperFloor_Lvl5 = new THREE.BoxGeometry(7500, 100, 7500, 64, 64, 64)
 				const mat_RealityUnknown_UpperFloor_Lvl5 = new THREE.MeshBasicMaterial({ map: testImg05, side: THREE.DoubleSide });
 				mesh_RealityUnknown_UpperFloor_Lvl5 = new THREE.Mesh(geo_RealityUnknown_UpperFloor_Lvl5, mat_RealityUnknown_UpperFloor_Lvl5);
-				mat_RealityUnknown_UpperFloor_Lvl5.transparent = true;
+				mat_RealityUnknown_UpperFloor_Lvl5.transparent = false;
 				mat_RealityUnknown_UpperFloor_Lvl5.alphaMap = testImg05;
 				// mesh_RealityUnknown_UpperFloor_Lvl5.position.set(-21628, 85323, -40228);
 				mesh_RealityUnknown_UpperFloor_Lvl5.position.set(0, 0, 0);
@@ -8520,6 +9303,27 @@
 
 
 				// ---\### [Reality of Darkness] End\ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+
+
+				//.............................................................................................................................
+				//...............................CCC.....................................CCC...................................................
+				//....111.....999999...........CCCCCCCC.........................ddd....CCCCCCCC........................nttt....................
+				//...1111....19999999.........CCCCCCCCCC........................ddd...CCCCCCCCCC.......................nttt....................
+				//.111111...119999999........-CCCCCCCCCC........................ddd..dCCCCCCCCCC.......................nttt....................
+				//.111111...1199..9999.......-CCC...CCCCC.Cmmmmmmmmmmmm....dddddddd..dCCC...CCCCC..eeeeee...ennnnnnnn.nntttt..eeeeee...errrrr..
+				//.111111...1199..9999......--CCC....CCCC.Cmmmmmmmmmmmmm..mdddddddd.ddCCC....CCCC.Ceeeeeee..ennnnnnnn.nntttt.teeeeeee..errrrr..
+				//....111...1199..9999......--CC..........Cmmmmmmmmmmmmm.mmdddddddd.ddCC.........CCeeeeeeee.ennnnnnnn.nntttttteeeeeeee.errrrr..
+				//....111...119999999999------CC..........Cmmm.mmmm..mmm.mmdd..dddd.ddCC.........CCee..eeee.ennn.nnnn..nttt.ttee..eeee.errr....
+				//....111....19999999999------CC..........Cmm..mmmm..mmm.mmdd...ddd.ddCC.........CCeeeeeeee.enn...nnn..nttt.tteeeeeeee.err.....
+				//....111.....9999999999------CCC....CCCC.Cmm..mmmm..mmm.mmdd...ddd.ddCCC....CCCCCCeeeeeeee.enn...nnn..nttt.tteeeeeeee.err.....
+				//....111...1199..999999----.-CCC...CCCCC.Cmm..mmmm..mmm.mmdd..dddd..dCCC...CCCCCCCee.......enn...nnn..nttt.ttee.......err.....
+				//....111...119999999........-CCCCCCCCCC..Cmm..mmmm..mmm.mmdddddddd..dCCCCCCCCCC.CCeeeeeeee.enn...nnn..nttt.tteeeeeeee.err.....
+				//....111....19999999.........CCCCCCCCCC..Cmm..mmmm..mmm..mdddddddd...CCCCCCCCCC.CCeeeeeee..enn...nnn..ntttttteeeeeee..err.....
+				//....111....1999999...........CCCCCCCC...Cmm..mmmm..mmm..mdddddddd....CCCCCCCC...Ceeeeeee..enn...nnn..ntttt.teeeeeee..err.....
+				//.............999..............CCCCC.......................ddd.........CCCCC.......eeee.................ttt...eeee............
+				//.............................................................................................................................
 
 
 
@@ -8585,6 +9389,9 @@
 				mesh_GridRuler_L0.position.set(0, 20000, 200)
 				mesh_GridRuler_L0.scale.set(3, 3, 3)
 				CommandCenter.add(mesh_GridRuler_L0)
+
+
+
 
 
 			
@@ -8891,6 +9698,26 @@
 
 				// }
 
+
+
+				//...........................................................GGGGG................iii..
+				//...222222....000000...............ddd............tttt....GGGGGGGGG..............iii..
+				//..22222222..00000000..............ddd............tttt...GGGGGGGGGG..............iii..
+				//..222222222.00000000..............ddd............tttt..GGGGGGGGGGGG.............iii..
+				//.2222..22222000..0000........dddddddd...aaaaaaa.attttt.GGGG....GGGG.Guuu...uuu..iii..
+				//.2222..22222000..0000.......ddddddddd..aaaaaaaa.attttttGGGG....GGGG.Guuu...uuu..iii..
+				//......222222000..0000......-ddddddddd.daaaaaaaaaattttttGGG...GGGGGG.Guuu...uuu..iii..
+				//.....22222.2000..00000------ddd..dddd.daaa.aaaaa.tttt.tGGG...GGGGGG.Guuu...uuu..iii..
+				//....222222.2000..00000------ddd...ddd..aaaaaaaaa.tttt.tGGG...GGGGGG.Guuu...uuu..iii..
+				//...222222..2000..00000------ddd...ddd.daaaaaaaaa.tttt.tGGGG..GGGGGG.Guuu...uuu..iii..
+				//..22222....2000..00000------ddd..dddd.daaaa.aaaa.tttt..GGGG....GGGG..uuu..uuuu..iii..
+				//.22222222222000000000......-ddddddddd.daaa.aaaaa.tttt..GGGGGGGGGGGG..uuuuuuuuu..iii..
+				//.2222222222.00000000........ddddddddd.daaaaaaaaa.ttttt..GGGGGGGGGGG..uuuuuuuuu..iii..
+				//.2222222222.0000000.........ddddddddd.daaaaaaaaa.ttttt...GGGGGGGGGG..uuuuuuuuu..iii..
+				//..............0000............ddd.......aaa........ttt....GGGG.........uuu...........
+				//.....................................................................................
+
+
 				// Search_GUI
 				// GUI Options
 				const gui = new GUI(
@@ -8916,32 +9743,41 @@
 					* |-- Details
  					*/
 
-				const folderNotifier = gui.addFolder('Notifier')
-				folderNotifier.add(sphereNotifierMatrix.position, 'z').min(-2700).max(3000).step(300).name('|- Notifier');
-				folderNotifier.add(DataTower_RectPanels_Count8.position, 'x').min(-3500).max(3500).step(3500).name('|- Motivational Quotes');
-				folderNotifier.add(testimonialMatrix.position, 'y').min(-20000).max(20000).step(3500).name('|- Testimonials');
+				// ###########################################
+				// Notifcation Settings
+				// ###########################################
+				const folderNotifier = gui.addFolder('[A] - [ NOTIFICATION SETTINGS ] ')
+				folderNotifier.add(sphereNotifierMatrix.position, 'z').min(-2700).max(3000).step(300).name('|- [A1]-[Notifier]');
+				folderNotifier.add(DataTower_RectPanels_Count8.position, 'x').min(-3500).max(3500).step(3500).name('|- [A2]- [ Motivational Quotes ]');
+				folderNotifier.add(testimonialMatrix.position, 'y').min(-20000).max(20000).step(3500).name('|- [A3] - [Testimonials]');
 				
-				const folderMainHud = gui.addFolder('Main Hub Position Testing')
-				folderMainHud.add(videoScreen.position, 'y').min(-20000).max(20000).step(20000).name('|- Opening Video');
-				
-				folderMainHud.add(videoScreen.position, 'z').min(-20000).max(20000).step(2000).name('|- Opening Video Distance');
-				folderMainHud.add(mainContainerEntranceVideoContainerA1_L0.position, 'x').min(-20000).max(20000).step(20000).name('|- Surface Layer');
 
-				// Search.GUI.TestSettings.Main
-				const folderMainSettings = gui.addFolder('User Settings')
-
-				folderMainSettings.add(camera.position, 'x').min(-60000).max(60000).step(10000).name('Side Movement')
-				folderMainSettings.add(camera.position, 'y').min(0).max(120000).step(100).name('Elevator')
-				folderMainSettings.add(camera.position, 'z').min(-60000).max(60000).step(10000).name('Forward / BackWards')
+				// ###########################################
+				// Hud Settings
+				// ###########################################
+				const folderMainHud = gui.addFolder('[B] - [ HUD / VIEW - SETTINGS ]')
+				folderMainHud.add(videoScreen.position, 'y').min(-20000).max(20000).step(20000).name('|- [B1.a] - [Opening Video]');
 				
+				folderMainHud.add(videoScreen.position, 'z').min(-20000).max(20000).step(2000).name('|-- [B1.a1] - [Opening Video ⇅ ]');
+				folderMainHud.add(mainContainerEntranceVideoContainerA1_L0.position, 'x').min(-20000).max(20000).step(20000).name('|- [B2] - [Hud Surface ⇄ ]');
+
 				folderMainHud.add(mainHubBase.position, 'x').min(-3150).max(0).step(100).name('|- main Hud Base');
 				folderMainHud.add(mainHudA.position, 'x').min(-3150).max(0).step(100).name('|- mainHud A');
 				folderMainHud.add(mainHudB.position, 'x').min(-3150).max(0).step(100).name('|- mainHud B');
 
+				// Search.GUI.TestSettings.Main
+				const folderMainSettings = gui.addFolder('[C] - [ My Movement Settings ]')
+
+				folderMainSettings.add(camera.position, 'x').min(-1200000).max(1200000).step(10000).name('|- [ ⇄ ] - Side Movement')
+				folderMainSettings.add(camera.position, 'y').min(-1200000).max(1200000).step(100).name('|- [ ⇅ ] - Elevator')
+				folderMainSettings.add(camera.position, 'z').min(-1200000).max(1200000).step(10000).name('|- [ ⤡⇅ ] - Forward / BackWards')
+				
+
+
 				const folderDataTableA = gui.addFolder('iWindows Assist Tool')
 
 				// Left Side Web Tools
-				folderDataTableA.add(TSC_LeftColumnA00.position, 'x').min(-5150).max(-650).step(50).name('|- Left Web Tools - [ ⇄ Scroll ]');
+				folderDataTableA.add(TSC_LeftColumnA00.position, 'x').min(-5150).max(-550).step(50).name('|- Left Web Tools - [ ⇄ Scroll ]');
 				folderDataTableA.add(TSC_LeftColumnA00.position, 'y').min(-5150).max(3000).step(100).name('|- Left Web Tools - [ ⇅ Scroll ]');
 
 				// Right Side Web Tools
@@ -8958,6 +9794,38 @@
 				folderDataTableB.add(groupTest02b.position, 'z').min(-3150).max(0).step(100).name('|- TableTest A Forward');
 				folderDataTableB.add(groupTest03.position, 'x').min(-3150).max(3150).step(100).name('|- TableTest A Side');
 				folderDataTableB.add(groupTest03.position, 'z').min(-3150).max(0).step(100).name('|- TableTest A Forward');
+
+
+				const folderCoreReality = gui.addFolder("[F] - [Core Reality Settings]")
+
+				// For Later - See if there is a way to move the components but still have them available for movement individually
+				// Main Torus
+				folderCoreReality.add(mesh_Torus01.position, 'x').min(-5000000).max(5000000).step(100000).name('|- [ F0-x ] - [ CommandCenterTorus ]');
+				folderCoreReality.add(mesh_Torus01.position, 'y').min(-50000000).max(50000000).step(1000).name('|- [ F0-y ] - [ CommandCenterTorus ]');
+				folderCoreReality.add(mesh_Torus01.position, 'z').min(-25000).max(25000).step(100).name('|- [ F0-z ] - [ CommandCenterTorus ]');
+
+				// Main Center Cylinder
+				folderCoreReality.add(mesh_Tube01.position, 'x').min(-5000000).max(5000000).step(100000).name('|- [ F1-x ] - [ Center Cylinder ]');
+				folderCoreReality.add(mesh_Tube01.position, 'y').min(-50000000).max(50000000).step(1000).name('|- [ F1-y ] - [ Center Cylinder ]');
+				folderCoreReality.add(mesh_Tube01.position, 'z').min(-25000).max(25000).step(100).name('|- [ F1-z ] - [ Cener Cylinder ]');
+
+				// Communication Rect Tubes
+				folderCoreReality.add(tubes_Communication_root.position, 'x').min(-5000000).max(5000000).step(100000).name('|- [ F2-x ] - [ Communication-Tubes ]');
+				folderCoreReality.add(tubes_Communication_root.position, 'y').min(-50000000).max(50000000).step(1000).name('|- [ F2-y ] - [ Communication-Tubes ]');
+				folderCoreReality.add(tubes_Communication_root.position, 'z').min(-25000).max(25000).step(100).name('|- [ F2-z ] - [ Communication-Tubes ]');
+
+				// Core Reality
+				folderCoreReality.add(RealityOfUnknowns_Root_L0.position, 'x').min(-5000000).max(5000000).step(100000).name('|- [ F3-x ] - [ Main-Reality ]');
+				folderCoreReality.add(RealityOfUnknowns_Root_L0.position, 'y').min(-50000000).max(50000000).step(1000).name('|- [ F3-y ] - [ Main-Reality ]');
+				folderCoreReality.add(RealityOfUnknowns_Root_L0.position, 'z').min(-25000).max(25000).step(100).name('|- [ F3-z ] - [ Main-Reality ]');
+
+				folderCoreReality.add(RealityOfUnknowns_Root_L0.rotation, 'x').min(-360).max(360).step(1).name('|- [ F1-rx ] - [ Main-Reality ] ');
+				folderCoreReality.add(RealityOfUnknowns_Root_L0.rotation, 'y').min(-360).max(360).step(1).name('|- [ F1-ry ] - [ Main-Reality ] ');
+				folderCoreReality.add(RealityOfUnknowns_Root_L0.rotation, 'z').min(-360).max(360).step(1).name('|- [ F1-rz ] - [ Main-Reality ] ');
+
+				folderCoreReality.add(RealityOfUnknowns_Root_L0.scale, 'x').min(-100).max(100).step(1).name('|- [ F1-sx ] - [ Main-Reality ]');
+				folderCoreReality.add(RealityOfUnknowns_Root_L0.scale, 'y').min(-100).max(100).step(1).name('|- [ F1-sx ] - [ Main-Reality ]');
+				folderCoreReality.add(RealityOfUnknowns_Root_L0.scale, 'z').min(-100).max(100).step(1).name('|- [ F1-sx ] - [ Main-Reality ]');
 
 				
 
@@ -9005,12 +9873,13 @@
 
 
 
-				const folderSphereController = gui.addFolder('Domain Controller')
+				const folderSphereController = gui.addFolder('[H] - [ Domains Controller ]')
 				
+				// Domain: Main Grid Sphere
 				folderSphereController.add(handSphereMatrixParams, 'radius', 10, 109975).onChange(regenerateLeftSphereMatrixGeometriesB02).name('Expand Main Grid Sphere')
 				
 				// Domain: White Hexagons
-				folderSphereController.add(VideoSphereParams, 'radius', 10, 199000000).onChange(regeneratVideoSphereGeometry).name('Expand WhiteHex Sphere')
+				folderSphereController.add(VideoSphereParams, 'radius', 10, 1099000000).onChange(regeneratVideoSphereGeometry).name('Expand WhiteHex Sphere')
 				
 				// Dommain: ColorfulShapes
 				folderSphereController.add(VideoSphereParams, 'radius', 10, 199000000).onChange(regeneratVideoSphereGeometry02).name('Expand Main ColorfulShapes Sphere')
@@ -9101,48 +9970,49 @@
 
 				const folderMainHud3 = gui.addFolder('Component2 Testing')
 
-				folderMainHud3.add(TSC_LeftColumnA00.position, 'x').min(-60000).max(60000).step(10000).name('Entrance-x');
-				folderMainHud3.add(TSC_LeftColumnA00.position, 'y').min(-5000).max(50000).step(100).name('Entrance-y');
-				folderMainHud3.add(TSC_LeftColumnA00.position, 'z').min(-25000).max(25000).step(100).name('Entrance-z');
+				folderMainHud3.add(RealityOfUnknowns_Root_L0.position, 'x').min(-60000).max(60000).step(10000).name('Entrance-x');
+				folderMainHud3.add(RealityOfUnknowns_Root_L0.position, 'y').min(-5000000).max(5000000).step(1000).name('Entrance-y');
+				folderMainHud3.add(RealityOfUnknowns_Root_L0.position, 'z').min(-25000).max(25000).step(100).name('Entrance-z');
 
-				folderMainHud3.add(TSC_LeftColumnA00.rotation, 'x').min(-360).max(360).step(1).name('Rotation-x');
-				folderMainHud3.add(TSC_LeftColumnA00.rotation, 'y').min(-360).max(360).step(1).name('Rotation-y');
-				folderMainHud3.add(TSC_LeftColumnA00.rotation, 'z').min(-360).max(360).step(1).name('Rotation-z');
+				folderMainHud3.add(RealityOfUnknowns_Root_L0.rotation, 'x').min(-360).max(360).step(1).name('Rotation-x');
+				folderMainHud3.add(RealityOfUnknowns_Root_L0.rotation, 'y').min(-360).max(360).step(1).name('Rotation-y');
+				folderMainHud3.add(RealityOfUnknowns_Root_L0.rotation, 'z').min(-360).max(360).step(1).name('Rotation-z');
 
-				folderMainHud3.add(TSC_LeftColumnA00.scale, 'x').min(-100).max(100).step(1).name('Scale-x');
-				folderMainHud3.add(TSC_LeftColumnA00.scale, 'y').min(-100).max(100).step(1).name('Scale-y');
-				folderMainHud3.add(TSC_LeftColumnA00.scale, 'z').min(-100).max(100).step(1).name('Scale-z');
+				folderMainHud3.add(RealityOfUnknowns_Root_L0.scale, 'x').min(-100).max(100).step(1).name('Scale-x');
+				folderMainHud3.add(RealityOfUnknowns_Root_L0.scale, 'y').min(-100).max(100).step(1).name('Scale-y');
+				folderMainHud3.add(RealityOfUnknowns_Root_L0.scale, 'z').min(-100).max(100).step(1).name('Scale-z');
 
 				// Test Folder 3
-				const folderMainHud03 = gui.addFolder('Component3 Testing')
+				const folderMainHud03 = gui.addFolder('Component3: Cmd Center')
 
-				folderMainHud03.add(mesh_mainHudA.position, 'x').min(-525).max(325).step(1).name('Cc-Back-x');
-				folderMainHud03.add(mesh_mainHudA.position, 'y').min(-300).max(300).step(1).name('Cc-Back-y');
-				folderMainHud03.add(mesh_mainHudA.position, 'z').min(-2000).max(2000).step(1).name('Cc-Back-z');
+				folderMainHud03.add(CommandCenter.position, 'x').min(-60000).max(60000).step(10000).name('[ ⇄ Scroll ]');
+				folderMainHud03.add(CommandCenter.position, 'y').min(-5000000).max(5000000).step(1000).name('[ ⇅ Scroll ]');
+				folderMainHud03.add(CommandCenter.position, 'z').min(-25000).max(25000).step(100).name('[ ⇄⇅ Scroll ]');
 
-				folderMainHud03.add(mesh_mainHudA.rotation, 'x').min(-360).max(360).step(1).name('Rotation-x');
-				folderMainHud03.add(mesh_mainHudA.rotation, 'y').min(-360).max(360).step(1).name('Rotation-y');
-				folderMainHud03.add(mesh_mainHudA.rotation, 'z').min(-360).max(360).step(1).name('Rotation-z');
+				folderMainHud03.add(CommandCenter.rotation, 'x').min(-360).max(360).step(1).name('Rotation-x');
+				folderMainHud03.add(CommandCenter.rotation, 'y').min(-360).max(360).step(1).name('Rotation-y');
+				folderMainHud03.add(CommandCenter.rotation, 'z').min(-360).max(360).step(1).name('Rotation-z');
 
-				folderMainHud03.add(mesh_mainHudA.scale, 'x').min(-100).max(100).step(1).name('Scale-x');
-				folderMainHud03.add(mesh_mainHudA.scale, 'y').min(-100).max(100).step(1).name('Scale-y');
-				folderMainHud03.add(mesh_mainHudA.scale, 'z').min(-100).max(100).step(1).name('Scale-z');
+				folderMainHud03.add(CommandCenter.scale, 'x').min(-100).max(100).step(1).name('Scale-x');
+				folderMainHud03.add(CommandCenter.scale, 'y').min(-100).max(100).step(1).name('Scale-y');
+				folderMainHud03.add(CommandCenter.scale, 'z').min(-100).max(100).step(1).name('Scale-z');
+
 
 
 				// Test Folder 4
 				const folderMainHud4 = gui.addFolder('Component4 Testing')
 
-				folderMainHud4.add(mesh_rightUIGear_A4_L0.position, 'x').min(-525).max(325).step(1).name('Cc-Back-x');
-				folderMainHud4.add(mesh_rightUIGear_A4_L0.position, 'y').min(-300).max(300).step(1).name('Cc-Back-y');
-				folderMainHud4.add(mesh_rightUIGear_A4_L0.position, 'z').min(-2000).max(2000).step(1).name('Cc-Back-z');
+				folderMainHud4.add(exampleRealitiesMatrix.position, 'x').min(-60000).max(60000).step(10000).name('[ ⇄ Scroll ]');
+				folderMainHud4.add(exampleRealitiesMatrix.position, 'y').min(-5000000).max(5000000).step(1000).name('[ ⇅ Scroll ]');
+				folderMainHud4.add(exampleRealitiesMatrix.position, 'z').min(-25000).max(25000).step(100).name('[ ⇄⇅ Scroll ]');
 
-				folderMainHud4.add(mesh_rightUIGear_A4_L0.rotation, 'x').min(-360).max(360).step(1).name('Rotation-x');
-				folderMainHud4.add(mesh_rightUIGear_A4_L0.rotation, 'y').min(-360).max(360).step(1).name('Rotation-y');
-				folderMainHud4.add(mesh_rightUIGear_A4_L0.rotation, 'z').min(-360).max(360).step(1).name('Rotation-z');
+				folderMainHud4.add(exampleRealitiesMatrix.rotation, 'x').min(-360).max(360).step(1).name('Rotation-x');
+				folderMainHud4.add(exampleRealitiesMatrix.rotation, 'y').min(-360).max(360).step(1).name('Rotation-y');
+				folderMainHud4.add(exampleRealitiesMatrix.rotation, 'z').min(-360).max(360).step(1).name('Rotation-z');
 
-				folderMainHud4.add(mesh_rightUIGear_A4_L0.scale, 'x').min(-100).max(100).step(1).name('Scale-x');
-				folderMainHud4.add(mesh_rightUIGear_A4_L0.scale, 'y').min(-100).max(100).step(1).name('Scale-y');
-				folderMainHud4.add(mesh_rightUIGear_A4_L0.scale, 'z').min(-100).max(100).step(1).name('Scale-z');
+				folderMainHud4.add(exampleRealitiesMatrix.scale, 'x').min(-100).max(100).step(1).name('Scale-x');
+				folderMainHud4.add(exampleRealitiesMatrix.scale, 'y').min(-100).max(100).step(1).name('Scale-y');
+				folderMainHud4.add(exampleRealitiesMatrix.scale, 'z').min(-100).max(100).step(1).name('Scale-z');
 				
 
 				// Test Folder 5
@@ -9194,6 +10064,25 @@
 		}
 
 
+		//...............................................................................................
+		//..............................fff..............................................................
+		//...222222......111..........fffff.................tttt.........................................
+		//..22222222....1111..........fffff.................tttt.........................................
+		//..222222222.111111..........fffff.................tttt.........................................
+		//.2222..2222.111111.........-ffffffxxx..xxxx......-ttttt.rrrrrr..aaaaaaa..nnnnnnnnn..ssssssss...
+		//.2222..2222.111111.........-ffffffxxxxxxxxx......-ttttt.rrrrrr.aaaaaaaa..nnnnnnnnn..ssssssss...
+		//......22222....111.........-fffff.xxxxxxxx.......-ttttt.rrrrrrraaaaaaaaa.nnnnnnnnn.nsssssssss..
+		//.....22222.....111...1-----.ffff..xxxxxxx..x-----.tttt..rrrr..raaa.aaaaa.nnnn.nnnn.nsssssssss..
+		//....222222.....111...1-----.ffff...xxxxxx..x-----.tttt..rrr....aaaaaaaaa.nnn...nnn..ssssssss...
+		//...222222......111...1-----.ffff...xxxxxx..x-----.tttt..rrr...raaaaaaaaa.nnn...nnn..ssssssss...
+		//..22222........111...1-----.ffff...xxxxxx..x-----.tttt..rrr...raaaa.aaaa.nnn...nnn.nsssssssss..
+		//.2222222222....111..........ffff..xxxxxxxx........tttt..rrr...raaa.aaaaa.nnn...nnn.nssss.ssss..
+		//.2222222222....111..........ffff.fxxxxxxxxx.......ttttt.rrr...raaaaaaaaa.nnn...nnn.nsssssssss..
+		//.2222222222....111..........ffff.fxxx.xxxxx.......ttttt.rrr...raaaaaaaaa.nnn...nnn..ssssssss...
+		//....................................................ttt.........aaa..................ssssss....
+		//...............................................................................................
+
+
 
       function transform(targets, duration) {
 
@@ -9236,6 +10125,28 @@
 				const time = performance.now() * 0.001;
 				
 			}
+
+
+
+			//.......................................................................................................................................
+			//............................TTTTTTTTT.Tiii..........................AAA................niii............................................
+			//...222222....222222........-TTTTTTTTTTTiii...........ckkk..........AAAAA...............niii............................ttt.............
+			//..22222222..22222222.......-TTTTTTTTTTTiii...........ckkk..........AAAAA...............niii............................ttt.............
+			//..222222222.222222222......-TTTTTTTTTTTiii...........ckkk.........AAAAAAA..............niii............................ttt.............
+			//.2222..22222222..2222..........TTTT...Tiii...cccccc..ckkk.kkkkk...AAAAAAA...Annnnnnnn..niii.immmmmmmmmmmmm...aaaaaaa.aattttt.eeeeeee...
+			//.2222..22222222..2222..........TTTT...Tiii..cccccccc.ckkk.kkkkk..AAAAAAAA...Annnnnnnnn.niii.immmmmmmmmmmmmm.maaaaaaaaaattttt.eeeeeeee..
+			//......22222.....22222..........TTTT...Tiii.icccccccccckkkkkkkk...AAAAAAAAA..Annnnnnnnn.niii.immmmmmmmmmmmmm.maaaaaaaaaatttttteeeeeeee..
+			//.....22222.....22222.2-----....TTTT...Tiii.iccc..ccccckkkkkkk....AAAA.AAAA..Annnn.nnnn.niii.immm..mmmm.mmmm.maaaaaaaa..ttt..teee..eee..
+			//....222222....222222.2-----....TTTT...Tiii.iccc......ckkkkkk....AAAAAAAAAA..Annn..nnnn.niii.immm..mmmm.mmmm..aaaaaaaa..ttt..teeeeeeee..
+			//...222222....222222..2-----....TTTT...Tiii.iccc......ckkkkkkk...AAAAAAAAAAA.Annn..nnnn.niii.immm..mmmm.mmmm.maaaaaaaa..ttt..teeeeeeee..
+			//..22222.....22222....2-----....TTTT...Tiii.iccc..ccccckkkkkkkk..AAAAAAAAAAA.Annn..nnnn.niii.immm..mmmm.mmmm.maaaaaaaa..ttt..teee.......
+			//.22222222222222222222..........TTTT...Tiii.icccccccccckkkkkkkk.kAAAAAAAAAAA.Annn..nnnn.niii.immm..mmmm.mmmm.maaaaaaaa..tttt.teeeeeeee..
+			//.22222222222222222222..........TTTT...Tiii.icccccccc.ckkk.kkkkkkAAA....AAAAAAnnn..nnnn.niii.immm..mmmm.mmmm.maaaaaaaa..tttttteeeeeeee..
+			//.22222222222222222222..........TTTT...Tiii..cccccccc.ckkk..kkkkkAAA.....AAAAAnnn..nnnn.niii.immm..mmmm.mmmm.maaaaaaaaa.ttttt.eeeeeeee..
+			//..............................................cccc............................................................aaa.......tttt...eeee....
+			//.......................................................................................................................................
+
+
 
 			function animate() {
 
@@ -9543,6 +10454,7 @@
 
 				// Examaple Realities
 				mesh_TorusRealityA01.rotation.z = time * 0.001
+				mesh_TorusRealityA02.rotation.z = time * 0.001
 				mesh_TorusKnotRealityA01.rotation.z = time * 0.0001
 
 
